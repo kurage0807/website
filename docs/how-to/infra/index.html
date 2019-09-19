@@ -502,7 +502,7 @@
 
 <h4 id="データベースのバックアップと設定">データベースのバックアップと設定</h4>
 <ul>
-  <li>/var/lib/kamonohashi/postgresql/backupにダンプファイルが生成されます</li>
+  <li>KAMONOHASHIマシンの/var/lib/kamonohashi/postgresql/backupにダンプファイルが生成されます</li>
   <li>kqi-backup-<日付>.sqlというファイル名になります</日付></li>
   <li>デフォルトでは毎週日曜日01:00に生成され、1世代のみ保管されます</li>
   <li>世代数と取得日付を変更可能です</li>
@@ -527,7 +527,7 @@
   <tbody>
     <tr>
       <td>BackupPostgresTimerOptions__WeeklyTimeSchedule</td>
-      <td>取得日を指定します。曜日=時刻のフォーマットで記載します。<br />;区切りで複数日時を指定可能です</td>
+      <td>取得日を指定します。曜日=時刻のフォーマットで記載します。曜日は英語表記の先頭3文字で指定します。<br />;区切りで複数日時を指定可能です</td>
       <td>“Sun=01:00:00;Mon=01:00:00”</td>
     </tr>
     <tr>
@@ -542,23 +542,28 @@
   <li>
     <p>修正例は次になります。インデントをDeployOptionsとそろえてください</p>
   </li>
-  <li>before
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>appsettings:
-DeployOptions__GpuNodes: ...
-...
-#   BackupPostgresTimerOptions__WeeklyTimeSchedule: "Sun=01:00:00"
-#   BackupPostgresTimerOptions__MaxNumberOfBackupFiles: "1"
-</code></pre></div>    </div>
-  </li>
-  <li>after
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>appsettings:
-DeployOptions__GpuNodes: ...
-...
-BackupPostgresTimerOptions__WeeklyTimeSchedule: "Sun=01:00:00;Mon=01:00:00"
-BackupPostgresTimerOptions__MaxNumberOfBackupFiles: "2"
-</code></pre></div>    </div>
+  <li>
+    <p>before</p>
   </li>
 </ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>appsettings:
+  DeployOptions__GpuNodes: ...
+  ...
+#   BackupPostgresTimerOptions__WeeklyTimeSchedule: "Sun=01:00:00"
+#   BackupPostgresTimerOptions__MaxNumberOfBackupFiles: "1"
+</code></pre></div></div>
+
+<ul>
+  <li>after</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>appsettings:
+  DeployOptions__GpuNodes: ...
+  ...
+  BackupPostgresTimerOptions__WeeklyTimeSchedule: "Sun=01:00:00;Mon=01:00:00"
+  BackupPostgresTimerOptions__MaxNumberOfBackupFiles: "2"
+</code></pre></div></div>
 
 <h4 id="データベースの復元">データベースの復元</h4>
 <h5 id="kubernetes-masterマシンでの作業">Kubernetes Masterマシンでの作業</h5>
@@ -572,16 +577,35 @@ BackupPostgresTimerOptions__MaxNumberOfBackupFiles: "2"
 <ul>
   <li>KAMONOHASHIマシンにrootでログインします</li>
   <li><code class="highlighter-rouge">/var/lib/kamonohashi/postgresql/backup/</code>に復元したいデータベースのダンプファイル(kqi-backup-<日付>.sql)を配置してください</日付></li>
-  <li>次のコマンドを実行します
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mv /var/lib/kamonohashi/postgres/data /var/tmp/
-docker run -d --name restore-postgres -v /var/lib/kamonohashi/postgresql/data/:/var/lib/postgresql/data postgres:10
-docker cp /var/lib/kamonohashi/postgresql/backup/kqi-backup-20190908.sql restore-postgres:/kqi-backup-20190908.sql
-docker exec -it restore-postgres psql -U postgres -f /kqi-backup-20190908.sql
-docker stop restore-postgres
-docker rm restore-postgres
-</code></pre></div>    </div>
-  </li>
+  <li>次のコマンドを実行し、ダンプファイル名を変数に設定します</li>
 </ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>DUMP_FILE=kqi-backup-&lt;日付&gt;.sql
+</code></pre></div></div>
+
+<ul>
+  <li>既存のデータベースのデータを別の場所に退避します</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mv /var/lib/kamonohashi/postgresql/data /var/tmp/
+</code></pre></div></div>
+
+<ul>
+  <li>リストアコマンドを実行します</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run -d --name restore-postgres -v /var/lib/kamonohashi/postgresql/data/:/var/lib/postgresql/data postgres:10
+docker cp /var/lib/kamonohashi/postgresql/backup/$DUMP_FILE restore-postgres:/$DUMP_FILE
+docker exec -it restore-postgres psql -U postgres -f /$DUMP_FILE
+</code></pre></div></div>
+
+<ul>
+  <li>完了後に次のコマンドを実施します</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker stop restore-postgres
+docker rm restore-postgres
+</code></pre></div></div>
 
 <h5 id="kubernetes-masterマシンでの作業-1">Kubernetes Masterマシンでの作業</h5>
 <ul>

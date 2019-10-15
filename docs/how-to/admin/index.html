@@ -138,7 +138,7 @@
               <a href="https://twitter.com/Kamonohashi_kqi" >Twitter</a>
             </li></ul>
         <button class="greedy-nav__dropdown"  type="button">
-            <span>1.1.2 <i class="material-icons">arrow_drop_down</i> </span>
+            <span>1.1.3 <i class="material-icons">arrow_drop_down</i> </span>
             <div class="dropdown-content">
                 <a href="/docs/supported-doc-versions" >other version</a>
             </div>         
@@ -235,7 +235,7 @@
             
             
 
-            <li><a href="/docs/install-and-update#DB%E3%81%AE%E5%88%87%E3%82%8A%E6%88%BB%E3%81%97%E3%82%92%E5%90%AB%E3%82%80%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%80%E3%82%A6%E3%83%B3" class="">・バージョンダウン</a></li>
+            <li><a href="/docs/install-and-update#%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%80%E3%82%A6%E3%83%B3" class="">・バージョンダウン</a></li>
           
             
             
@@ -498,7 +498,44 @@
 テナントには、Gitリポジトリ、Docker Registryおよびオブジェクトストレージが関連付けられ、それぞれ複数のテナント間で共有可能です。
 Gitリポジトリ、Docker Registryは1テナントに複数登録することが可能です。</p>
 
-<p>初期状態では、「Sandbox」という名前のテナントが用意されています。</p>
+<p>初期状態では、下記の情報が登録されており、adminはSandboxというテナントに所属しています。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>初期登録情報</th>
+      <th>詳細</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>テナント</td>
+      <td>Sandbox</td>
+      <td>GitHub, official-docker-hubを登録済み</td>
+    </tr>
+    <tr>
+      <td>Git</td>
+      <td>GitHub</td>
+      <td><a href="https://github.com">GitHub</a></td>
+    </tr>
+    <tr>
+      <td>Git</td>
+      <td>GitLab.com</td>
+      <td><a href="https://gitlab.com">GitLab.com</a></td>
+    </tr>
+    <tr>
+      <td>レジストリ</td>
+      <td>official-docker-hub</td>
+      <td><a href="https://hub.docker.com/">dockerhub</a></td>
+    </tr>
+    <tr>
+      <td>レジストリ</td>
+      <td>ngc</td>
+      <td><a href="https://ngc.nvidia.com/catalog/containers">NVIDIA GPU Cloud</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <h3 id="テナントの作成">テナントの作成</h3>
 <p>テナントの作成は以下のフローで行います。</p>
@@ -511,8 +548,6 @@ Gitリポジトリ、Docker Registryは1テナントに複数登録すること�
 </ol>
 
 <p>ストレージ情報、Git情報、Docker Registry情報については、過去に登録したものを再度利用する場合、改めて登録しなおす必要はありません。</p>
-
-<p><a name="new_storage"></a></p>
 
 <h4 id="ストレージ情報の新規登録">ストレージ情報の新規登録</h4>
 
@@ -576,8 +611,6 @@ Gitリポジトリ、Docker Registryは1テナントに複数登録すること�
   </tbody>
 </table>
 
-<p><a name="new_git"></a></p>
-
 <h4 id="git情報の新規登録">Git情報の新規登録</h4>
 <p>テナントが利用するGitリポジトリの情報を登録します。</p>
 
@@ -607,26 +640,24 @@ Gitリポジトリ、Docker Registryは1テナントに複数登録すること�
       <td>識別名。管理者が各登録情報を識別しやすいような、任意の名前を入力する。</td>
     </tr>
     <tr>
-      <td>リポジトリURL</td>
-      <td>必須</td>
-      <td>リポジトリにgitコマンドでアクセスする際の基底URLを入力する。<br />（例）https://git.kamonohashi.ai:8080</td>
-    </tr>
-    <tr>
       <td>Git種別</td>
       <td>必須</td>
       <td>GitLabやGitHubなど、Gitサービスのプロバイダを選択する。</td>
     </tr>
     <tr>
+      <td>リポジトリURL</td>
+      <td>必須</td>
+      <td>リポジトリにgitコマンドでアクセスする際の基底URLを入力する。<br />（例）https://git.kamonohashi.ai:8080</td>
+    </tr>
+    <tr>
       <td>API URL</td>
       <td>必須</td>
-      <td>リポジトリにREST APIでアクセスする際の基底URLを入力する。<br />（例）https://git.kamonohashi.ai:8080</td>
+      <td>リポジトリにREST APIでアクセスする際の基底URLを入力する。<br />リポジトリURLと同様のものが自動入力されるため、変更の必要がある場合はトグルボタンを選択し、編集する。</td>
     </tr>
   </tbody>
 </table>
 
 <p>なお<a href="https://github.com/">GitHub</a>については、初期構築時に編集不可として自動登録されます。</p>
-
-<p><a name="new_registry"></a></p>
 
 <h4 id="registry情報の新規作成">Registry情報の新規作成</h4>
 
@@ -680,22 +711,22 @@ Gitリポジトリ、Docker Registryは1テナントに複数登録すること�
     <tr>
       <td>ホスト名</td>
       <td>必須</td>
-      <td>イメージ名に使用されるレジストリのFQDNまたはIPアドレスを入力する。</td>
+      <td>イメージ名に使用されるレジストリのFQDNまたはIPアドレスを入力する。<br />（例）registry-server</td>
     </tr>
     <tr>
       <td>ポート番号</td>
       <td>必須</td>
-      <td>イメージ名に使用されるレジストリのポート番号を入力する。</td>
+      <td>イメージ名に使用されるレジストリのポート番号を入力する。<br />（例）5555</td>
     </tr>
     <tr>
       <td>API URL</td>
       <td>必須</td>
-      <td>レジストリにREST APIでアクセスする際の基底URLを入力する。<br />（例）https://registry-server:5555</td>
+      <td>レジストリにREST APIでアクセスする際の基底URLを入力する。<br />https://ホスト名:ポート番号のように自動入力されるため、変更の必要がある場合はトグルボタンを選択し、編集する。</td>
     </tr>
     <tr>
       <td>URL</td>
       <td>必須</td>
-      <td>レジストリにdockerコマンドでアクセスする際の基底URLを入力する。<br />（例）https://registry-server:5555</td>
+      <td>レジストリにdockerコマンドでアクセスする際の基底URLを入力する。<br />https://ホスト名:ポート番号のように自動入力されるため、変更の必要がある場合はトグルボタンを選択し、編集する。</td>
     </tr>
   </tbody>
 </table>
@@ -724,22 +755,22 @@ Gitリポジトリ、Docker Registryは1テナントに複数登録すること�
     <tr>
       <td>ホスト名</td>
       <td>必須</td>
-      <td>イメージ名に使用されるレジストリのFQDNまたはIPアドレスを入力する。</td>
+      <td>イメージ名に使用されるレジストリのFQDNまたはIPアドレスを入力する。<br />（例）registry-server</td>
     </tr>
     <tr>
       <td>ポート番号</td>
       <td>必須</td>
-      <td>イメージ名に使用されるレジストリのポート番号を入力する。</td>
+      <td>イメージ名に使用されるレジストリのポート番号を入力する。<br />（例）5555</td>
     </tr>
     <tr>
       <td>API URL</td>
       <td>必須</td>
-      <td>レジストリにREST APIでアクセスする際の基底URLを入力する。基本的にはGitLabのWeb URLと等しい。<br />（例）https://registry-server/gitlab</td>
+      <td>レジストリにREST APIでアクセスする際の基底URLを入力する。基本的にはGitLabのWeb URLと等しい。<br />https://ホスト名:ポート番号のように自動入力されるため、変更の必要がある場合はトグルボタンを選択し、編集する。</td>
     </tr>
     <tr>
       <td>URL</td>
       <td>必須</td>
-      <td>レジストリにdockerコマンドでアクセスする際の基底URLを入力する。<br /> 基本的にポート番号はWeb URLではなくレジストリのポート番号となる。<br />（例）https://registry-server:5555/gitlab</td>
+      <td>レジストリにdockerコマンドでアクセスする際の基底URLを入力する。<br /> 基本的にポート番号はWeb URLではなくレジストリのポート番号となる。<br />https://ホスト名:ポート番号のように自動入力されるため、変更の必要がある場合はトグルボタンを選択し、編集する。</td>
     </tr>
     <tr>
       <td>プロジェクト名</td>
@@ -748,8 +779,6 @@ Gitリポジトリ、Docker Registryは1テナントに複数登録すること�
     </tr>
   </tbody>
 </table>
-
-<p>なお<a href="https://hub.docker.com/">Docker Hub</a>および<a href="https://ngc.nvidia.com/catalog/landing">NGC</a>については、初期構築時に編集不可として自動登録されます。</p>
 
 <h4 id="テナントの新規作成">テナントの新規作成</h4>
 <p>テナントを作成します。</p>
@@ -998,8 +1027,6 @@ Gitリポジトリ、Docker Registryは1テナントに複数登録すること�
 <p>ノードとは、KAMONOHASHIに管理される物理的あるいは仮想的な計算用コンピュータを指します。
 KAMONOHASHI自体を構成する管理サーバ群は含みません。</p>
 
-<p><a name="new_node"></a></p>
-
 <h3 id="ノードの追加">ノードの追加</h3>
 <p>KAMONOHASHIの管理下に新しくノードを追加します。
 Kubernetes masterノード上での作業および、KAMONOHASHIのWeb画面上での作業が必要となります。</p>
@@ -1008,6 +1035,7 @@ Kubernetes masterノード上での作業および、KAMONOHASHIのWeb画面上�
   <li>GPUサーバの準備(Ubuntu Server 16.04およびGPUドライバのインストール)とKAMONOHASHIと同一ネットワークへの接続</li>
   <li>Kubernetes masterノードにssh</li>
   <li><code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/{バージョン番号}/infra/conf/inventory</code> を編集し、gpu-nodeを追記(下記例を参照)</li>
+  <li><code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/{バージョン番号}/infra/deploy-kqi-infra.sh prepare</code> を実行</li>
   <li><code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/{バージョン番号}/infra/deploy-kqi-infra.sh scale</code> を実行</li>
   <li>SSHパスワード、SUDOパスワードを入力し、処理が完了するまで待機</li>
 </ol>
@@ -1203,8 +1231,6 @@ gpu2
     </ul>
   </li>
 </ul>
-
-<p><a name="menu-access"></a></p>
 
 <h3 id="メニューアクセス管理">メニューアクセス管理</h3>
 

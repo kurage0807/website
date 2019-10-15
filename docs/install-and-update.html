@@ -138,7 +138,7 @@
               <a href="https://twitter.com/Kamonohashi_kqi" >Twitter</a>
             </li></ul>
         <button class="greedy-nav__dropdown"  type="button">
-            <span>1.1.2 <i class="material-icons">arrow_drop_down</i> </span>
+            <span>1.1.3 <i class="material-icons">arrow_drop_down</i> </span>
             <div class="dropdown-content">
                 <a href="/docs/supported-doc-versions" >other version</a>
             </div>         
@@ -235,7 +235,7 @@
             
             
 
-            <li><a href="/docs/install-and-update#DB%E3%81%AE%E5%88%87%E3%82%8A%E6%88%BB%E3%81%97%E3%82%92%E5%90%AB%E3%82%80%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%80%E3%82%A6%E3%83%B3" class="">・バージョンダウン</a></li>
+            <li><a href="/docs/install-and-update#%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%80%E3%82%A6%E3%83%B3" class="">・バージョンダウン</a></li>
           
             
             
@@ -575,7 +575,7 @@
 <ul>
   <li>Kubernetes master用に用意したマシンにログインします</li>
   <li>root userで次を実行します
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">KQI_VERSION</span><span class="o">=</span>1.1.2 
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">KQI_VERSION</span><span class="o">=</span>1.1.3 
 wget <span class="nt">-O</span> /tmp/deploy-tools-<span class="nv">$KQI_VERSION</span>.tar.gz https://github.com/KAMONOHASHI/kamonohashi/releases/download/<span class="nv">$KQI_VERSION</span>/deploy-tools-<span class="nv">$KQI_VERSION</span>.tar.gz
 <span class="nb">mkdir</span> <span class="nt">-p</span> /var/lib/kamonohashi/deploy-tools/<span class="nv">$KQI_VERSION</span>/
 <span class="nb">cd</span> /var/lib/kamonohashi/deploy-tools/<span class="nv">$KQI_VERSION</span>/
@@ -682,7 +682,7 @@ wget <span class="nt">-O</span> /tmp/deploy-tools-<span class="nv">$KQI_VERSION<
 </code></pre>
   </li>
   <li>次のコマンドを実施して新しいデプロイツール取得と設定ファイルのコピーを行います
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">KQI_VERSION</span><span class="o">=</span> 1.1.2 
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">KQI_VERSION</span><span class="o">=</span>1.1.3 
 wget <span class="nt">-O</span> /tmp/deploy-tools-<span class="nv">$KQI_VERSION</span>.tar.gz https://github.com/KAMONOHASHI/kamonohashi/releases/download/<span class="nv">$KQI_VERSION</span>/deploy-tools-<span class="nv">$KQI_VERSION</span>.tar.gz
 <span class="nb">mkdir</span> <span class="nt">-p</span> /var/lib/kamonohashi/deploy-tools/<span class="nv">$KQI_VERSION</span>/
 <span class="nb">cd</span> /var/lib/kamonohashi/deploy-tools/<span class="nv">$KQI_VERSION</span>/
@@ -750,14 +750,57 @@ wget <span class="nt">-O</span> /tmp/deploy-tools-<span class="nv">$KQI_VERSION<
   </li>
 </ul>
 
-<h2 id="dbの切り戻しを含むバージョンダウン">DBの切り戻しを含むバージョンダウン</h2>
-<p>1.0.3以前から1.1.0以降へのバージョンアップには、DBのテーブル変更が含まれています。
-そのため1.1.0から以前のバージョンに戻す際には、下記手順によりDBの切り戻し作業を実施する必要があります(作業中はKAMONOHASHIのサービスが停止します)。
-なおこの作業を行った場合、ノートブック機能で管理していた情報は削除されるため注意してください。</p>
+<h2 id="バージョンダウン">バージョンダウン</h2>
 
+<h3 id="kamonohashi-webアプリのバージョンダウン">KAMONOHASHI Webアプリのバージョンダウン</h3>
+
+<p>バージョンダウンは、バージョンアップ以前のデプロイツールを用いることで行います。以前に利用したデプロイツールは、k8sノードで以下のコマンドを実行することで確認できます。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> /var/lib/kamonohashi/deploy-tools/old
+</code></pre></div></div>
+
+<p>確認した中で、バージョンダウンする番号をメモし、以下のコマンドを実行します。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /var/lib/kamonohashi/deploy-tools/old/<span class="o">{</span>バージョン番号<span class="o">}</span>/kamonohashi/
+./deploy-kqi.sh update
+</code></pre></div></div>
+
+<h3 id="dbの切り戻しを含むバージョンダウン">DBの切り戻しを含むバージョンダウン</h3>
+
+<p>KAMONOHASHIのアップデートを行う際に、下記のバージョンではDBに対するマイグレーション適用が実施され、テーブル変更が行われています。そのためマイグレーション適用後のバージョンから、それ以前のバージョンに戻す際には、切り戻し用スクリプトを実行してDBの切り戻し作業を実施する必要があります(作業中はKAMONOHASHIのサービスが停止します)。
+この作業を行った場合、マイグレーション適用後にのみ存在しているテーブルおよびカラムに格納されていたデータは削除されるため注意してください。例えばv1.1.0からv1.0.3にバージョンダウンする場合は、ノートブック機能で管理していた情報は削除されます。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>version</th>
+      <th>Migration</th>
+      <th>主な変更</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>v1.0.0</td>
+      <td>20190515093033_v1.0.0</td>
+      <td>初期構築時</td>
+    </tr>
+    <tr>
+      <td>v1.1.0</td>
+      <td>20190821040509_v1.1.0</td>
+      <td>ノートブック機能用テーブル追加</td>
+    </tr>
+    <tr>
+      <td>v1.1.3</td>
+      <td>20190911075454_v1.1.3</td>
+      <td>zip機能利用履歴保持用カラム追加</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>1.1.3からバージョンダウンする場合の、DB切り戻しスクリプトの実行例</p>
 <ol>
-  <li><code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/1.1.1/rollback/rollback.sh</code>を実行します。</li>
-  <li>デプロイされているKAMONOHASHIのバージョンに<code class="highlighter-rouge">1.1.1</code>、戻したい時点のMigrationファイルに<code class="highlighter-rouge">20190515093033_v1.0.0</code>を入力します。</li>
+  <li><code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/1.1.3/rollback/rollback.sh</code>を実行します。</li>
+  <li>デプロイされているKAMONOHASHIのバージョンに<code class="highlighter-rouge">1.1.3</code>、戻したい時点のMigrationファイルに<code class="highlighter-rouge">20190821040509_v1.1.0</code>を入力します。</li>
   <li>DBの切り戻し処理が終了するまで数分間待機します。</li>
   <li>切り戻し処理終了後、再デプロイ可能なバージョンの一覧が表示されるため、戻したいバージョンを指定します。</li>
   <li>KAMONOHASHIのWEB画面にアクセスし、バージョン情報より、バージョンが戻っていることを確認します。</li>

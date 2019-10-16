@@ -432,6 +432,14 @@
             
             
 
+            <li><a href="/docs/how-to/admin/#%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8" class="">・ストレージ</a></li>
+          
+            
+            
+
+            
+            
+
             <li><a href="/docs/how-to/cli" class="">CLI Guide</a></li>
           
             
@@ -1250,6 +1258,27 @@ gpu2
   <li>全ての変更が完了したら、右下の「更新」ボタンを選択する</li>
 </ol>
 
+<h2 id="ストレージ">ストレージ</h2>
+<p>学習に使用するデータや学習結果を保存するためにストレージが必要です。</p>
+
+<h3 id="ストレージの編集">ストレージの編集</h3>
+<p>KAMONOHASHIに登録しているストレージの情報を変更します。
+KAMONOHASHIのWeb画面上での作業および再デプロイに備えてKubernetes masterノード上での作業が必要となります。</p>
+
+<h4 id="kamonohashiのweb画面上での作業-1">KAMONOHASHIのWeb画面上での作業</h4>
+<ol>
+  <li>ブラウザからkamonohashiにアクセス</li>
+  <li>管理権限を持つユーザでログイン</li>
+  <li>[システム管理] → [ストレージ管理]を選択し、ストレージ一覧画面を表示する</li>
+  <li>編集したいストレージ情報を選択する</li>
+  <li>ストレージ編集画面にて編集し、右下の「保存」ボタンを押下する</li>
+</ol>
+
+<h4 id="kubernetes-masterノード上での作業-1">Kubernetes masterノード上での作業</h4>
+<ol>
+  <li>Kubernetes masterノードにssh</li>
+  <li><code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/{バージョン番号}/kamonohashi/conf/settings.yml</code> を開き、appsettingsのDeployOptionsを編集し保存する</li>
+</ol>
 
         
       </section>

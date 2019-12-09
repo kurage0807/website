@@ -4291,3 +4291,52 @@ a.reversefootnote {
   margin-top: -2px;
   border-top: 2em solid #fff;
 }
+
+
+/*
+   newsList
+   ========================================================================== */
+
+   ul#newsList {
+     list-style: none;
+     width: 100%;
+   }
+
+   li.newsItem {
+     display: table;
+     width: 100%;
+   }
+
+   li.newsItem div {
+     display: table-cell;
+     padding: 0 25px;
+   }
+
+   li.newsItem div.newsDate {
+    font-size: 0.8rem;
+     width: 160px;
+   }
+
+/*newsLabel*/
+   li.newsItem div.newsLabel{
+    font-size: 0.5rem;
+    line-height: 1;
+    display: inline-block;
+    width: 80px;
+    padding: 5px 2px;
+    text-align: center;
+    color: #fff;
+    border-radius: 2px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    }
+
+    li.newsItem div.labelRelease{
+      background-color: #1abfd5;
+      }
+
+      li.newsItem div.labelEvent{
+        background-color: #1a81d5;
+        }
+  

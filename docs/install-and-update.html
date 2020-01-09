@@ -138,7 +138,7 @@
               <a href="https://twitter.com/Kamonohashi_kqi" >Twitter</a>
             </li></ul>
         <button class="greedy-nav__dropdown"  type="button">
-            <span>1.1.4 <i class="material-icons">arrow_drop_down</i> </span>
+            <span>1.1.5 <i class="material-icons">arrow_drop_down</i> </span>
             <div class="dropdown-content">
                 <a href="/docs/supported-doc-versions" >other version</a>
             </div>         
@@ -639,7 +639,7 @@
 <ul>
   <li>Kubernetes master用に用意したマシンにログインします</li>
   <li>root userで次を実行します
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">KQI_VERSION</span><span class="o">=</span>1.1.4 
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">KQI_VERSION</span><span class="o">=</span>1.1.5 
 wget <span class="nt">-O</span> /tmp/deploy-tools-<span class="nv">$KQI_VERSION</span>.tar.gz https://github.com/KAMONOHASHI/kamonohashi/releases/download/<span class="nv">$KQI_VERSION</span>/deploy-tools-<span class="nv">$KQI_VERSION</span>.tar.gz
 <span class="nb">mkdir</span> <span class="nt">-p</span> /var/lib/kamonohashi/deploy-tools/<span class="nv">$KQI_VERSION</span>/
 <span class="nb">cd</span> /var/lib/kamonohashi/deploy-tools/<span class="nv">$KQI_VERSION</span>/
@@ -746,7 +746,7 @@ wget <span class="nt">-O</span> /tmp/deploy-tools-<span class="nv">$KQI_VERSION<
 </code></pre>
   </li>
   <li>次のコマンドを実施して新しいデプロイツール取得と設定ファイルのコピーを行います
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">KQI_VERSION</span><span class="o">=</span>1.1.4 
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">KQI_VERSION</span><span class="o">=</span>1.1.5 
 wget <span class="nt">-O</span> /tmp/deploy-tools-<span class="nv">$KQI_VERSION</span>.tar.gz https://github.com/KAMONOHASHI/kamonohashi/releases/download/<span class="nv">$KQI_VERSION</span>/deploy-tools-<span class="nv">$KQI_VERSION</span>.tar.gz
 <span class="nb">mkdir</span> <span class="nt">-p</span> /var/lib/kamonohashi/deploy-tools/<span class="nv">$KQI_VERSION</span>/
 <span class="nb">cd</span> /var/lib/kamonohashi/deploy-tools/<span class="nv">$KQI_VERSION</span>/
@@ -858,13 +858,18 @@ wget <span class="nt">-O</span> /tmp/deploy-tools-<span class="nv">$KQI_VERSION<
       <td>20190911075454_v1.1.3</td>
       <td>zip機能利用履歴保持用カラム追加</td>
     </tr>
+    <tr>
+      <td>v1.1.5</td>
+      <td>20191113041648_v1.1.5</td>
+      <td>ノートブックへのマウント学習ジョブを管理するための追加</td>
+    </tr>
   </tbody>
 </table>
 
-<p>1.1.3からバージョンダウンする場合の、DB切り戻しスクリプトの実行例</p>
+<p>1.1.5からバージョンダウンする場合の、DB切り戻しスクリプトの実行例</p>
 <ol>
-  <li><code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/1.1.3/rollback/rollback.sh</code>を実行します。</li>
-  <li>デプロイされているKAMONOHASHIのバージョンに<code class="highlighter-rouge">1.1.3</code>、戻したい時点のMigrationファイルに<code class="highlighter-rouge">20190821040509_v1.1.0</code>を入力します。</li>
+  <li><code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/1.1.5/rollback/rollback.sh</code>を実行します。</li>
+  <li>デプロイされているKAMONOHASHIのバージョンに<code class="highlighter-rouge">1.1.5</code>、戻したい時点のMigrationファイルに<code class="highlighter-rouge">20190911075454_v1.1.3</code>を入力します。</li>
   <li>DBの切り戻し処理が終了するまで数分間待機します。</li>
   <li>切り戻し処理終了後、再デプロイ可能なバージョンの一覧が表示されるため、戻したいバージョンを指定します。</li>
   <li>KAMONOHASHIのWEB画面にアクセスし、バージョン情報より、バージョンが戻っていることを確認します。</li>
@@ -958,7 +963,7 @@ wget <span class="nt">-O</span> /tmp/deploy-tools-<span class="nv">$KQI_VERSION<
     KAMONOHASHI (ロゴ) は日鉄ソリューションズ株式会社の登録商標です。 
     <br>その他、本文記載の会社名および製品名は、それぞれ各社の商標または登録商標です。 
      </div>
-  <div class="page__footer-copyright">&copy; 2019 NS Solutions Corporation. </div>
+  <div class="page__footer-copyright">&copy; 2020 NS Solutions Corporation. </div>
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
   <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
   <script>

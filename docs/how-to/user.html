@@ -138,7 +138,7 @@
               <a href="https://twitter.com/Kamonohashi_kqi" >Twitter</a>
             </li></ul>
         <button class="greedy-nav__dropdown"  type="button">
-            <span>1.1.4 <i class="material-icons">arrow_drop_down</i> </span>
+            <span>1.1.5 <i class="material-icons">arrow_drop_down</i> </span>
             <div class="dropdown-content">
                 <a href="/docs/supported-doc-versions" >other version</a>
             </div>         
@@ -1419,7 +1419,12 @@ Tensorbardの項目からTensorboadが起動できます。
     <tr>
       <td>データセット</td>
       <td>任意</td>
-      <td>利用するデータセットを指定する。ノートブックで利用したデータセットについては、利用後の変更も可能です。</td>
+      <td>利用するデータセットを指定する。ノートブックで利用したデータセットについては、利用後の変更も可能。</td>
+    </tr>
+    <tr>
+      <td>マウントする学習</td>
+      <td>任意</td>
+      <td>学習ジョブの結果をマウントして利用する場合に指定する。複数の学習ジョブをマウント可能。</td>
     </tr>
     <tr>
       <td>環境変数</td>
@@ -1481,6 +1486,11 @@ Docker Hubで提供されている下記Dockerイメージについては、動�
       <td>/kqi/git/</td>
       <td>モデル</td>
       <td>指定したgitリポジトリがcloneされるディレクトリ</td>
+    </tr>
+    <tr>
+      <td>/kqi/parent/</td>
+      <td>モデル</td>
+      <td>マウントする学習で指定したジョブの学習結果がマウントされるディレクトリ</td>
     </tr>
   </tbody>
 </table>
@@ -1562,7 +1572,7 @@ Docker Hubで提供されている下記Dockerイメージについては、動�
     KAMONOHASHI (ロゴ) は日鉄ソリューションズ株式会社の登録商標です。 
     <br>その他、本文記載の会社名および製品名は、それぞれ各社の商標または登録商標です。 
      </div>
-  <div class="page__footer-copyright">&copy; 2019 NS Solutions Corporation. </div>
+  <div class="page__footer-copyright">&copy; 2020 NS Solutions Corporation. </div>
   <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
   <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
   <script>

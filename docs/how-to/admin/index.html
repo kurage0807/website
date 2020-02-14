@@ -138,7 +138,7 @@
               <a href="https://twitter.com/Kamonohashi_kqi" >Twitter</a>
             </li></ul>
         <button class="greedy-nav__dropdown"  type="button">
-            <span>1.1.5 <i class="material-icons">arrow_drop_down</i> </span>
+            <span>1.1.6 <i class="material-icons">arrow_drop_down</i> </span>
             <div class="dropdown-content">
                 <a href="/docs/supported-doc-versions" >other version</a>
             </div>         
@@ -878,6 +878,11 @@ Gitリポジトリ、Docker Registryは1テナントに複数登録すること�
       <td>画面等への表示名称を入力する。<br />（例）カモノハシ</td>
     </tr>
     <tr>
+      <td>ノートブック無期限実行</td>
+      <td>必須</td>
+      <td>ノートブックの無期限実行を許可するかどうかを設定する。 <br />無期限実行を許可すると、ノートブック実行画面で起動時間設定のON/OFF選択が可能となる。</td>
+    </tr>
+    <tr>
       <td>ストレージ情報</td>
       <td>必須</td>
       <td>データファイルを格納するストレージを選択する。 <br />選択肢は事前に<a href="#new_storage">ストレージ情報の新規作成</a>で設定が必要。</td>
@@ -898,6 +903,13 @@ Gitリポジトリ、Docker Registryは1テナントに複数登録すること�
 <h3 id="テナント情報の更新">テナント情報の更新</h3>
 <p>テナント情報、ストレージ情報、Git情報、Dockerレジストリ情報は、各管理画面からそれぞれ更新できます。
 一覧に表示されている各項目をクリックして更新画面を表示し、必要な情報を入力します。</p>
+
+<h3 id="テナントの削除">テナントの削除</h3>
+<p>テナント編集画面の削除アイコンを押下することで、テナントが削除されます。
+テナント内データの削除は時間がかかるため、削除用コンテナを別途デプロイすることで行われます。
+このコンテナはkqi-adminテナントで実行され、実行状況はリソース利用状況画面のテナント別状況を見ることで確認できます。
+削除終了後はコンテナステータスがSucceededとなり、リソースが占有された状態が維持されます。
+リソース占有状態を解除するため、この状態を確認した後は該当コンテナを手動削除してください。</p>
 
 <h2 id="ユーザ">ユーザ</h2>
 <p>ユーザはKAMONOHASHIの利用者を表し、テナントに関連付けられます。ユーザは複数のテナントに所属できます。

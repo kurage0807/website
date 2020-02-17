@@ -138,7 +138,7 @@
               <a href="https://twitter.com/Kamonohashi_kqi" >Twitter</a>
             </li></ul>
         <button class="greedy-nav__dropdown"  type="button">
-            <span>1.1.5 <i class="material-icons">arrow_drop_down</i> </span>
+            <span>1.1.6 <i class="material-icons">arrow_drop_down</i> </span>
             <div class="dropdown-content">
                 <a href="/docs/supported-doc-versions" >other version</a>
             </div>         
@@ -293,26 +293,6 @@
           <a href="/docs/tutorial"><span class="nav__sub-title">Tutorial</span></a>
         
 
-        
-        <ul>
-          
-            
-            
-
-            
-            
-
-            <li><a href="/docs/tutorial/cifar-10-tensorflow" class="">・CIFAR-10(tensorflow)</a></li>
-          
-            
-            
-
-            
-            
-
-            <li><a href="/docs/tutorial/cifar-10-pytorch" class="">・CIFAR-10(pytroch)</a></li>
-          
-        </ul>
         
       </li>
     
@@ -1402,9 +1382,14 @@ Tensorbardの項目からTensorboadが起動できます。
       <td>ノートブックが利用するGPU枚数を指定する。</td>
     </tr>
     <tr>
-      <td>生存期間</td>
+      <td>起動期間設定</td>
       <td>必須</td>
-      <td>ノートブックの生存期間(h)を指定する。立ち上げたノートブックは、生存期間終了後に自動で終了する。</td>
+      <td>ノートブックの起動期間を設定するかどうかを指定する。テナント設定で無期限実行が許可されている場合のみ設定可能。OFFにすると無期限の実行、ONにすると起動期間を設定しての実行となる。</td>
+    </tr>
+    <tr>
+      <td>起動期間</td>
+      <td>必須</td>
+      <td>ノートブックの起動期間(h)を指定する。立ち上げたノートブックは、起動期間終了後に自動で終了する。</td>
     </tr>
     <tr>
       <td>コンテナイメージ</td>
@@ -1419,12 +1404,7 @@ Tensorbardの項目からTensorboadが起動できます。
     <tr>
       <td>データセット</td>
       <td>任意</td>
-      <td>利用するデータセットを指定する。ノートブックで利用したデータセットについては、利用後の変更も可能。</td>
-    </tr>
-    <tr>
-      <td>マウントする学習</td>
-      <td>任意</td>
-      <td>学習ジョブの結果をマウントして利用する場合に指定する。複数の学習ジョブをマウント可能。</td>
+      <td>利用するデータセットを指定する。ノートブックで利用したデータセットについては、利用後の変更も可能です。</td>
     </tr>
     <tr>
       <td>環境変数</td>
@@ -1461,7 +1441,9 @@ Docker Hubで提供されている下記Dockerイメージについては、動�
 <img src="/assets/images/notebook-list.png" alt="ノートブック一覧" /></p>
 
 <p>アクセスした際にトークン入力画面が表示される場合は、しばらく待った後に再度アクセスしていただくようお願いします。
-ホームディレクトリは<code class="highlighter-rouge">/kqi</code>であり、下記ディレクトリをそれぞれの用途で利用できます。</p>
+ホームディレクトリは<code class="highlighter-rouge">/kqi/output</code>であり、起動後の状態でファイル/ディレクトリ作成すると、ノートブック終了・再起動後もその内容が保持されます。
+起動後作成されるディレクトリは下記となっており、それぞれの用途で利用できます。
+これらのディレクトリ内作成したファイルは保持されないので注意してください。</p>
 
 <table>
   <thead>
@@ -1473,24 +1455,19 @@ Docker Hubで提供されている下記Dockerイメージについては、動�
   </thead>
   <tbody>
     <tr>
-      <td>/kqi/input/</td>
+      <td>/input/</td>
       <td>入力ファイル</td>
-      <td>指定したデータセットがダウンロードされるディレクトリ</td>
+      <td>/kqi/inputへのシンボリックリンクであり、指定したデータセットがダウンロードされるディレクトリ</td>
     </tr>
     <tr>
-      <td>/kqi/output/</td>
-      <td>出力ファイル</td>
-      <td>出力ファイルを書き出すディレクトリ。ノートブック終了・再起動後も内容が保持される</td>
-    </tr>
-    <tr>
-      <td>/kqi/git/</td>
+      <td>/git/</td>
       <td>モデル</td>
-      <td>指定したgitリポジトリがcloneされるディレクトリ</td>
+      <td>/kqi/gitへのシンボリックリンクであり、指定したgitリポジトリがcloneされるディレクトリ</td>
     </tr>
     <tr>
-      <td>/kqi/parent/</td>
+      <td>/parent/</td>
       <td>モデル</td>
-      <td>マウントする学習で指定したジョブの学習結果がマウントされるディレクトリ</td>
+      <td>/kqi/parentへのシンボリックリンクであり、マウントする学習で指定したジョブの学習結果がマウントされるディレクトリ</td>
     </tr>
   </tbody>
 </table>

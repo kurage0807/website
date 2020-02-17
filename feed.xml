@@ -1,4 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-01-09T16:55:57+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">KAMONOHASHI</title><subtitle>KAMONOHASHI(カモノハシ)は、Deep Learningのモデル開発を効率的に行うためのAI開発プラットフォームです。 AI開発プロセスを最大限に効率化し、最高のモデル開発を体験してみませんか。</subtitle><entry><title type="html">経営情報学会参加報告</title><link href="http://localhost:4000/posts/jasmindone" rel="alternate" type="text/html" title="経営情報学会参加報告" /><published>2018-10-23T14:46:00+09:00</published><updated>2018-10-23T14:46:00+09:00</updated><id>http://localhost:4000/posts/23144624</id><content type="html" xml:base="http://localhost:4000/posts/jasmindone">&lt;p&gt; &lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-02-17T16:07:22+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">KAMONOHASHI</title><subtitle>KAMONOHASHI(カモノハシ)は、Deep Learningのモデル開発を効率的に行うためのAI開発プラットフォームです。 AI開発プロセスを最大限に効率化し、最高のモデル開発を体験してみませんか。</subtitle><entry><title type="html">Support</title><link href="http://localhost:4000/posts/support" rel="alternate" type="text/html" title="Support" /><published>2020-01-10T11:13:00+09:00</published><updated>2020-01-10T11:13:00+09:00</updated><id>http://localhost:4000/posts/11092411</id><content type="html" xml:base="http://localhost:4000/posts/support">&lt;h2 id=&quot;導入サポート&quot;&gt;導入サポート&lt;/h2&gt;
+&lt;p&gt;KAMONOHASHIの導入にあたって対象環境の導入可否事前調査や管理サーバ、ストレージ容量の試算支援、ユーザートレーニングなどのサポートをいたします。&lt;/p&gt;
+
+&lt;h3 id=&quot;サービス内容詳細&quot;&gt;サービス内容詳細&lt;/h3&gt;
+&lt;h4 id=&quot;対象環境の導入可否事前調査&quot;&gt;対象環境の導入可否事前調査&lt;/h4&gt;
+&lt;p&gt;KAMONOHASHIの構成説明や導入予定先の環境確認を行い、導入する際の問題やリスクを検討します。&lt;/p&gt;
+&lt;h4 id=&quot;管理サーバストレージ容量の試算支援&quot;&gt;管理サーバ・ストレージ容量の試算支援&lt;/h4&gt;
+&lt;p&gt;ユーザ数や学習規模など、お客様の利用想定を元に、管理サーバ、NFSのストレージ容量を試算する支援を行います。&lt;/p&gt;
+&lt;h4 id=&quot;kubernetes導入&quot;&gt;Kubernetes導入&lt;/h4&gt;
+&lt;p&gt;KAMONOHASHIの動作に必要なKubernetesを管理サーバ上に構築します。&lt;/p&gt;
+&lt;h4 id=&quot;kamonohashi導入&quot;&gt;KAMONOHASHI導入&lt;/h4&gt;
+&lt;p&gt;事前に記載いただいたパラメータシートに基づき、管理サーバおよびGPUサーバ上にKAMONOHASHIを構築します。&lt;/p&gt;
+&lt;h4 id=&quot;kamonohashi初期設定&quot;&gt;KAMONOHASHI初期設定&lt;/h4&gt;
+&lt;p&gt;事前に記載いただいたパラメータシートに基づき、テナント作成、GitリポジトリやDockerレジストリの登録など、KAMONOHASHIの初期設定を行います。&lt;/p&gt;
+&lt;h4 id=&quot;ユーザトレーニング管理者向け&quot;&gt;ユーザトレーニング（管理者向け）&lt;/h4&gt;
+&lt;p&gt;KAMONOHASHIの管理者向け機能の標準的な利用方法について、1時間程度のトレーニングを行います。&lt;/p&gt;
+&lt;h4 id=&quot;ユーザトレーニング一般向け&quot;&gt;ユーザトレーニング（一般向け）&lt;/h4&gt;
+&lt;p&gt;KAMONOHASHIの一般ユーザ向け機能の標準的な利用方法について、1～2時間程度のトレーニングを行います。&lt;/p&gt;
+
+&lt;h3 id=&quot;関連情報&quot;&gt;関連情報&lt;/h3&gt;
+&lt;p&gt;導入サービスを利用せず、お客様ご自身でKAMONOHASHIを導入する場合は、以下のドキュメントをご参考ください。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://kamonohashi.ai/docs/install-and-update#外部サービスとの互換性&quot;&gt;
+KQI確認済み動作環境一覧 &lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://kamonohashi.ai/docs/how-to/admin/&quot;&gt;
+KQI管理者マニュアル &lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://kamonohashi.ai/docs/how-to/user&quot;&gt;
+KQI利用者マニュアル &lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://kamonohashi.ai/docs/how-to/cli/&quot;&gt;
+KQI CLIインストールマニュアル &lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://kamonohashi.ai/docs/install-and-update#インストール方法&quot;&gt;
+KQIインストールマニュアル &lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://kamonohashi.ai/docs/tutorial&quot;&gt;
+チュートリアル &lt;/a&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">導入サポート KAMONOHASHIの導入にあたって対象環境の導入可否事前調査や管理サーバ、ストレージ容量の試算支援、ユーザートレーニングなどのサポートをいたします。</summary></entry><entry><title type="html">経営情報学会参加報告</title><link href="http://localhost:4000/posts/jasmindone" rel="alternate" type="text/html" title="経営情報学会参加報告" /><published>2018-10-23T14:46:00+09:00</published><updated>2018-10-23T14:46:00+09:00</updated><id>http://localhost:4000/posts/23144624</id><content type="html" xml:base="http://localhost:4000/posts/jasmindone">&lt;p&gt; &lt;/p&gt;
 
 &lt;p&gt;こんにちは。KAMONOHASHIチームです。
 今回は先日参加した経営情報学会について報告します。&lt;/p&gt;

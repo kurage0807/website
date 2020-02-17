@@ -3100,7 +3100,7 @@ a.reversefootnote {
     letter-spacing: 0.05em;
   line-height: 2em; }
   .page__content p {
-    margin: 1.5em 0 ;
+    margin: 0 0 3em ;
     /* sibling indentation*/ }
   .page__content a:not(.btn):not(#goog-wm-sb):hover {
     text-decoration: underline; }
@@ -4340,3 +4340,37 @@ a.reversefootnote {
         background-color: #1a81d5;
         }
   
+/*
+   newsList
+   ========================================================================== */
+div.support__item{
+  display: inline-block;
+  margin-bottom: 20px;
+} 
+
+div.support {
+  float: left;
+  padding: 20px
+}
+
+div.support__image {
+  width: 25%;
+}
+
+div.support__text {
+  width: 75%;
+}
+
+
+div.support__image {
+ margin: auto; 
+}
+
+h3.support__text-title{
+margin: 0;
+border-bottom: none;
+}
+
+div.support__text-excerpt p{
+  margin: 0;
+}

@@ -72,9 +72,6 @@
 <loc>http://localhost:4000/docs/concepts</loc>
 </url>
 <url>
-<loc>http://localhost:4000/contact/</loc>
-</url>
-<url>
 <loc>http://localhost:4000/docs/</loc>
 </url>
 <url>
@@ -100,6 +97,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/resource/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/support/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/docs/supported-doc-versions</loc>

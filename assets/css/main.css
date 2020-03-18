@@ -4307,10 +4307,18 @@ a.reversefootnote {
      width: 100%;
    }
 
-   li.newsItem div {
-     display: table-cell;
-     padding: 0 25px;
-   }
+   @media (max-width: 37.5em) {
+    li.newsItem div {
+        display: block;
+        padding: 0 25px;
+    }
+  }
+  @media (min-width: 37.5em) {
+    li.newsItem div {
+      display: table-cell;
+      padding: 0 25px;
+    }
+  }
 
    li.newsItem div.newsDate {
     font-size: 0.8rem;
@@ -4318,10 +4326,23 @@ a.reversefootnote {
    }
 
 /*newsLabel*/
-   li.newsItem div.newsLabel{
+@media (max-width: 37.5em) {
+  li.newsItem div.newsLabel{
+    display: none;
+    }
+    li.newsItem div.labelRelease{
+      display: none;
+    }
+
+    li.newsItem div.labelEvent{
+      display: none;
+    }  
+}
+@media (min-width: 37.5em) {
+  li.newsItem div.newsLabel{
+    display: inline-block;
     font-size: 0.5rem;
     line-height: 1;
-    display: inline-block;
     width: 80px;
     padding: 5px 2px;
     text-align: center;
@@ -4331,14 +4352,14 @@ a.reversefootnote {
     white-space: nowrap;
     text-overflow: ellipsis;
     }
-
     li.newsItem div.labelRelease{
       background-color: #1abfd5;
-      }
+    }
 
-      li.newsItem div.labelEvent{
-        background-color: #1a81d5;
-        }
+    li.newsItem div.labelEvent{
+      background-color: #1a81d5;
+    }  
+}  
   
 /*
    newsList
@@ -4373,4 +4394,32 @@ border-bottom: none;
 
 div.support__text-excerpt p{
   margin: 0;
+}
+
+/* Main dropdown wrapper */
+.algolia-autocomplete .ds-dropdown-menu {
+  width: 500px;
+}
+/* Main category (eg. Getting Started) */
+.algolia-autocomplete .algolia-docsearch-suggestion--category-header {
+  color: darkgray;
+  border: 1px solid gray;
+}
+/* Category (eg. Downloads) */
+.algolia-autocomplete .algolia-docsearch-suggestion--subcategory-column {
+  color: gray;
+}
+/* Title (eg. Bootstrap CDN) */
+.algolia-autocomplete .algolia-docsearch-suggestion--title {
+  font-weight: bold;
+  color: black;
+}
+/* Description description (eg. Bootstrap currently works...) */
+.algolia-autocomplete .algolia-docsearch-suggestion--text {
+  font-size: 0.8rem;
+  color: gray;
+}
+/* Highlighted text */
+.algolia-autocomplete .algolia-docsearch-suggestion--highlight {
+  color: blue;
 }

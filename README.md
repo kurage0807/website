@@ -11,5 +11,4 @@ KAMONOAHSHIのドキュメント執筆への貢献方法の詳細については
  - [フォーク・プルリクの詳細な方法](https://github.com/KAMONOHASHI/website/wiki/%E3%83%95%E3%82%A9%E3%83%BC%E3%82%AF%E3%83%BB%E3%83%97%E3%83%AB%E3%83%AA%E3%82%AF%E3%81%AE%E6%96%B9%E6%B3%95)
  - [ドキュメント執筆ルール](https://github.com/KAMONOHASHI/website/wiki/%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E5%9F%B7%E7%AD%86%E3%83%AB%E3%83%BC%E3%83%AB)
 
-## Thank you for your Contribution!
-KAMONOHASHIのWebサイトおよびドキュメントへの貢献に感謝します！
+

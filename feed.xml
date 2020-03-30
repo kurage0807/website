@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-03-30T16:02:22+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">KAMONOHASHI</title><subtitle>KAMONOHASHI(カモノハシ)は、Deep Learningのモデル開発を効率的に行うためのAI開発プラットフォームです。 AI開発プロセスを最大限に効率化し、最高のモデル開発を体験してみませんか。</subtitle><entry><title type="html">経営情報学会参加報告</title><link href="http://localhost:4000/posts/jasmindone" rel="alternate" type="text/html" title="経営情報学会参加報告" /><published>2018-10-23T14:46:00+09:00</published><updated>2018-10-23T14:46:00+09:00</updated><id>http://localhost:4000/posts/23144624</id><content type="html" xml:base="http://localhost:4000/posts/jasmindone">&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;こんにちは。KAMONOHASHIチームです。
+今回は先日参加した経営情報学会について報告します。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h1 id=&quot;%E5%AD%A6%E4%BC%9A%E6%A6%82%E8%A6%81&quot;&gt;学会概要&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://kamonohashi.ai/posts/jasmin&quot; title=&quot;前回のブログ&quot;&gt;前回のブログ&lt;/a&gt;でご紹介した通り、
+先日&lt;a href=&quot;http://www.jasmin.jp/activity/zenkoku_taikai/2018_fall/&quot; title=&quot;経営情報学会&quot;&gt;経営情報学会&lt;/a&gt;に参加してきました。
+本大会では、ポスターセッション、一般発表セッション、企業セッションがあり、
+KAMONOHASHIチームは企業セッションにて発表しました。&lt;/p&gt;
+
+&lt;h1 id=&quot;%E7%99%BA%E8%A1%A8%E5%86%85%E5%AE%B9&quot;&gt;発表内容&lt;/h1&gt;
+
+&lt;p&gt;まず、近年、第三次AIブームが再来したきっかけとなったDeep Learningについて、その概要と進歩の原動力(データ・計算パワー)についてお話しました。そして今後企業や組織にてAI開発の取り組みを拡大する際に、AI開発者やシステム管理者が直面するであろう問題点を挙げ、
+KAMONOHASHIを一例にとって、問題点を解決するAIプラットフォームの必要性をご説明しました。&lt;/p&gt;
+
+&lt;p&gt;具体的には、チームや組織でAIを利用したシステム開発を実行する際には「環境設定」「再現性(トレーサビリティ)」「GPUリソース共有」の3つの問題点が浮上することを、弊社のAI開発チームの体制を例にとってご説明しました。
+今回のセッションの発表時間は20分と短かったため、これらの問題点のうち、「GPUリソース共有」について、解決方法をKAMONOHASHIを例にとってご説明しました。&lt;/p&gt;
+
+&lt;p&gt;まとめとしましては、Deep Learningを中心とするAIの技術はデータと計算パワーによって今後も発展していくと思われますが、チームや組織で取り組みを拡大していく際には、「環境設定」「再現性(トレーサビリティ)」「GPUリソース共有」の問題を解決するようなAIプラットフォームが必要であることをご説明いたしました。さらに、ビジネス的観点としては、今後AI開発の取り組みが進んでいくにつれて、AIプラットフォームの有無が、企業のAI競争力の差に結びついていくのではないか？との考察を述べさせていただきました。&lt;/p&gt;
+
+&lt;h1 id=&quot;%E6%89%80%E6%84%9F&quot;&gt;所感&lt;/h1&gt;
+
+&lt;p&gt;発表は大会1日目の午前中であり、企業セッションは2つと少なかったため、
+聞いてくださる方は10名程度くらいではないか？と予想していました。
+しかし、予想に反して約30名の方にお越しいただき、質問も質問時間10分を超えるなど、刺さる方には刺さった発表だったようです。&lt;/p&gt;
+
+&lt;h1 id=&quot;%E3%81%8A%E3%81%BE%E3%81%91&quot;&gt;おまけ&lt;/h1&gt;
+
+&lt;p&gt;学会が開催された、&lt;a href=&quot;https://www.kindai.ac.jp/&quot; title=&quot;近畿大学&quot;&gt;近畿大学&lt;/a&gt;は近大マグロで有名な大学です。懇親会会場ではインパクトのある近大マグロをお目にかかることができました。
+(懇親会ではお刺身をいただきました。とても美味しかったです。)
+懇親会では普段KAMONOHASHIチームとは交流の薄い、経営学界のアカデミアにいる方々ともお話できたことで、
+大学におけるAI活用の研究の現状についてうかがい知ることができ、とても興味深かったです。&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;alignnone size-medium wp-image-390&quot; src=&quot;https://kamonohashi.ai/wp-content/uploads/2018/10/IMG_0309-e1540273506135-225x300.jpg&quot; alt=&quot;&quot; width=&quot;225&quot; height=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt;また、学会大会会場は昨年度新設された&lt;a href=&quot;https://act.kindai.ac.jp/structure/&quot; title=&quot;アカデミックセンター&quot;&gt;アカデミックセンター&lt;/a&gt;にて行われました。
+建物の1Fには、&lt;a href=&quot;https://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0%E3%83%BB%E3%82%B3%E3%83%A2%E3%83%B3%E3%82%BA&quot; title=&quot;ラーニングコモンズ&quot;&gt;ラーニングコモンズ&lt;/a&gt;と一般的に呼ばれる図書とインターネット環境を備えた学習スペースやカフェがある、学生が主体的に学ぶことができるスペースが広がっており、とても先進的で印象に残りました。&lt;/p&gt;
+
+&lt;h1 id=&quot;%E6%9C%80%E5%BE%8C%E3%81%AB&quot;&gt;最後に&lt;/h1&gt;
+
+&lt;p&gt;今回はKAMONOHASHIチームとしてはじめて、経営学界のアカデミアの方々が多くいる学会に参加しました。今後も今回得られたつながりを生かし、世の中のAI開発の取り組み拡大に貢献していきたいと思います。&lt;/p&gt;
+
+&lt;p&gt;発表時間の関係もあり、今回はKAMONOHASHIの一部の機能(GPUリソース共有)のみの紹介であったため、「環境設定」「再現性(トレーサビリティ)」に関しては、今後のKAMONOHASHIブログにて詳細に取り上げてまいります。概要としては、9月に登壇した&lt;a href=&quot;https://kamonohashi.ai/posts/techplay&quot; title=&quot;Tech Playイベントの記事&quot;&gt;Tech Playイベントの記事&lt;/a&gt;や、&lt;a href=&quot;https://www.slideshare.net/Kamonohashi/nssol-tech-talk-01&quot; title=&quot;発表資料&quot;&gt;発表資料&lt;/a&gt;をぜひご覧ください。&lt;/p&gt;
+
+&lt;p&gt;最後に、KAMONOHASHIチームでは、企業に限らずアカデミアの学会などにも積極的に参加し、最近の企業内でのリアルなAI開発状況・体制についてお話させていただいています。お話を聞いてみたい！と思われた方はぜひ[kamonohashi-support@jp.nssol.nipponsteel.com]までご連絡いただけますと幸いです。&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;</content><author><name></name></author><summary type="html"> </summary></entry><entry><title type="html">10/20経営情報学会にてセッション発表します</title><link href="http://localhost:4000/posts/jasmin" rel="alternate" type="text/html" title="10/20経営情報学会にてセッション発表します" /><published>2018-10-17T12:18:00+09:00</published><updated>2018-10-17T12:18:00+09:00</updated><id>http://localhost:4000/posts/17121840</id><content type="html" xml:base="http://localhost:4000/posts/jasmin">&lt;p&gt; &lt;/p&gt;
+
+&lt;h2&gt;経営情報学会とは&lt;/h2&gt;
+
+&lt;p&gt;経営情報学会は1992年4月1日に経営情報に関する研究の推進と議論の場として設立されました。公㏋は&lt;a href=&quot;http://www.jasmin.jp/summary/about/index.html&quot; title=&quot;こちら&quot;&gt;こちら&lt;/a&gt;&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;%E7%B5%8C%E5%96%B6%E6%83%85%E5%A0%B1%E5%AD%A6%E4%BC%9A%E3%81%AE%E7%9B%AE%E7%9A%84&quot;&gt;経営情報学会の目的&lt;/h2&gt;
+
+&lt;p&gt;経営情報学会は、経営情報にかかわる諸問題の研究および応用を促進し、会員相互および関連する学協会との情報交換をはかるとともに、経営情報学の確立、産業の進歩発展に寄与することが目的とされています。&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h2 id=&quot;%E7%A7%8B%E5%AD%A3%E5%85%A8%E5%9B%BD%E7%A0%94%E7%A9%B6%E7%99%BA%E8%A1%A8%E5%A4%A7%E4%BC%9A%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6&quot;&gt;秋季全国研究発表大会について&lt;/h2&gt;
+
+&lt;p&gt;今季の大会テーマは&lt;strong&gt;「AI時代における高付加価値化」&lt;/strong&gt;。
+&lt;a href=&quot;http://www.jasmin.jp/activity/zenkoku_taikai/2018_fall/index.html&quot; title=&quot;大会公式HP&quot;&gt;大会公式HP&lt;/a&gt;によると、&lt;/p&gt;
+
+&lt;blockquote&gt;これからのビジネスを担うのは、サービスデザイン等の顧客視点に立った新たな価値の創出や、AIやIoTの活用によるエコシステムの構築であろう&lt;/blockquote&gt;
+
+&lt;p&gt;との思いが込められているそうです。&lt;/p&gt;
+
+&lt;h3 id=&quot;%E6%97%A5%E6%99%82%E3%83%BB%E5%A0%B4%E6%89%80&quot;&gt;日時・場所&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;日時：2018年10月20日（土）・21日（日）&lt;/li&gt;
+  &lt;li&gt;場所：近畿大学　東大阪キャンパス&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;%E7%99%BA%E8%A1%A8%E5%86%85%E5%AE%B9&quot;&gt;発表内容&lt;/h2&gt;
+
+&lt;p&gt;Deep Learningを用いたシステム開発の際に使用しているKAMONOHASHIの紹介を通して&lt;strong&gt;AIプラットフォームに求められる機能&lt;/strong&gt;について発表します。
+大会プログラムは&lt;a href=&quot;http://www.jasmin.jp/activity/zenkoku_taikai/2018_fall/program/1F1-2.html&quot; title=&quot;こちら&quot;&gt;こちら&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;%E3%81%95%E3%81%84%E3%81%94%E3%81%AB&quot;&gt;さいごに&lt;/h2&gt;
+
+&lt;p&gt;先月までKAMONOHASHIは開発者向けのカンファレンス・勉強会に参加し発表していました。(参考：&lt;a href=&quot;https://kamonohashi.ai/posts/gtc2018done&quot; title=&quot;GTCの参加報告&quot;&gt;GTCの参加報告&lt;/a&gt;&lt;a href=&quot;https://kamonohashi.ai/posts/techplay&quot; title=&quot;TechPlayの参加報告&quot;&gt;TechPlayの参加報告&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;今回は、はじめて経営・経済系の学会に参加します。
+KAMONOHASHIとはまだまだ接点が薄い分野において、
+様々な参加者・発表者の方々とDeep Learning技術やAI開発プラットフォームの可能性について探ることができれば、と考えています。&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;</content><author><name></name></author><summary type="html"> </summary></entry><entry><title type="html">TechPlay参加報告</title><link href="http://localhost:4000/posts/techplay" rel="alternate" type="text/html" title="TechPlay参加報告" /><published>2018-10-10T14:22:00+09:00</published><updated>2018-10-10T14:22:00+09:00</updated><id>http://localhost:4000/posts/10142214</id><content type="html" xml:base="http://localhost:4000/posts/techplay">&lt;p&gt; &lt;/p&gt;
+
+&lt;h2&gt;TechPlayとは&lt;/h2&gt;
+
+&lt;p&gt;テクノロジーに関わる様々なイベントや勉強会が開催されている、&lt;a href=&quot;https://techplay.jp/&quot; title=&quot;TECH PLAY&quot;&gt;TECH PLAY&lt;/a&gt; で、2018年9月19日、KAMONOHASHIチームメンバーが発表しました。当日は弊社新日鉄住金ソリューションズのなかで、「AI」をテーマとして2つのプレゼンテーションを行いました。KAMONOHASHIはそのうちの1テーマとして発表しました。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;%E7%99%BA%E8%A1%A8%E5%86%85%E5%AE%B9&quot;&gt;発表内容&lt;/h2&gt;
+
+&lt;p&gt;KAMONOHASHIチームの発表タイトルは『AI 開発プラットフォーム「KAMONOHASHI」とは何か及びその内部構造の紹介』。スライドは&lt;a href=&quot;https://www.slideshare.net/Kamonohashi/nssol-tech-talk-01&quot; title=&quot;こちら&quot;&gt;こちら&lt;/a&gt;から見られます。
+KAMONOHASHIは一言で言うと「AI開発において発生する3つの課題を解決するもの」です。
+発表スライドの中では
+-  AI開発とは？
+-  3つの課題とは？
+-  KAMONOHASHIは3つの課題をどのように解決しているのか？
+-  KAMONOHASHIの詳細の内部構造
+が紹介されています。
+内容が長いため、今後当ブログで何回かに分けて連載予定です。乞うご期待！&lt;/p&gt;
+
+&lt;h2 id=&quot;techplay-2&quot;&gt;TechPlay #2&lt;/h2&gt;
+
+&lt;p&gt;10/30(火)19:00~21:00にNSSOL Tech Talk 【第三次AIブームは本物か？】と題しまして、弊社として2回目のTechPlayを開催します。
+現在、第三次AIブームと言われています。第一次ブームの心理学や哲学的論争とアルゴリズムの発案、第二次ブームの実学的な発展などにも触れて、今回のブームの状況を弊社NSSOLの事例から説明します。同時に、今後の社会の要求に対して、AIがどのように貢献していけるかも説明します。
+詳細・お申込みは&lt;a href=&quot;https://techplay.jp/event/696328?utm_campaign=newevent&amp;amp;utm_medium=email&amp;amp;utm_source=696328&quot; title=&quot;こちら&quot;&gt;こちら&lt;/a&gt;からお願いします。&lt;/p&gt;
+
+&lt;h2 id=&quot;%E3%81%95%E3%81%84%E3%81%94%E3%81%AB&quot;&gt;さいごに&lt;/h2&gt;
+
+&lt;p&gt;今回のブログでは、新日鉄住金ソリューションズ㈱としても、もちろんKAMONOHASHIチームとしてもはじめて参加したTechPlayでの発表について報告しました。
+今後もKAMONOHASHIチームではDeep Learningに関連する記事やAI開発プラットフォーム「KAMONOHASHI」について情報を発信していきます。&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;</content><author><name></name></author><summary type="html"> </summary></entry><entry><title type="html">GTC Japan2018参加報告</title><link href="http://localhost:4000/posts/gtc2018done" rel="alternate" type="text/html" title="GTC Japan2018参加報告" /><published>2018-09-21T18:55:00+09:00</published><updated>2018-09-21T18:55:00+09:00</updated><id>http://localhost:4000/posts/21185518</id><content type="html" xml:base="http://localhost:4000/posts/gtc2018done">&lt;p&gt; &lt;/p&gt;
+
+&lt;h1 id=&quot;gtc-japan2018参加報告&quot;&gt;GTC Japan2018参加報告&lt;/h1&gt;
+
+&lt;p&gt;こんにちは。KAMONOHASHIチームです。
+9/13,14に参加した、GTC Japanについて報告をします。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;gtcとは&quot;&gt;GTCとは&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.nvidia.com/ja-jp/gtc/&quot; title=&quot;GTC Japan&quot;&gt;GTC Japan&lt;/a&gt; は、NVIDIA が主催する日本最大の AI 開発者カンファレンスです。&lt;/p&gt;
+
+&lt;p&gt;NVIDIA の GPU Technology Conference (GTC) は、コンピューティング分野で、最重要でかつ不可欠とされるトレーニング、貴重なインサイト、NVIDIA をはじめとする主要な組織の専門家とのネットワーキングが 体験できる貴重な場です。&lt;/p&gt;
+
+&lt;h2 id=&quot;kamonohashiブースの出展をしました&quot;&gt;KAMONOHASHIブースの出展をしました&lt;/h2&gt;
+
+&lt;p&gt;弊チームでは2日間に渡り、ポスターとデモ展示を行いました。
+&lt;img class=&quot;alignnone size-medium wp-image-304&quot; src=&quot;https://kamonohashi.ai/wp-content/uploads/2018/09/IMG_0281-e1537523489735-225x300.jpg&quot; alt=&quot;&quot; width=&quot;450&quot; height=&quot;300&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;alignnone size-medium wp-image-307&quot; src=&quot;https://kamonohashi.ai/wp-content/uploads/2018/09/IMG_0284-e1537523518315-225x300.jpg&quot; alt=&quot;&quot; width=&quot;450&quot; height=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ご来場いただいたみなさま、ありがとうございました。&lt;/p&gt;
+
+&lt;p&gt;多くの方にご来場いただいたなかで、
+多くの企業や組織においてDeep Learning の取り組みはすでに始まっており、
+今後取り組みを拡大していく段階にきているという印象を受けました。&lt;/p&gt;
+
+&lt;h2 id=&quot;さいごに&quot;&gt;さいごに&lt;/h2&gt;
+
+&lt;p&gt;今回のブログではGTC Japanに2日間で出展したKAMONOHASHIブースについてお伝えしました。
+GPUによって、Deep Learning関連技術は発展を遂げている最中です。
+KAMONOHASHIは、チームでのDeep Learningの取り組みを拡大する際の一助となれるよう、
+今後も関連技術をキャッチアップしていきます。&lt;/p&gt;</content><author><name></name></author><summary type="html"> </summary></entry><entry><title type="html">SIerで2年間 Deep Learning プロジェクトをやり続けて気づいた成功の4つのポイント</title><link href="http://localhost:4000/posts/sier" rel="alternate" type="text/html" title="SIerで2年間 Deep Learning プロジェクトをやり続けて気づいた成功の4つのポイント" /><published>2018-09-13T23:26:00+09:00</published><updated>2018-09-13T23:26:00+09:00</updated><id>http://localhost:4000/posts/13232646</id><content type="html" xml:base="http://localhost:4000/posts/sier">&lt;p&gt; 
+2015年から2年以上に渡り様々な Deep Learning プロジェクトに携わってきました。プロジェクトの具体的な内容は、製造業向けの画像認識です。
+世の中で Deep Learning は大きな話題となっています。ところが、カンファレンス等で実際に Deep Learning のプロジェクトを担当している方と
+懇親会等で話すと成功しているプロジェクトはあまりないとみなさん口をそろえて言っています。
+そこで、この記事ではこれまでの経験から気づいた、成功しているプロジェクトに共通するの4つのポイントを解説します。&lt;/p&gt;
+
+&lt;!--more--&gt;
+&lt;p&gt;Deep Learning のプロジェクトというより、機械学習一般に対して言えることなので、Deep Learning や機械学習のプロジェクトに携わっている方
+もしくはこれから携わる方にぜひ参考にしてもらえればと思います。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;前提&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;対象とするプロジェクト&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;教師あり機械学習&lt;/li&gt;
+  &lt;li&gt;エンジニアが Deep Learning モデルを作成する(TensorFlow や PyTorch などを使ってモデルを構築しデータから学習させて利用する)&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;データはプロジェクト関係者が収集し教師データを作成する&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Deep Learning や機械学習の原理ができることをある程度理解している&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;対象読者&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Deep Learning (もしくは機械学習・AI・人工知能)のプロジェクトを企画・運営していく人&lt;/li&gt;
+  &lt;li&gt;経営の立場から Deep Learning に興味があり社内のどういったことに適用していくべきか検討している方&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2&gt;プロジェクト成功の4つのポイント&lt;/h2&gt;
+
+&lt;p&gt;プロジェクト成功の4つのポイントは以下の通りです。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;コストメリット&lt;/li&gt;
+  &lt;li&gt;入力完全性&lt;/li&gt;
+  &lt;li&gt;データ収集容易性&lt;/li&gt;
+  &lt;li&gt;目標正解率&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;上から順番に重要な項目が並べてあります。一つ一つ説明していきます。&lt;/p&gt;
+
+&lt;h2&gt;コストメリット&lt;/h2&gt;
+
+&lt;p&gt;何といってもDeep Learningプロジェクト成功の秘訣は、「そのプロジェクトを成功させたらユーザー企業がいくら儲かるのか」を具体的に計算できることにあります。すべてこれに尽きます。&lt;/p&gt;
+
+&lt;p&gt;例えば、ある品質上の問題を発見することが出来たら、1回につき500万円損失が防げるとします。その品質問題は過去に、平均して年間50回発生していたとします。すると、プロジェクトが成功したら2億5000万円分の損失が毎年防げることになります。このプロジェクトに1億円を投じたとしても、十分にコストを回収できる効果が期待できます。&lt;/p&gt;
+
+&lt;p&gt;意外にも、Deep Learningのプロジェクトの相談があるときに、コストメリットについて考慮されていないことが非常に多いです。なんとなくデータがあり、面白そうだからもしくは担当者の手間が省けるからという理由でプロジェクトが持ち込まれるケースが後を絶たちません。この背景には、Deep Learning がデータさえあれば勝手に学習して、夢のような効果をもたらしてくれると誤解されているからでしょう。しかし実際には、データを集める人(教師データの作成を含む)と Deep Learning のエンジニアが数か月以上にわたって専任でプロジェクトに取り組まなければなりません。これの意味するところは、数千万円のコストが簡単にかかるということです。Deep Learning プロジェクトはとにかくお金のかかるものです。
+だから、数千万円を投じても十分にリターンのあるプロジェクトでなければ、結果に満足できないもしくは途中で挫折してしまうのです。&lt;/p&gt;
+
+&lt;h2&gt;入力完全性&lt;/h2&gt;
+
+&lt;p&gt;次に大事なのは入力完全性です。入力完全性とは、「対象を予測するために必要なデータが揃っているか」を指しています。アイスクリームの売り上げを予測するのに、その日の気温を利用するのは理にかなっています。しかし、同じ予測をするのにオーストラリアのワニの生息数を利用するのは的外れでしょう。(もちろんそんなことは誰もやらないでしょうが)つまり、予測に関係するデータが、Deep Learning のモデルを構築するのに利用できるかどうかが重要ということです。&lt;/p&gt;
+
+&lt;p&gt;往々にして、プロジェクトの関係者がデータはあると言ったときに、そのデータが予測対象とは無関係のデータであり、明らかにそのデータでは勝ち目がないケースが多いです。(まさにアイスクリームの売り上げを予測するのに、オーストラリアのワニの生息数を使おうとするようなもの) Deep Learning といえども、無関係なデータを与えて何かを予測するのは不可能です。このため、利用するデータがそろっているかをよくよく吟味しなければなりません。
+アイスクリームの売り上げ予測に、オーストラリアのワニの生息数を使うというのが馬鹿げた事だとすぐに気づきますが、自らが携わっている仕事もしくは会社全体の事となると意外と冷静になれないものです。プロジェクトを企画する前に、もういちど一度利用できるデータはどんなもので、それで何を予測しようとしているか見直して欲しいです。&lt;/p&gt;
+
+&lt;h2&gt;データ収集容易性&lt;/h2&gt;
+
+&lt;p&gt;データ収集容易性は、文字通り対象のデータを集めるのがどれぐらい簡単かを意味しています。大抵の場合は、プロジェクト開始時点で十分なデータが用意できていません。もしくは、対象データをプロジェクト開始時から収集するというケースもあります。&lt;/p&gt;
+
+&lt;p&gt;例えば、プロジェクトの対象とする問題が機器の故障で、その故障は年の一度しか発生しないとしたらデータは集めやすいでしょうか？答えはもちろん NO です。月間で少なくとも数十程度のケースが収集できないと、プロジェクトを進めるのは厳しいです。少なくとも、それ以下の件数でしかデータが集められないものは、長期的に取り組むプロジェクトとして考えるか、いったんターゲットからは外し、別の問題から取り組むことをおススメします。&lt;/p&gt;
+
+&lt;p&gt;他には、データを収集するために新規にカメラ等を現場に設置するとなると初期コストが必要になります。
+高額な機器が必要なものだと、社内の稟議を通すのに更なるハードルがあります。このようなケースもデータの収集が容易とは言えません。&lt;/p&gt;
+
+&lt;p&gt;また、データ収集には画像等を集めるだけではなく、その画像への意味づけ(教師データの作成)や関連する情報の収集も含まれています。例えば、画像だけを集めてしまうと、どの機器から出力された画像なのかが後でわからなくなってしまいます。このため、学習に必要なデータ以外に関連する情報も集めておく必要があります。&lt;/p&gt;
+
+&lt;p&gt;加えて画像への意味づけをできる人が限られている場合(例えばがん細胞の診断など)、その人の時間を確保することが重要です。データへの意味づけを行うのは、非常に根気と体力が必要とされるため、この人材確保と作業者への配慮を忘れてはなりません。データが集まらないと他の作業が開始できないため、プロジェクトの計画をするときには、データ収集を大げさなぐらい重要視してよいでしょう。&lt;/p&gt;
+
+&lt;h2&gt;目標正解率&lt;/h2&gt;
+
+&lt;p&gt;最後の項目は目標正解率。これは Deep Learning のモデルが何パーセントの正解率であれば、実機として稼働させられるかの目安を指しています。そんなの言えて当たり前じゃないかと思われるかもしれませんが、意外と忘れられていることが多いです。&lt;/p&gt;
+
+&lt;p&gt;よくあるケースとしては、100%を目指すという目標を立ててしまうことがあります。これは永遠に到達できない目標なので、やめておいたほうが良いです。また、目標正解率が曖昧だと、いつまでもデータ収集を繰り返したり Deep Learning モデルの改善をあてもなくやり続けることになります。&lt;/p&gt;
+
+&lt;p&gt;なるべく低い正解率でも適用できるような問題を見つけて、Deep Learning が認識を誤った場合は運用でカバーするなどの対策を取ることをおススメします。可能な限り早く Deep Learning モデルを業務に適用して効果を刈り取るようにすべきでしょう。&lt;/p&gt;
+
+&lt;p&gt;例えば、クレジットカードの詐欺検出のような見つければ見つけるほどメリットがある問題の方が正解率を低く設定できます。逆に、がん細胞の診断や出荷品の検品チェックなどは見逃した場合の影響が大きいため、
+正解率を低くできません。&lt;/p&gt;
+
+&lt;h1&gt;まとめ&lt;/h1&gt;
+
+&lt;p&gt;こうしてみれば当たり前の4点(コストメリット・入力完全性・データ収集容易性・目標正解率)なのですが、意外と顧みられないことが多いです。技術的な詳細を検討したりする以前に、まずはここに書いた4つのポイントに当てはめて、
+Deep Learning を適用することを検討・見直してみると、大半のプロジェクトは開始前にやるべきではないと判断できるのではないでしょうか。忘れられがちですが、PoC(Proof of Concept)などをとりあえずやってみるよりも、やらないと判断して別のプロジェクトを検討する方が勇気がいります。
+また、一度プロジェクトを開始してしまうと、中断や方針転換するのは非常に大変です。(プロジェクトを開始するよりも中断する方が大変)&lt;/p&gt;
+
+&lt;p&gt;強い意思で、プロジェクトをやらない、もしくはやめる提言をすることは Deep Learning プロジェクトの成功に大きな価値を持っています。&lt;/p&gt;</content><author><name></name></author><summary type="html">  2015年から2年以上に渡り様々な Deep Learning プロジェクトに携わってきました。プロジェクトの具体的な内容は、製造業向けの画像認識です。 世の中で Deep Learning は大きな話題となっています。ところが、カンファレンス等で実際に Deep Learning のプロジェクトを担当している方と 懇親会等で話すと成功しているプロジェクトはあまりないとみなさん口をそろえて言っています。 そこで、この記事ではこれまでの経験から気づいた、成功しているプロジェクトに共通するの4つのポイントを解説します。</summary></entry><entry><title type="html">GTC Japan 2018に出展します</title><link href="http://localhost:4000/posts/gtc2018" rel="alternate" type="text/html" title="GTC Japan 2018に出展します" /><published>2018-09-06T10:28:00+09:00</published><updated>2018-09-06T10:28:00+09:00</updated><id>http://localhost:4000/posts/06102824</id><content type="html" xml:base="http://localhost:4000/posts/gtc2018">&lt;p&gt; &lt;/p&gt;
+
+&lt;h1&gt;GTC Japan 2018に出展します&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.nvidia.com/ja-jp/gtc/&quot; title=&quot;GTC Japan&quot;&gt;GTC Japan&lt;/a&gt; は、NVIDIA が主催する日本最大の AI 開発者カンファレンスです。&lt;/p&gt;
+
+&lt;p&gt;NVIDIA の GPU Technology Conference (GTC) は、コンピューティング分野で、最重要でかつ不可欠とされるトレーニング、貴重なインサイト、NVIDIA をはじめとする主要な組織の専門家とのネットワーキングが 1 枚のパスで体験できる大変貴重な場となっています。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align: left;&quot;&gt;場所&lt;/th&gt;
+&lt;th style=&quot;text-align: left;&quot;&gt;日程&lt;/th&gt;
+&lt;th style=&quot;text-align: center;&quot;&gt;会場&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;東京&lt;/td&gt;
+&lt;td style=&quot;text-align: left;&quot;&gt;9月13日・14日&lt;/td&gt;
+&lt;td style=&quot;text-align: center;&quot;&gt;[グランドプリンスホテル新高輪 国際館パミール](http://www2.princehotels.co.jp/newtakanawa/access/ グランドプリンスホテル新高輪 国際館パミール)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;KAMONOHASHIを開発している新日鉄住金ソリューションズ㈱は初めてエキシビジョン・スポンサーとして協賛出展し、AI開発プラットフォーム「KAMONOHASHI」を展示致します。是非ブースへお立ち寄りください。&lt;/p&gt;</content><author><name></name></author><summary type="html"> </summary></entry><entry><title type="html">Introducing KAMONOHASHI — A platform for deep learning</title><link href="http://localhost:4000/posts/introduction" rel="alternate" type="text/html" title="Introducing KAMONOHASHI — A platform for deep learning" /><published>2018-06-18T14:55:00+09:00</published><updated>2018-06-18T14:55:00+09:00</updated><id>http://localhost:4000/posts/18145500</id><content type="html" xml:base="http://localhost:4000/posts/introduction">&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;KAMONOHASHIはDeep Learning を活用したアプリケーション開発を容易にするプラットフォームです。技術者が、組織でDeep learning開発を行う上で直面する煩雑な問題を解決します。&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;リソース管理:テナントごとに、GPUやストレージのリソースの管理を容易に行えます。&lt;/li&gt;
+  &lt;li&gt;トレーサビリティ:大量に行われる実験の環境情報や入出力データを自動的に記録します。履歴を体系的に保存することで、試行錯誤プロセスが可視化できます。結果の分析レポートやログなど関連情報も学習結果と紐づけて一元管理可能です。&lt;/li&gt;
+  &lt;li&gt;学習環境のバージョン管理:コンテナ技術を活用し、環境のバージョンアップや過去断面の再現が手軽に実施でき、環境自体の履歴管理が可能です。&lt;/li&gt;
+  &lt;li&gt;マルチUI:多様なUIによる自動化・分業化により、画像認識を行う過程で生じる副次的作業を減らし、Deep learning 技術者を主業務に集中させます。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;ecosystem&quot;&gt;Ecosystem&lt;/h2&gt;
+
+&lt;p&gt;2018.6.22 update&lt;/p&gt;
+
+&lt;table&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;service&lt;/td&gt;
+&lt;td&gt;Status&lt;/td&gt;
+&lt;td&gt;Description&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;kamonohashi cli&lt;/td&gt;
+&lt;td&gt;Python 2.7.x /3.5.x and greater&lt;/td&gt;
+&lt;td&gt;A command line interface to KAMONOHASHI&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;kamonohashi sdk&lt;/td&gt;
+&lt;td&gt;Python 2.7.x /3.5.x and greater&lt;/td&gt;
+&lt;td&gt;KAMONOHASHI SDK for Python&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;kamonohashi GUI&lt;/td&gt;
+&lt;td&gt;TBA&lt;/td&gt;
+&lt;td&gt;A graphical user interface to KAMONOHASHI&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;documentation&quot;&gt;Documentation&lt;/h2&gt;
+
+&lt;p&gt;TBA&lt;/p&gt;
+
+&lt;h2 id=&quot;questions&quot;&gt;Questions&lt;/h2&gt;
+
+&lt;p&gt;お問い合わせは&lt;a href=&quot;mailto:kamonohashi-support@jp.nssol.nipponsteel.com&quot; title=&quot;KAMONOHASHIサポートチーム&quot;&gt;KAMONOHASHIサポートチーム&lt;/a&gt;までご連絡ください。&lt;/p&gt;</content><author><name></name></author><summary type="html">  Introduction</summary></entry></feed>

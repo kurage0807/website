@@ -1,0 +1,397 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.14.1 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>SIerで2年間 Deep Learning プロジェクトをやり続けて気づいた成功の4つのポイント - KAMONOHASHI</title>
+<meta name="description" content=" 2015年から2年以上に渡り様々な Deep Learning プロジェクトに携わってきました。プロジェクトの具体的な内容は、製造業向けの画像認識です。世の中で Deep Learning は大きな話題となっています。ところが、カンファレンス等で実際に Deep Learning のプロジェクトを担当している方と懇親会等で話すと成功しているプロジェクトはあまりないとみなさん口をそろえて言っています。そこで、この記事ではこれまでの経験から気づいた、成功しているプロジェクトに共通するの4つのポイントを解説します。">
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="KAMONOHASHI">
+<meta property="og:title" content="SIerで2年間 Deep Learning プロジェクトをやり続けて気づいた成功の4つのポイント">
+<meta property="og:url" content="http://localhost:4000/posts/sier">
+
+
+  <meta property="og:description" content=" 2015年から2年以上に渡り様々な Deep Learning プロジェクトに携わってきました。プロジェクトの具体的な内容は、製造業向けの画像認識です。世の中で Deep Learning は大きな話題となっています。ところが、カンファレンス等で実際に Deep Learning のプロジェクトを担当している方と懇親会等で話すと成功しているプロジェクトはあまりないとみなさん口をそろえて言っています。そこで、この記事ではこれまでの経験から気づいた、成功しているプロジェクトに共通するの4つのポイントを解説します。">
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/logo_002.png">
+
+
+
+
+
+  <meta property="article:published_time" content="2018-09-13T23:26:00+09:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/posts/sier">
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://localhost:4000",
+      "logo": "http://localhost:4000/assets/images/logo_002.png"
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="KAMONOHASHI Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-121400633-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <!-- <a class="site-logo" href="/"><img src="/assets/images/logo_003.png" alt=""></a> -->
+        
+        <a class="site-title" href="https://kamonohashi.ai/">KAMONOHASHI</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/docs/" >Docs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/posts/" >Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/contact/" >Contact</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://twitter.com/Kamonohashi_kqi" >Twitter</a>
+            </li></ul>
+        <button class="greedy-nav__dropdown"  type="button">
+            <span>v1.0.0 <i class="material-icons">arrow_drop_down</i> </span>
+            <div class="dropdown-content">
+                <a href="/docs/supported-doc-versions" >other version</a>
+            </div>         
+        </button>
+
+        
+
+       
+        
+        <button class="greedy-nav__toggle" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="SIerで2年間 Deep Learning プロジェクトをやり続けて気づいた成功の4つのポイント">
+    <meta itemprop="description" content=" 2015年から2年以上に渡り様々な Deep Learning プロジェクトに携わってきました。プロジェクトの具体的な内容は、製造業向けの画像認識です。世の中で Deep Learning は大きな話題となっています。ところが、カンファレンス等で実際に Deep Learning のプロジェクトを担当している方と懇親会等で話すと成功しているプロジェクトはあまりないとみなさん口をそろえて言っています。そこで、この記事ではこれまでの経験から気づいた、成功しているプロジェクトに共通するの4つのポイントを解説します。">
+    <meta itemprop="datePublished" content="September 13, 2018">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">SIerで2年間 Deep Learning プロジェクトをやり続けて気づいた成功の4つのポイント
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p> 
+2015年から2年以上に渡り様々な Deep Learning プロジェクトに携わってきました。プロジェクトの具体的な内容は、製造業向けの画像認識です。
+世の中で Deep Learning は大きな話題となっています。ところが、カンファレンス等で実際に Deep Learning のプロジェクトを担当している方と
+懇親会等で話すと成功しているプロジェクトはあまりないとみなさん口をそろえて言っています。
+そこで、この記事ではこれまでの経験から気づいた、成功しているプロジェクトに共通するの4つのポイントを解説します。</p>
+
+<!--more-->
+<p>Deep Learning のプロジェクトというより、機械学習一般に対して言えることなので、Deep Learning や機械学習のプロジェクトに携わっている方
+もしくはこれから携わる方にぜひ参考にしてもらえればと思います。</p>
+
+<ul>
+  <li>
+    <p>前提</p>
+  </li>
+  <li>
+    <p>対象とするプロジェクト</p>
+  </li>
+  <li>教師あり機械学習</li>
+  <li>エンジニアが Deep Learning モデルを作成する(TensorFlow や PyTorch などを使ってモデルを構築しデータから学習させて利用する)</li>
+  <li>
+    <p>データはプロジェクト関係者が収集し教師データを作成する</p>
+  </li>
+  <li>
+    <p>Deep Learning や機械学習の原理ができることをある程度理解している</p>
+  </li>
+  <li>
+    <p>対象読者</p>
+  </li>
+  <li>Deep Learning (もしくは機械学習・AI・人工知能)のプロジェクトを企画・運営していく人</li>
+  <li>経営の立場から Deep Learning に興味があり社内のどういったことに適用していくべきか検討している方</li>
+</ul>
+
+<h2>プロジェクト成功の4つのポイント</h2>
+
+<p>プロジェクト成功の4つのポイントは以下の通りです。</p>
+
+<ul>
+  <li>コストメリット</li>
+  <li>入力完全性</li>
+  <li>データ収集容易性</li>
+  <li>目標正解率</li>
+</ul>
+
+<p>上から順番に重要な項目が並べてあります。一つ一つ説明していきます。</p>
+
+<h2>コストメリット</h2>
+
+<p>何といってもDeep Learningプロジェクト成功の秘訣は、「そのプロジェクトを成功させたらユーザー企業がいくら儲かるのか」を具体的に計算できることにあります。すべてこれに尽きます。</p>
+
+<p>例えば、ある品質上の問題を発見することが出来たら、1回につき500万円損失が防げるとします。その品質問題は過去に、平均して年間50回発生していたとします。すると、プロジェクトが成功したら2億5000万円分の損失が毎年防げることになります。このプロジェクトに1億円を投じたとしても、十分にコストを回収できる効果が期待できます。</p>
+
+<p>意外にも、Deep Learningのプロジェクトの相談があるときに、コストメリットについて考慮されていないことが非常に多いです。なんとなくデータがあり、面白そうだからもしくは担当者の手間が省けるからという理由でプロジェクトが持ち込まれるケースが後を絶たちません。この背景には、Deep Learning がデータさえあれば勝手に学習して、夢のような効果をもたらしてくれると誤解されているからでしょう。しかし実際には、データを集める人(教師データの作成を含む)と Deep Learning のエンジニアが数か月以上にわたって専任でプロジェクトに取り組まなければなりません。これの意味するところは、数千万円のコストが簡単にかかるということです。Deep Learning プロジェクトはとにかくお金のかかるものです。
+だから、数千万円を投じても十分にリターンのあるプロジェクトでなければ、結果に満足できないもしくは途中で挫折してしまうのです。</p>
+
+<h2>入力完全性</h2>
+
+<p>次に大事なのは入力完全性です。入力完全性とは、「対象を予測するために必要なデータが揃っているか」を指しています。アイスクリームの売り上げを予測するのに、その日の気温を利用するのは理にかなっています。しかし、同じ予測をするのにオーストラリアのワニの生息数を利用するのは的外れでしょう。(もちろんそんなことは誰もやらないでしょうが)つまり、予測に関係するデータが、Deep Learning のモデルを構築するのに利用できるかどうかが重要ということです。</p>
+
+<p>往々にして、プロジェクトの関係者がデータはあると言ったときに、そのデータが予測対象とは無関係のデータであり、明らかにそのデータでは勝ち目がないケースが多いです。(まさにアイスクリームの売り上げを予測するのに、オーストラリアのワニの生息数を使おうとするようなもの) Deep Learning といえども、無関係なデータを与えて何かを予測するのは不可能です。このため、利用するデータがそろっているかをよくよく吟味しなければなりません。
+アイスクリームの売り上げ予測に、オーストラリアのワニの生息数を使うというのが馬鹿げた事だとすぐに気づきますが、自らが携わっている仕事もしくは会社全体の事となると意外と冷静になれないものです。プロジェクトを企画する前に、もういちど一度利用できるデータはどんなもので、それで何を予測しようとしているか見直して欲しいです。</p>
+
+<h2>データ収集容易性</h2>
+
+<p>データ収集容易性は、文字通り対象のデータを集めるのがどれぐらい簡単かを意味しています。大抵の場合は、プロジェクト開始時点で十分なデータが用意できていません。もしくは、対象データをプロジェクト開始時から収集するというケースもあります。</p>
+
+<p>例えば、プロジェクトの対象とする問題が機器の故障で、その故障は年の一度しか発生しないとしたらデータは集めやすいでしょうか？答えはもちろん NO です。月間で少なくとも数十程度のケースが収集できないと、プロジェクトを進めるのは厳しいです。少なくとも、それ以下の件数でしかデータが集められないものは、長期的に取り組むプロジェクトとして考えるか、いったんターゲットからは外し、別の問題から取り組むことをおススメします。</p>
+
+<p>他には、データを収集するために新規にカメラ等を現場に設置するとなると初期コストが必要になります。
+高額な機器が必要なものだと、社内の稟議を通すのに更なるハードルがあります。このようなケースもデータの収集が容易とは言えません。</p>
+
+<p>また、データ収集には画像等を集めるだけではなく、その画像への意味づけ(教師データの作成)や関連する情報の収集も含まれています。例えば、画像だけを集めてしまうと、どの機器から出力された画像なのかが後でわからなくなってしまいます。このため、学習に必要なデータ以外に関連する情報も集めておく必要があります。</p>
+
+<p>加えて画像への意味づけをできる人が限られている場合(例えばがん細胞の診断など)、その人の時間を確保することが重要です。データへの意味づけを行うのは、非常に根気と体力が必要とされるため、この人材確保と作業者への配慮を忘れてはなりません。データが集まらないと他の作業が開始できないため、プロジェクトの計画をするときには、データ収集を大げさなぐらい重要視してよいでしょう。</p>
+
+<h2>目標正解率</h2>
+
+<p>最後の項目は目標正解率。これは Deep Learning のモデルが何パーセントの正解率であれば、実機として稼働させられるかの目安を指しています。そんなの言えて当たり前じゃないかと思われるかもしれませんが、意外と忘れられていることが多いです。</p>
+
+<p>よくあるケースとしては、100%を目指すという目標を立ててしまうことがあります。これは永遠に到達できない目標なので、やめておいたほうが良いです。また、目標正解率が曖昧だと、いつまでもデータ収集を繰り返したり Deep Learning モデルの改善をあてもなくやり続けることになります。</p>
+
+<p>なるべく低い正解率でも適用できるような問題を見つけて、Deep Learning が認識を誤った場合は運用でカバーするなどの対策を取ることをおススメします。可能な限り早く Deep Learning モデルを業務に適用して効果を刈り取るようにすべきでしょう。</p>
+
+<p>例えば、クレジットカードの詐欺検出のような見つければ見つけるほどメリットがある問題の方が正解率を低く設定できます。逆に、がん細胞の診断や出荷品の検品チェックなどは見逃した場合の影響が大きいため、
+正解率を低くできません。</p>
+
+<h1>まとめ</h1>
+
+<p>こうしてみれば当たり前の4点(コストメリット・入力完全性・データ収集容易性・目標正解率)なのですが、意外と顧みられないことが多いです。技術的な詳細を検討したりする以前に、まずはここに書いた4つのポイントに当てはめて、
+Deep Learning を適用することを検討・見直してみると、大半のプロジェクトは開始前にやるべきではないと判断できるのではないでしょうか。忘れられがちですが、PoC(Proof of Concept)などをとりあえずやってみるよりも、やらないと判断して別のプロジェクトを検討する方が勇気がいります。
+また、一度プロジェクトを開始してしまうと、中断や方針転換するのは非常に大変です。(プロジェクトを開始するよりも中断する方が大変)</p>
+
+<p>強い意思で、プロジェクトをやらない、もしくはやめる提言をすることは Deep Learning プロジェクトの成功に大きな価値を持っています。</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2018-09-13T23:26:00+09:00">September 13, 2018</time></p>
+        
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="/posts/gtc2018" class="pagination--pager" title="GTC Japan 2018に出展します
+">Previous</a>
+    
+    
+      <a href="/posts/gtc2018done" class="pagination--pager" title="GTC Japan2018参加報告
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+    <ul class="social-icons">
+      
+  
+      
+        
+          
+            <li><a href="/privacy-policy/" rel="nofollow noopener noreferrer"><i class="fa fa-lock" aria-hidden="true"></i> Privacy Policy</a></li>
+          
+        
+      
+  
+      <li><a href="/feed.xml"></a></li>
+    </ul>
+  </div>
+  
+  <div class="page__footer-copyright">KAMONOHASHIは日鉄ソリューションズ株式会社の登録商標です。 
+    KAMONOHASHI (ロゴ) は日鉄ソリューションズ株式会社の登録商標です。 
+    <br>その他、本文記載の会社名および製品名は、それぞれ各社の商標または登録商標です。 
+     </div>
+  <div class="page__footer-copyright">&copy; 2020 NS Solutions Corporation. </div>
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+  <script>
+  window.addEventListener("load", function(){
+  window.cookieconsent.initialise({
+    "palette": {
+      "popup": {
+        "background": "#eaf7f7",
+        "text": "#5c7291"
+      },
+      "button": {
+        "background": "#56cbdb",
+        "text": "#ffffff"
+      }
+    },
+    "theme": "classic",
+    "content": {
+      "href": "/privacy-policy/"
+    }
+  })});
+  </script>  
+  
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-121400633-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+  </body>
+</html>

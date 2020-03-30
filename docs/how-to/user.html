@@ -1,0 +1,1341 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.14.1 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>User Guide - KAMONOHASHI</title>
+<meta name="description" content="KAMONOHASHI(カモノハシ)は、Deep Learningのモデル開発を効率的に行うためのAI開発プラットフォームです。 AI開発プロセスを最大限に効率化し、最高のモデル開発を体験してみませんか。">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="KAMONOHASHI">
+<meta property="og:title" content="User Guide">
+<meta property="og:url" content="http://localhost:4000/docs/how-to/user">
+
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/logo_002.png">
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/docs/how-to/user">
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "http://localhost:4000",
+      "logo": "http://localhost:4000/assets/images/logo_002.png"
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="KAMONOHASHI Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-121400633-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <!-- <a class="site-logo" href="/"><img src="/assets/images/logo_003.png" alt=""></a> -->
+        
+        <a class="site-title" href="https://kamonohashi.ai/">KAMONOHASHI</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/about/" >About</a>
+            </li><li class="masthead__menu-item">
+              <a href="/docs/" >Docs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/posts/" >Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/contact/" >Contact</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://twitter.com/Kamonohashi_kqi" >Twitter</a>
+            </li></ul>
+        <button class="greedy-nav__dropdown"  type="button">
+            <span>v1.0.0 <i class="material-icons">arrow_drop_down</i> </span>
+            <div class="dropdown-content">
+                <a href="/docs/supported-doc-versions" >other version</a>
+            </div>         
+        </button>
+
+        
+
+       
+        
+        <button class="greedy-nav__toggle" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          
+          
+
+          <a href="/docs/concepts"><span class="nav__sub-title">Concepts</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/docs/install-and-update"><span class="nav__sub-title">Installation</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/install-and-update#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%96%B9%E6%B3%95" class="">Install Guide</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/install-and-update#%E3%82%A2%E3%83%B3%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%96%B9%E6%B3%95" class="">・アンインストール方法</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/install-and-update#%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%A2%E3%83%83%E3%83%97" class="">・バージョンアップ</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/install-and-update#%E5%A4%96%E9%83%A8%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%A8%E3%81%AE%E4%BA%92%E6%8F%9B%E6%80%A7" class="">・外部サービスとの互換性</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/docs/tutorial"><span class="nav__sub-title">Tutorial</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/docs/how-to"><span class="nav__sub-title">How-to Guide</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/user" class="active">User Guide</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/user#%E6%A6%82%E8%A6%81" class="">・概要</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/user#%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3" class="">・ログイン</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/user#%E3%83%A6%E3%83%BC%E3%82%B6%E6%83%85%E5%A0%B1%E8%A8%AD%E5%AE%9A" class="">・ユーザ情報設定</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/user#%E3%83%87%E3%83%BC%E3%82%BF%E7%AE%A1%E7%90%86" class="">・データ管理</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/user#%E5%89%8D%E5%87%A6%E7%90%86%E7%AE%A1%E7%90%86" class="">・前処理について</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/user#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E7%AE%A1%E7%90%86" class="">・データセット管理</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/user#%E5%AD%A6%E7%BF%92%E7%AE%A1%E7%90%86" class="">・学習管理</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/user#%E6%8E%A8%E8%AB%96%E7%AE%A1%E7%90%86" class="">・推論管理</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/admin/" class="">Admin Guide</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/admin/#%E4%BA%8B%E5%89%8D%E6%BA%96%E5%82%99" class="">・事前準備</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/admin/#%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88" class="">・テナントについて</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/admin/#%E3%83%A6%E3%83%BC%E3%82%B6" class="">・ユーザ</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/admin/#%E3%83%8E%E3%83%BC%E3%83%89" class="">・ノード</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/admin/#%E3%82%AF%E3%82%A9%E3%83%BC%E3%82%BF" class="">・クォータ</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/admin/#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9" class="">・リソース</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/admin/#%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC" class="">・メニュー</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/cli" class="">CLI Guide</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+    
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="User Guide">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">User Guide
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>本書はKAMONOHASHIを利用したAI開発をスムーズに行う為に各機能や手順を説明する事を目的としています。</p>
+
+<h2 id="前提">前提</h2>
+<p>読者がLinux、Git、Dockerの基本的な知識を持つことを前提としています。</p>
+
+<ul>
+  <li>Dockerが初めての方はリンク先を選択してください。以下のリソースは、Dockerについて学ぶのに役立ちます。
+    <ul>
+      <li><a href="https://www.docker.com/why-docker">Dockerとはなにか</a><i class="material-icons blue">launch</i></li>
+      <li><a href="https://www.docker.com/resources/what-container">コンテナとはなにか</a><i class="material-icons blue">launch</i></li>
+      <li><a href="https://docs.docker.com/get-started/">Docker公式チュートリアル</a><i class="material-icons blue">launch</i></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="概要">概要</h2>
+
+<p>KAMONOHASHIの利用者は以下の操作を行えます。</p>
+<ul>
+  <li><a href="/docs/how-to/user#ログイン">ログイン</a></li>
+  <li><a href="/docs/how-to/user#データ管理">データを管理する</a></li>
+  <li><a href="/docs/how-to/user#前処理管理">前処理を行う</a></li>
+  <li><a href="/docs/how-to/user#データセット管理">データセットを作成・管理する</a></li>
+  <li><a href="/docs/how-to/user#学習管理">学習を実行・管理する</a></li>
+  <li><a href="/docs/how-to/user#学習の確認">学習の結果を確認する</a></li>
+  <li><a href="/docs/how-to/user#推論管理">推論を実行・管理する</a></li>
+</ul>
+
+<p>KAMONOHASHIの利用者の想定操作は以下です。
+<img src="/assets/images/illust_userFlow.png" alt="ユーザー手順概要" /></p>
+
+<h2 id="ログイン">ログイン</h2>
+<p>KAMONOHASHIはブラウザ・SDK・コマンドラインツールから使用できます。
+ブラウザで開始するには、KAMONOHASHIにログインします。
+KAMONOHASHIのURLが分からない場合はシステム管理者に問い合わせてください。</p>
+
+<h3 id="ログイン-1">ログイン</h3>
+<p>KAMONOHASHIにログインするにはログイン画面からユーザー名・パスワードを入力します。
+ユーザー名・パスワードはシステム管理者から提供されます。</p>
+
+<p><img src="/assets/images/figure2.png" alt="ログイン" /></p>
+
+<h4 id="テナントについて">テナントについて</h4>
+
+<p>テナントはKAMONOHASHIの最小の利用単位です。
+テナント毎にリソースの使用量などが決められています。
+ユーザは複数のテナントに所属することができます。</p>
+
+<p>利用するテナントを切り替えるには、右上のユーザ名が表示されているリンクを押し、切り替えたいテナントを選択します。</p>
+
+<p><img src="/assets/images/figure3.png" alt="テナント切替" /></p>
+
+<h2 id="ユーザ情報設定">ユーザ情報設定</h2>
+
+<p>利用者は右上のプルダウンメニューより[ユーザ情報設定]を選択することで、各種ユーザ設定情報の確認・変更が行えます。</p>
+
+<h3 id="gitトークンの設定">Gitトークンの設定</h3>
+
+<p>KAMONOHASHIでは学習に用いる学習スクリプトなどを、システム管理者によって設定されたGitリポジトリサービスから取得します。</p>
+
+<p>Gitリポジトリサービスへのアクセスに認証が必要な場合、ユーザ情報設定画面にて [Git Token]タブを選択し、認証情報を設定します。</p>
+
+<h3 id="レジストリトークンの設定">レジストリトークンの設定</h3>
+
+<p>KAMONOHASHIでは、学習環境としてDockerコンテナを使用します。
+このコンテナはシステム管理者によって設定されたDockerレジストリサービスから取得します。</p>
+
+<p>Dockerレジストリサービスへのアクセスに認証が必要な場合、ユーザ情報設定画面にて [Registry Token]タブを選択し、認証情報を設定します。</p>
+
+<p><img src="/assets/images/user_setting.png" alt="レジストリトークンの設定" /></p>
+
+<h2 id="データ管理">データ管理</h2>
+<p>KAMONOHASHIでは Deep Learning等に利用するデータを管理することができます。データは画像やzipファイルなど、データ形式を問わず登録できます。</p>
+
+<p>データを登録するには、[データ管理]を選択し、新規登録ボタンから行います。</p>
+
+<p><img src="/assets/images/figure5.png" alt="データの登録" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>種類　</th>
+      <th>説明　</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>データ名</td>
+      <td>データの名前。</td>
+    </tr>
+    <tr>
+      <td>メモ</td>
+      <td>画像の説明など補足情報。</td>
+    </tr>
+    <tr>
+      <td>タグ</td>
+      <td>データの種類や受領日などグルーピングしたい単位に付与し、検索等で利用する。</td>
+    </tr>
+    <tr>
+      <td>ファイル</td>
+      <td>複数のデータを登録できる。jpg/png/csv/zipなど、ファイルのデータ形式は任意。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="前処理管理">前処理管理</h2>
+
+<p>前処理とは、既存データを元に、より目的に適した新しいデータを新規生成する処理のことです。例えば画像のトリミング処理などがこれにあたります。
+KAMONOHASHIでは、データに対する前処理の実行、およびその履歴の管理を行うことができます。</p>
+
+<h3 id="ワークフロー">ワークフロー</h3>
+
+<p>KAMONOHASHIで前処理を扱う場合、以下の二つのワークフローがあります。</p>
+
+<ul>
+  <li>KAMONOHASHI管理の計算ノード上で前処理を実行する場合
+    <ul>
+      <li>全てのフローをKAMONOHASHIの管理範囲内で行う場合、前処理実行の自動化や並列処理、処理履歴のトラッキングを完全に行うことができます。</li>
+      <li>フロー
+        <ol>
+          <li>KAMONOHASHI上での前処理作成
+            <ul>
+              <li>前処理用ソースコードやコンテナなど、実行するための全情報の登録が必要となります。</li>
+            </ul>
+          </li>
+          <li>登録した前処理の実行
+            <ul>
+              <li>登録済みのデータに対し、KAMONOHASHIの管理リソース上で前処理を実行します。</li>
+              <li>結果や履歴情報は全て自動で記録されます。</li>
+            </ul>
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>KAMONOHASHI環境外で前処理を実施し、結果だけをKAMONOHASHIに登録する場合
+    <ul>
+      <li>前処理の実行自体は、ローカル環境などKAMONOHASHIの外で行い、結果だけをKAMONOHASHIにアップロードします。アップロード時の内容に従い、部分的に履歴管理が可能となります。前処理がKAMONOHASHIの管理リソース上で行えない場合（WindowsやMacOSが必要な場合など）に利用します。</li>
+      <li>この操作は KAMONOHASHI CLI によってのみ実行が可能であり、WebUI上では行えません。</li>
+      <li>フロー
+        <ol>
+          <li>KAMONOHASHI上での前処理作成
+            <ul>
+              <li>必須入力は前処理名のみ。その他情報は任意で設定する。</li>
+            </ul>
+          </li>
+          <li>KAMONOHASHI外での前処理実行
+            <ul>
+              <li>ローカル環境などで前処理を行う。</li>
+            </ul>
+          </li>
+          <li>結果と履歴情報の保存
+            <ul>
+              <li>前処理結果ファイルと、その履歴情報（対象データや試用した前処理など）を登録する。</li>
+            </ul>
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="前処理の管理と作成">前処理の管理と作成</h3>
+
+<p>KAMONOHASHIで前処理を管理するためには、まず前処理の登録を行います。実行前に前処理を登録しておくことで、その前処理を多数のデータに任意のタイミングで適用することができます。</p>
+
+<p>前処理を登録するには、[前処理管理]を選択し、右上の新規登録ボタンから行います。
+<img src="/assets/images/preprocessing_create.png" alt="前処理作成" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>種類</th>
+      <th>要否</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>前処理名</td>
+      <td>必須</td>
+      <td>前処理の名前。任意の文字列を指定可能。</td>
+    </tr>
+    <tr>
+      <td>実行コマンド</td>
+      <td>任意</td>
+      <td>前処理として実行するコマンドを指定する。コンテナイメージに設定されたcommand, entrypointは無効になり、このコマンドのみが実行される</td>
+    </tr>
+    <tr>
+      <td>メモ</td>
+      <td>任意</td>
+      <td>前処理に付与する任意のメモ。</td>
+    </tr>
+    <tr>
+      <td>コンテナイメージ</td>
+      <td>任意</td>
+      <td>利用するDockerレジストリ、コンテナ、タグを指定する。</td>
+    </tr>
+    <tr>
+      <td>モデル</td>
+      <td>任意</td>
+      <td>前処理で利用するソースコードを格納しているGitサーバ、リポジトリ、ブランチ、コミットIDを指定する。コミットIDを指定した場合はブランチの入力値は無視される。コミットIDが未指定の場合はブランチのHEADが選択される。ブランチもコミットIDも未指定の場合は、masterブランチのHEADが選択される。</td>
+    </tr>
+    <tr>
+      <td>CPU</td>
+      <td>任意</td>
+      <td>前処理が使用するCPUコア数のデフォルト値を指定する。実行時に再設定が可能。</td>
+    </tr>
+    <tr>
+      <td>メモリ</td>
+      <td>任意</td>
+      <td>学習が使用するメモリ量(GB)のデフォルト値を指定する。実行時に再設定が可能。</td>
+    </tr>
+    <tr>
+      <td>GPU</td>
+      <td>任意</td>
+      <td>学習が使用するGPU枚数のデフォルト値を指定する。実行時に再設定が可能。</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>KAMONOHASHI上で前処理を実行したい場合は、メモを除くすべての項目が必須入力となります。</p>
+
+<h3 id="前処理実行">前処理実行</h3>
+
+<p>KAMONOHASHIで前処理を実行するためは、以下3つのフローのいずれかで前処理実行画面を表示します。</p>
+
+<ul>
+  <li>前処理管理画面から前処理を行う場合
+    <ol>
+      <li>前処理管理画面を表示する</li>
+      <li>右上の[前処理実行]ボタンを押す</li>
+      <li>登録済みのデータ、リソースを設定し実行する</li>
+    </ol>
+  </li>
+  <li>　データ管理画面から1つのデータに前処理を行う場合
+    <ol>
+      <li>データ管理画面を表示する</li>
+      <li>前処理の対象データを選択し、データ編集画面を表示する</li>
+      <li>右上の[前処理実行]ボタンを押す</li>
+      <li>登録済みの前処理を選択、リソースを設定し実行する</li>
+    </ol>
+  </li>
+  <li>　データ管理画面から複数のデータに前処理を行う場合
+    <ol>
+      <li>データ管理画面を表示する</li>
+      <li>全ての前処理の対象データに対し、データIDの左側に表示されたチェックボックスを選択する</li>
+      <li>データ管理画面右上の[前処理実行]ボタンを押す</li>
+      <li>登録済みの前処理を選択、リソースを設定し実行する</li>
+    </ol>
+  </li>
+</ul>
+
+<p><img src="/assets/images/preprocessing_run.png" alt="前処理実行" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>種類</th>
+      <th>要否</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>前処理</td>
+      <td>必須</td>
+      <td>実行する前処理を選択する。</td>
+    </tr>
+    <tr>
+      <td>環境変数</td>
+      <td>任意</td>
+      <td>前処理に渡す環境変数を指定する。環境変数はコンテナ内の環境変数へ追加設定される。</td>
+    </tr>
+    <tr>
+      <td>パーティション</td>
+      <td>任意</td>
+      <td>KAMONOHASHI に設定されているパーティションを設定する。例えばGPUの型番などはここから指定する。</td>
+    </tr>
+    <tr>
+      <td>CPU</td>
+      <td>必須</td>
+      <td>使用するCPUコア数を指定する。</td>
+    </tr>
+    <tr>
+      <td>メモリ</td>
+      <td>必須</td>
+      <td>使用するメモリ量(GB)を指定する。</td>
+    </tr>
+    <tr>
+      <td>GPU</td>
+      <td>必須</td>
+      <td>使用するGPU枚数を指定する。</td>
+    </tr>
+    <tr>
+      <td>実行後に履歴を開く</td>
+      <td>任意</td>
+      <td>ONにした場合、[実行]ボタンの押下後に当該前処理の履歴画面へ遷移する。OFFの場合は前の画面に戻る。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="前処理実行の仕様">前処理実行の仕様</h3>
+
+<h4 id="kamonohashiによる前処理の実行フロー">KAMONOHASHIによる前処理の実行フロー</h4>
+
+<p>前処理の実行フローは以下のようになっています。</p>
+
+<ol>
+  <li>クラスタからリソースを確保する
+    <ul>
+      <li>リソースに十分な空きがなかった場合は待機します。</li>
+    </ul>
+  </li>
+  <li>リソース上にコンテナがデプロイされる
+    <ul>
+      <li>コンテナ内に環境変数が設定されます。</li>
+    </ul>
+  </li>
+  <li>学習結果ファイル保存用ディレクトリ /kqi/output を作成する</li>
+  <li>kamonohashiの学習制御に必要なツールをインストールする
+    <ul>
+      <li>git, python, pip, kamonohashi-cli がコンテナにインストールされます</li>
+      <li>コンテナに既にこれらのツールがインストール済みだった場合はスキップされます</li>
+    </ul>
+  </li>
+  <li>前処理スクリプトを /kqi/git/ に git clone する</li>
+  <li>データセットを /kqi/input/{データID}/データファイル にダウンロードする</li>
+  <li>指定された「実行コマンド」が実行される
+    <ul>
+      <li>/kqi/git/ がカレントディレクトリになります</li>
+      <li>実行ユーザはコンテナのrootユーザとなります</li>
+      <li>学習中、結果ファイルが /kqi/output/{前処理後結果として作成されるデータの名前}/ に書き出されるように「実行コマンド」または前処理スクリプトの記述が必要です
+        <ul>
+          <li>/kqi/output/{前処理後結果として作成されるデータの名前}/ 以下のファイルは全て新規データに追加される。サブディレクトリ内のファイルも再帰的に新規データに追加されます。</li>
+          <li>/kqi/output/ 直下のファイルは新規データに追加されません。</li>
+          <li>出力ファイルはzip圧縮されません。</li>
+          <li>結果のリアルタイム確認はできません。</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>実行ログを確認する
+    <ul>
+      <li>前処理履歴編集画面の閲覧ボタンを押下すると、実行ログがブラウザ上で確認できます。</li>
+      <li>前処理履歴編集画面の添付ファイル「stdout_stderr_.log」からダウンロードできます。</li>
+    </ul>
+  </li>
+  <li>実行結果のステータスが更新される
+    <ul>
+      <li>KAMONOHASHIの実行成否は、実行後の “$?” コマンドの結果で判断されます。</li>
+      <li>そのため、実行コマンド自体は改行して複数記述可能ですが、結果の成否判定が難しくなるため、単一コマンドを推奨します。</li>
+    </ul>
+  </li>
+  <li>コンテナが停止し、リソースが開放される</li>
+</ol>
+
+<h4 id="フォルダ構造">フォルダ構造</h4>
+<p><img src="/assets/images/figure_pre.png" alt="前処理ディレクトリ" /></p>
+
+<h4 id="注意事項">注意事項</h4>
+<p>前処理は、同じデータに対して1度しか実行できません。
+スクリプトのエラー等で再度実行したい場合、前処理履歴を削除する必要があります。削除時は生成された前処理結果データも同時に削除されるので注意が必要です。</p>
+
+<h2 id="データセット管理">データセット管理</h2>
+<p>データセットとは、データを Training/Validation/Test などのグループに分割し、機械学習などで処理するために利用します。
+KAMONOHASHIでは後述する学習を実行する際の入力ファイルは、データセット単位となっています。
+学習実行時に使用するデータセットを指定すると、training 等の分類に応じてデータが異なるディレクトリにダウンロードされます。
+KAMONOHASHIではトレーサビリティを重視しているため、一度学習と関連付けられたデータセットは変更できません。</p>
+
+<p>データセットを作成するには、[データセット管理]を選択し、右上の新規登録ボタンから行います。</p>
+
+<p><img src="/assets/images/figure6.png" alt="データセットの作成" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>種類　</th>
+      <th>説明　</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>データセット名</td>
+      <td>データセットの名前。</td>
+    </tr>
+    <tr>
+      <td>メモ</td>
+      <td>データセットを説明するメモ。</td>
+    </tr>
+    <tr>
+      <td>データ</td>
+      <td>allに表示されるデータ一覧からそれぞれのエリアにドラッグで移動させることでデータを分割していく。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="データセットのコピー">データセットのコピー</h3>
+<p>KAMONOHASHI では1度学習に利用したデータセットは編集できなくなります。このため、過去に利用したデータセットから派生して処理を行いたい場合には、データセットをコピーして利用します。データセットをコピーするには、一覧からコピーしたいデータセットを選択し、右上のコピーボタンから行います。</p>
+
+<h2 id="学習管理">学習管理</h2>
+<p>学習は KAMONOHASHI が管理するクラスタで計算を実行するための最小単位を表します。
+学習を開始すると KAMONOHASHI はクラスタから指定されたCPU、メモリ、GPUリソースを確保し、Dockerコンテナを起動して計算環境を用意します。ユーザはこの環境を利用し、任意の計算を行うことができます。</p>
+
+<h3 id="学習の開始">学習の開始</h3>
+<p>学習を開始するには[学習管理]を選択し、右上の新規登録ボタンから行います。<a href="#学習の仕様">実行コマンドやモデルの仕様については後述</a>。</p>
+
+<p>学習の実行は4ステップにて行います。</p>
+
+<h4 id="ステップ1">ステップ1</h4>
+
+<p><img src="/assets/images/figure7-1.png" alt="新規ジョブ実行画面 ステップ1" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>種類</th>
+      <th>要否</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>学習名</td>
+      <td>必須</td>
+      <td>学習の名前。<br />半角英数小文字、または記号(“-”（ハイフン）) 30 文字以下で指定可能。</td>
+    </tr>
+    <tr>
+      <td>親</td>
+      <td>任意</td>
+      <td>既に実行した学習との関連付ける場合に指定する。指定時に親学習の設定がコピーされるので、変更したい箇所を指定後に変更する。また、親に指定した学習の出力結果が、コンテナにマウントされる。</td>
+    </tr>
+    <tr>
+      <td>データセット</td>
+      <td>必須</td>
+      <td>学習の入力ファイルとなるデータセットを指定する。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="ステップ2">ステップ2</h4>
+
+<p><img src="/assets/images/figure7-2.png" alt="新規ジョブ実行画面 ステップ2" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>種類</th>
+      <th>要否</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>コンテナイメージ</td>
+      <td>必須</td>
+      <td>利用するDockerレジストリ、コンテナ、タグを指定する。</td>
+    </tr>
+    <tr>
+      <td>モデル</td>
+      <td>必須</td>
+      <td>学習で利用するソースコードを格納しているGitサーバ、リポジトリ、ブランチ、コミットIDを指定する。コミットIDを指定した場合はブランチの入力値は無視される。コミットIDが未指定の場合はブランチのHEADが選択される。ブランチもコミットIDも未指定の場合は、masterブランチのHEADが選択される。</td>
+    </tr>
+    <tr>
+      <td>実行コマンド</td>
+      <td>必須</td>
+      <td>学習で実行するコマンドを指定する。コンテナイメージに設定されたcommand, entrypointは無効になり、このコマンドのみが実行される</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="ステップ3">ステップ3</h4>
+
+<p><img src="/assets/images/figure7-3.png" alt="新規ジョブ実行画面 ステップ3" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>種類</th>
+      <th>要否</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CPU</td>
+      <td>必須</td>
+      <td>学習が利用するCPUコア数を指定する。</td>
+    </tr>
+    <tr>
+      <td>メモリ</td>
+      <td>必須</td>
+      <td>学習が利用するメモリ量(GB)を指定する。</td>
+    </tr>
+    <tr>
+      <td>GPU</td>
+      <td>必須</td>
+      <td>学習が利用するGPU枚数を指定する。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="ステップ4">ステップ4</h4>
+
+<p><img src="/assets/images/figure7-4.png" alt="新規ジョブ実行画面 ステップ4" /></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>種類</th>
+      <th>要否</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>環境変数</td>
+      <td>任意</td>
+      <td>学習に渡す環境変数を指定する。環境変数はコンテナ内の環境変数へ追加設定される。</td>
+    </tr>
+    <tr>
+      <td>パーティション</td>
+      <td>任意</td>
+      <td>KAMONOHASHI に設定されているパーティションを設定する。例えばGPUの型番などはここから指定する。</td>
+    </tr>
+    <tr>
+      <td>メモ</td>
+      <td>任意</td>
+      <td>学習に付与する任意のメモ。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="学習の確認">学習の確認</h3>
+
+<p>過去に実行した学習の情報・状態・結果などを確認したい場合、[学習管理]の画面で該当学習を選択し、学習履歴画面を表示します。</p>
+
+<p><img src="/assets/images/figure8.png" alt="ジョブ詳細画面" /></p>
+
+<p>学習履歴画面では、各種情報が項目毎に一覧化されており、以下のことなどが行えます。</p>
+
+<h4 id="tensorboard-の起動">TensorBoard の起動</h4>
+<p>学習を実行しているコンテナの TensorBoard を表示したい場合、[学習管理]の画面で該当学習を選択します。
+Tensorbardの項目からTensorboadが起動できます。
+ただし、TensorBoard に読み込ませるログデータが、学習の結果ファイルとして出力されている必要があります。</p>
+
+<h4 id="学習の停止">学習の停止</h4>
+<p>学習を停止したい場合、[学習管理]の画面で該当学習を選択します。操作の項目にある学習停止ボタンから学習を停止することができます。
+※この操作は学習のステータスがRunning時のみ実行可能です。</p>
+
+<h4 id="学習コンテナへの接続">学習コンテナへの接続</h4>
+<p>学習を実行しているコンテナに接続したい場合、[学習管理]の画面で該当学習を選択し、[Shell起動]ボタンを押下します。
+コンテナ内のrootユーザとしてシェルが立ち上がり、コンテナ内で任意のコマンドを実行できます。
+※この操作は学習のステータスがRunning時のみ実行可能です。</p>
+
+<h4 id="コピー実行">コピー実行</h4>
+<p>類似の学習を投入したい場合は、過去の該当学習を選択し右上のコピー実行ボタンから行えます。コピー実行を選択すると、
+過去の学習を投入した情報が初期値として設定され、必要な個所を変更して実行できます。</p>
+
+<h3 id="学習の仕様">学習の仕様</h3>
+
+<h4 id="kamonohashiによる学習の実行フロー">KAMONOHASHIによる学習の実行フロー</h4>
+<p>学習の実行フローは以下のようになっています。</p>
+
+<ol>
+  <li>クラスタからリソースを確保する
+    <ul>
+      <li>リソースに十分な空きがなかった場合は待機します。</li>
+    </ul>
+  </li>
+  <li>リソース上にコンテナがデプロイされる
+    <ul>
+      <li>コンテナ内に環境変数が設定されます。</li>
+    </ul>
+  </li>
+  <li>親学習の指定があった場合、/kqi/parent に親学習の出力結果を読み取り専用でマウントする</li>
+  <li>学習結果ファイル保存用ディレクトリ /kqi/output を作成する</li>
+  <li>kamonohashiの学習制御に必要なツールをインストールする
+    <ul>
+      <li>git, zip, python, pip, kamonohashi-cli がコンテナにインストールされます。</li>
+      <li>コンテナに既にこれらのツールがインストール済みだった場合はスキップされます。</li>
+    </ul>
+  </li>
+  <li>モデルを /kqi/git/ に git clone する</li>
+  <li>データセットを /kqi/input にダウンロードする</li>
+  <li>指定された「実行コマンド」が実行される
+    <ul>
+      <li>/kqi/git/ がカレントディレクトリになります。</li>
+      <li>実行ユーザはコンテナのrootユーザとなります。</li>
+      <li>学習中、結果ファイルが /kqi/output に書き出されるように「実行コマンド」またはモデルの記述が必要です。</li>
+    </ul>
+  </li>
+  <li>結果ファイルを保存する
+    <ul>
+      <li>/kqi/output をzip圧縮する。このファイルは学習履歴画面の添付ファイル「output.zip」からダウンロードできます。</li>
+    </ul>
+  </li>
+  <li>実行結果のステータスが更新される
+    <ul>
+      <li>KAMONOHASHIの実効成否は、実行後の “$?” コマンドの結果で判断されます。</li>
+      <li>そのため、実行コマンド自体は改行して複数記述可能ですが、結果の成否判定が難しくなるため、単一コマンドを推奨します。</li>
+      <li>e.g. 評価スクリプトを裏で実行するなど、複数操作が必要な場合は modelリポジトリにその処理を行うスクリプトを置きます。</li>
+    </ul>
+  </li>
+  <li>コンテナが停止し、リソースが開放される</li>
+</ol>
+
+<h4 id="フォルダ構造-1">フォルダ構造</h4>
+
+<p><img src="/assets/images/figure_job.png" alt="ジョブディレクトリ" /></p>
+
+<h5 id="kqiinput-入力ファイル">/kqi/input/ 入力ファイル</h5>
+
+<ul>
+  <li>実行時に指定したデータセットは /kqi/input/ にダウンロードされます。</li>
+  <li>ファイルは /kqi/input/{データ種別名}/{データID}/データファイル という構造で配備されます。</li>
+</ul>
+
+<h5 id="kqioutput-出力ファイル">/kqi/output/ 出力ファイル</h5>
+
+<ul>
+  <li>/kqi/outputに結果ファイルを書き出すようにします。</li>
+  <li>/kqi/output/配下のファイル名・ディレクトリ名は次の文字だけ使用可能です。
+    <ul>
+      <li>-_1-9a-zA-Z/</li>
+    </ul>
+  </li>
+  <li>/kqi/output に書き込まれたファイルは 学習履歴画面の「ファイル一覧」ボタンからリアルタイムに閲覧・ダウンロードできます。</li>
+</ul>
+
+<h5 id="kqigit-学習モデル">/kqi/git/ 学習モデル</h5>
+
+<ul>
+  <li>実行時に指定したモデルは /kqi/git/ に git clone されます。</li>
+  <li>モデルに限らず、コンテナ内で実行したいコマンドがあれば、スクリプトで記述してモデルと共にリポジトリに入れておきます。</li>
+  <li>実行時のカレントディレクトリはこの /kqi/git/ になります。
+    <ul>
+      <li>例：リポジトリのトップに「entrypoint.py」を置いた場合、 学習実行の「実行コマンド」には「python entrypoint.py」を記述します。</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="kqiattach-添付ファイル">/kqi/attach 添付ファイル</h5>
+
+<ul>
+  <li>学習履歴画面にて、添付ファイルとしてアップロードされたファイルが格納されます。</li>
+</ul>
+
+<h5 id="kqiparent-親学習の結果ファイル">/kqi/parent 親学習の結果ファイル</h5>
+
+<ul>
+  <li>親学習を指定した場合、指定した学習の出力結果（当該学習の /kqi/output に出力されたファイル）が読み取り専用で格納されます。</li>
+</ul>
+
+<h4 id="学習実行環境で設定される環境変数">学習実行環境で設定される環境変数</h4>
+
+<ul>
+  <li>下記環境変数がkamonohashiによって設定されます。</li>
+  <li>上書き可の環境変数は学習新規登録時に環境変数入力フォームから上書き可能です。</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>環境変数名</th>
+      <th>値</th>
+      <th>上書き可否</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>LC_ALL</td>
+      <td>C.UTF-8</td>
+      <td>不可</td>
+      <td>システムの文字化け回避のため設定される</td>
+    </tr>
+    <tr>
+      <td>LANG</td>
+      <td>C.UTF-8</td>
+      <td>不可</td>
+      <td>システムの文字化け回避のため設定される</td>
+    </tr>
+    <tr>
+      <td>HTTP_PROXY</td>
+      <td><デプロイ環境ごと></デプロイ環境ごと></td>
+      <td>可</td>
+      <td>プロキシ設定。システム管理者が指定したデフォルト値が設定される</td>
+    </tr>
+    <tr>
+      <td>HTTPS_PROXY</td>
+      <td><デプロイ環境ごと></デプロイ環境ごと></td>
+      <td>可</td>
+      <td>プロキシ設定。システム管理者が指定したデフォルト値が設定される</td>
+    </tr>
+    <tr>
+      <td>NO_PROXY</td>
+      <td><デプロイ環境ごと></デプロイ環境ごと></td>
+      <td>可</td>
+      <td>プロキシ設定。システム管理者が指定したデフォルト値が設定される</td>
+    </tr>
+    <tr>
+      <td>http_proxy</td>
+      <td><デプロイ環境ごと></デプロイ環境ごと></td>
+      <td>可</td>
+      <td>プロキシ設定。システム管理者が指定したデフォルト値が設定される</td>
+    </tr>
+    <tr>
+      <td>https_proxy</td>
+      <td><デプロイ環境ごと></デプロイ環境ごと></td>
+      <td>可</td>
+      <td>プロキシ設定。システム管理者が指定したデフォルト値が設定される</td>
+    </tr>
+    <tr>
+      <td>no_proxy</td>
+      <td><デプロイ環境ごと></デプロイ環境ごと></td>
+      <td>可</td>
+      <td>プロキシ設定。システム管理者が指定したデフォルト値が設定される</td>
+    </tr>
+    <tr>
+      <td>COLUMNS</td>
+      <td><学習ごと></学習ごと></td>
+      <td>可</td>
+      <td>ターミナルの列数設定。システム管理者が指定したデフォルト値が設定される</td>
+    </tr>
+    <tr>
+      <td>TRAINING_ID</td>
+      <td><学習ごと></学習ごと></td>
+      <td>不可</td>
+      <td>kamonohashiが学習の制御に使用</td>
+    </tr>
+    <tr>
+      <td>DATASET_ID</td>
+      <td><学習ごと></学習ごと></td>
+      <td>不可</td>
+      <td>kamonohashiが学習の制御に使用</td>
+    </tr>
+    <tr>
+      <td>PARENT_ID</td>
+      <td><学習ごと></学習ごと></td>
+      <td>不可</td>
+      <td>kamonohashiが学習の制御に使用</td>
+    </tr>
+    <tr>
+      <td>MODEL_REPOSITORY</td>
+      <td><学習ごと></学習ごと></td>
+      <td>不可</td>
+      <td>kamonohashiが学習の制御に使用</td>
+    </tr>
+    <tr>
+      <td>MODEL_REPOSITORY_TOKEN</td>
+      <td><学習ごと></学習ごと></td>
+      <td>不可</td>
+      <td>kamonohashiが学習の制御に使用</td>
+    </tr>
+    <tr>
+      <td>COMMIT_ID</td>
+      <td><学習ごと></学習ごと></td>
+      <td>不可</td>
+      <td>kamonohashiが学習の制御に使用</td>
+    </tr>
+    <tr>
+      <td>KQI_SERVER</td>
+      <td><学習ごと></学習ごと></td>
+      <td>不可</td>
+      <td>kamonohashiが学習の制御に使用</td>
+    </tr>
+    <tr>
+      <td>KQI_TOKEN</td>
+      <td><学習ごと></学習ごと></td>
+      <td>不可</td>
+      <td>kamonohashiが学習の制御に使用</td>
+    </tr>
+    <tr>
+      <td>ENTRY_POINT</td>
+      <td><学習ごと></学習ごと></td>
+      <td>不可</td>
+      <td>kamonohashiが学習の制御に使用</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="注意事項-1">注意事項</h4>
+
+<ul>
+  <li>ログファイルの書き出しにはteeコマンドが使われています。 pythonを使用する場合は 「-u」オプションでバッファリングを無効にしないと正しく標準出力結果がログに書き出されないため、注意してください。</li>
+</ul>
+
+<h2 id="推論管理">推論管理</h2>
+<h3 id="推論の概要">推論の概要</h3>
+<p>推論は、上述の学習での結果を用いて推論処理を行うための学習であり、[推論管理]画面で管理されます。
+推論の起動は[推論管理]の新規登録ボタンおよび、[学習履歴]画面の推論実行ボタンより可能です。</p>
+
+<p>基本的には学習と同一の仕様であるため、ここでは相違点のみ記載します。</p>
+
+<h3 id="学習との相違点">学習との相違点</h3>
+<ul>
+  <li>マウントする学習で親を指定した場合、指定した学習の出力結果(当該学習の /kqi/output に出力されたファイル)が/kqi/parentに読み取り専用でマウントされます。</li>
+  <li>/kqi/output/value.txtに出力された値(1行の数値を想定)が、出力値の列に表示されます。</li>
+  <li>コンテナ名は”inference-推論名-推論ID”となります。</li>
+  <li>Tensorboardの起動は出来ません。</li>
+</ul>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+
+      
+
+      
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+    <ul class="social-icons">
+      
+  
+      
+        
+          
+            <li><a href="/privacy-policy/" rel="nofollow noopener noreferrer"><i class="fa fa-lock" aria-hidden="true"></i> Privacy Policy</a></li>
+          
+        
+      
+  
+      <li><a href="/feed.xml"></a></li>
+    </ul>
+  </div>
+  
+  <div class="page__footer-copyright">KAMONOHASHIは日鉄ソリューションズ株式会社の登録商標です。 
+    KAMONOHASHI (ロゴ) は日鉄ソリューションズ株式会社の登録商標です。 
+    <br>その他、本文記載の会社名および製品名は、それぞれ各社の商標または登録商標です。 
+     </div>
+  <div class="page__footer-copyright">&copy; 2020 NS Solutions Corporation. </div>
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+  <script>
+  window.addEventListener("load", function(){
+  window.cookieconsent.initialise({
+    "palette": {
+      "popup": {
+        "background": "#eaf7f7",
+        "text": "#5c7291"
+      },
+      "button": {
+        "background": "#56cbdb",
+        "text": "#ffffff"
+      }
+    },
+    "theme": "classic",
+    "content": {
+      "href": "/privacy-policy/"
+    }
+  })});
+  </script>  
+  
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-121400633-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+  </body>
+</html>

@@ -52,3 +52,7 @@ include:
   - .htaccess
   - _posts
 encoding: UTF-8
+
+netlify:
+  redirects:
+    - /docs/install-and-setup              /docs/install-and-update

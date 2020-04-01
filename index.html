@@ -1,7 +1,7 @@
 <!doctype html>
 <!--
-  Minimal Mistakes Jekyll Theme 4.14.1 by Michael Rose
-  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Minimal Mistakes Jekyll Theme 4.14.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
   Free for personal and commercial use under the MIT license
   https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
 -->
@@ -42,7 +42,7 @@
 
   <script type="application/ld+json">
     {
-      "@context": "http://schema.org",
+      "@context": "https://schema.org",
       "@type": "Organization",
       "url": "http://localhost:4000",
       "logo": "http://localhost:4000/assets/images/logo_002.png"
@@ -126,15 +126,15 @@
         
         <a class="site-title" href="https://kamonohashi.ai/">KAMONOHASHI</a>
         <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://github.com/KAMONOHASHI/kamonohashi" >GitHub</a>
+            </li><li class="masthead__menu-item">
               <a href="/docs/" >Docs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/support/" >Support</a>
             </li><li class="masthead__menu-item">
               <a href="/resource/" >Resource</a>
             </li><li class="masthead__menu-item">
               <a href="/docs/faq/" >FAQ</a>
-            </li><li class="masthead__menu-item">
-              <a href="/support/" >Support</a>
-            </li><li class="masthead__menu-item">
-              <a href="https://github.com/KAMONOHASHI/kamonohashi" >GitHub</a>
             </li></ul>
         <button class="greedy-nav__dropdown"  type="button">
             <span>1.1.7 <i class="material-icons">arrow_drop_down</i> </span>
@@ -169,7 +169,7 @@
       
 
 <div id="main" role="main">
-  <article class="splash" itemscope itemtype="http://schema.org/CreativeWork">
+  <article class="splash" itemscope itemtype="https://schema.org/CreativeWork">
     
     
     
@@ -532,62 +532,31 @@ Deep Learningのモデル開発には、複雑な環境構築・計算リソー�
 　チュートリアルやドキュメントを完備
 </h3>
 <div class="feature__wrapper">
-
     <div class="feature__item--center">
       <div class="archive__item">
-
           <div class="archive__item-teaser">
             <img src="/assets/images/illust_book2.png" alt="placeholder image 1" />
-
           </div>
-
-
         <div class="archive__item-body">
-
             <h3 class="archive__item-title">ドキュメント</h3>
-
-
-
             <div class="archive__item-excerpt">
               <p>開発者向けとシステム管理者向けの2種類のドキュメントを用意しています。<br />KAMONOHASHIをCLIで利用する際のガイドもあります。</p>
-
             </div>
-
-
-
             <p><a href="/docs/" class="btn btn--primary">ドキュメントをみる</a></p>
-
         </div>
       </div>
     </div>
-
-
-
-
     <div class="feature__item--center">
       <div class="archive__item">
-
           <div class="archive__item-teaser">
-            <img src="/assets/images/illust_book.png" alt="placeholder image 2" />
-
+            <img src="/assets/images/illust_beginner.png" alt="placeholder image 2" />
           </div>
-
-
         <div class="archive__item-body">
-
             <h3 class="archive__item-title">チュートリアル</h3>
-
-
-
             <div class="archive__item-excerpt">
               <p>初めての利用者向けのチュートリアルを用意しています。ステップバイステップ形式で、KAMONOHASHIの使用方法を知ることができます。</p>
-
             </div>
-
-
-
             <p><a href="/docs/tutorial" class="btn btn--primary">Tutorialをみる</a></p>
-
         </div>
       </div>
     </div>
@@ -655,12 +624,14 @@ Deep Learningのモデル開発には、複雑な環境構築・計算リソー�
     </section>
   </article>
 </div>
+
     </div>
 
     
       <div class="search-content">
         <div class="search-content__inner-wrap"><div class="search-searchbar"></div>
     <div class="search-hits"></div></div>
+
       </div>
     
 
@@ -721,7 +692,7 @@ Deep Learningのモデル開発には、複雑な環境構築・計算リソー�
 
     
   <script src="/assets/js/main.min.js"></script>
-  <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.6.0/js/all.js" integrity="sha384-z9ZOvGHHo21RqN5De4rfJMoAxYpaVoiYhuJXPyVmSs8yn20IE3PmBM534CffwSJI" crossorigin="anonymous"></script>
 
 
 <!-- Including InstantSearch.js library and styling -->
@@ -750,7 +721,7 @@ const hitTemplate = function(hit) {
 
   return `
     <div class="list__item">
-      <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+      <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
         <h2 class="archive__item-title" itemprop="headline"><a href="${url}">${title}</a></h2>
         <div class="archive__item-excerpt" itemprop="description">${content}</div>
       </article>

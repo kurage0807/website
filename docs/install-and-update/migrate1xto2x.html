@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Concepts - KAMONOHASHI</title>
+<!-- begin _includes/seo.html --><title>KAMONOHASHI 1.xから2.xへの移行 - KAMONOHASHI</title>
 <meta name="description" content="KAMONOHASHI(カモノハシ)は、Deep Learningのモデル開発を効率的に行うためのAI開発プラットフォームです。 AI開発プロセスを最大限に効率化し、最高のモデル開発を体験してみませんか。">
 
 
@@ -17,8 +17,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KAMONOHASHI">
-<meta property="og:title" content="Concepts">
-<meta property="og:url" content="http://localhost:4000/docs/concepts">
+<meta property="og:title" content="KAMONOHASHI 1.xから2.xへの移行">
+<meta property="og:url" content="http://localhost:4000/docs/install-and-update/migrate1xto2x">
 
 
 
@@ -34,7 +34,7 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/docs/concepts">
+<link rel="canonical" href="http://localhost:4000/docs/install-and-update/migrate1xto2x">
 
 
 
@@ -541,7 +541,7 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Concepts">
+    <meta itemprop="headline" content="KAMONOHASHI 1.xから2.xへの移行">
     
     
     
@@ -549,7 +549,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Concepts
+          <h1 id="page-title" class="page__title" itemprop="headline">KAMONOHASHI 1.xから2.xへの移行
 </h1>
           
         </header>
@@ -557,99 +557,87 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>本書では、KAMONOHASHIを使用する前の読者を対象として、KAMONOHASHIのなかで登場する概念や用語について解説し、
-読者がスムーズにKAMONOHASHIを使用開始できるようにすることを目的としています。</p>
-
-<h2 id="環境構成">環境構成</h2>
-<p>KAMONOHASHIはローカル環境、外部サービスの環境と連携して利用します。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align: left"> </th>
-      <th style="text-align: left">説明</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align: left">ローカル環境</td>
-      <td style="text-align: left">開発者自身が作業する環境です。NVIDIA GPUを搭載したマシンも使用することが可能です。モデルのソースコード、データ、実行コマンドなどを用意します。</td>
-    </tr>
-    <tr>
-      <td style="text-align: left">外部サービス環境</td>
-      <td style="text-align: left">GitやDockerなど、外部のサービスです。KAMONOHASHIには含まれません。個別に用意が必要です。</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><img src="/assets/images/illust_userFlow.png" alt="構成概念図" /></p>
-
-<h2 id="テナントとは">テナントとは</h2>
-
-<p>テナントはKAMONOHASHIの管理単位です。テナント毎に、ユーザの管理、クォータ(リソースの使用量制限)の設定が行えます。<br />
-テナントには、Gitリポジトリ、Docker Registryおよびオブジェクトストレージが関連付けられ、それぞれ複数のテナント間で共有可能です。
-Gitリポジトリ、Docker Registryは1テナントに複数登録することができます。</p>
-
-<p>初期状態では、「Sandbox」という名前のテナントが既定で用意されています。</p>
-
-<p><img src="/assets/images/illust_tenant.png" alt="テナント概念(図3-1)" /></p>
-
-<h2 id="ノードとは">ノードとは</h2>
-
-<p>ノードは、KAMONOHASHIに管理される物理的あるいは仮想的な計算用コンピュータを指します。
-KAMONOHASHI自体を構成する管理サーバ群は含まれません。</p>
-
-<p><img src="/assets/images/node.png" alt="ノード概念" /></p>
-
-<h2 id="ロールとは">ロールとは</h2>
-<p>ユーザにロールを付与することで、操作可能な機能を制御できます。
-一人のユーザには複数のロールを関連付けられます。</p>
-
-<p>ロールは大きく以下の2種類に大別されます。</p>
-
+        <h2 id="考慮事項">考慮事項</h2>
 <ul>
-  <li>システムロール
+  <li>KAMONOHASHI2.xではインフラ部分に<a href="https://github.com/NVIDIA/deepops">deepops</a>を採用する変更を行いました。
     <ul>
-      <li>テナントを横断する、システム全体に関連した情報を取り扱うためのロール</li>
-      <li>既定では全てのシステム管理権限がある「Adminロール」が使用可能</li>
-    </ul>
-  </li>
-  <li>テナントロール
-    <ul>
-      <li>特定のテナント内に限定された情報を扱うためのロール</li>
-      <li>所属するテナントごとに、ユーザに付与するテナントロールを指定する
-        <ul>
-          <li>例えば、同一のユーザに対し、AテナントにはManagerロールを付与し、BテナントにはUserロールとResercherロールを付与する、など</li>
-        </ul>
-      </li>
-      <li>既定では以下の3種類のテナントロールが使用できる</li>
+      <li>Ubuntu16.04はサポートされないため、18.04へのバージョンアップが必要になります</li>
+      <li>インフラ部分を含めたアンインストールとインストールが必要になります</li>
     </ul>
   </li>
 </ul>
 
-<table>
-  <thead>
-    <tr>
-      <th>ロール</th>
-      <th>説明</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>User</td>
-      <td>データの追加・削除、およびデータセットの作成・変更を行う権限を持つ。</td>
-    </tr>
-    <tr>
-      <td>Researcher</td>
-      <td>学習の実行、結果の評価を行う権限を持つ。</td>
-    </tr>
-    <tr>
-      <td>Manager</td>
-      <td>そのテナント内で使用する計算リソースや権限の管理を行う権限を持つ。</td>
-    </tr>
-  </tbody>
-</table>
+<h2 id="移行手順">移行手順</h2>
+<h3 id="事前準備">事前準備</h3>
+<ul>
+  <li>KAMONOHASHIのバックアップが取れていることを確認します</li>
+  <li>KAMONOHASHIのAdminアカウントでログインできることを確認します</li>
+</ul>
 
+<h3 id="kamonohashi-1xのアンインストール">KAMONOHASHI 1.xのアンインストール</h3>
+<ul>
+  <li>利用バージョンのアンインストールを実施してください
+    <ul>
+      <li>KAMONOHASHIノードの<code class="highlighter-rouge">/var/lib/kamonohashi/postgres</code>,Storageノードの<code class="highlighter-rouge">/var/lib/kamonohashi/nfs</code>は消さずに残してください</li>
+    </ul>
+  </li>
+  <li>
+    <p>Ubuntu 16.04をUbuntu 18.04にバージョンアップしてください</p>
+  </li>
+  <li>Kubernetes Masterの<code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/</code>ディレクトリを別の場所に退避します</li>
+</ul>
+
+<h2 id="2x構築ツールのセットアップ">2.x構築ツールのセットアップ</h2>
+<ul>
+  <li>Kubernetes masterをインストールするマシンにログインします。</li>
+  <li><code class="highlighter-rouge">sudo su -</code>を実行し、rootユーザーになります</li>
+  <li><code class="highlighter-rouge">mkdir -p /var/lib/kamonohashi/ &amp;&amp; cd /var/lib/kamonohashi/ </code>を実行します</li>
+  <li><code class="highlighter-rouge">git clone https://github.com/KAMONOHASHI/deploy-tools.git -b 2.0.0 --recursive</code>を実行してデプロイスクリプトを入手します</li>
+  <li><code class="highlighter-rouge">./deploy-kamonohashi.sh prepare</code>を実行して構築に必要なソフトウェアをインストールします</li>
+</ul>
+
+<h2 id="デプロイ構成の設定">デプロイ構成の設定</h2>
+<p><code class="highlighter-rouge">./deploy-kamonohashi.sh configure cluster</code>を実行します。
+対話形式で聞かれる以下の内容を入力します
+|質問文|解説|
+|—|—|
+|Kubernetes masterを<br />デプロイするサーバ名||
+|KAMONOHASHIを<br />デプロイするサーバ名||
+|Storageをデプロイするサーバ名|HWベンダーのNFSを使用する場合は|
+|計算ノード名|,区切りで複数指定できます。<br />例: gpu1,gpu2,gpu3 |
+|SSHで利用するユーザー名:|構築時に使用するSSHユーザーを指定します。構築ツールがSSH経由で構築を行う仕様のため、指定が必要になります|
+|プロキシを設定しますか？ [y/N]|プロキシ環境にデプロイする場合はyを入力して<br /> http_proxy, https_proxy, no_proxy<br />を設定します<br />no_proxyはこれまでの入力内容を元に必要なものが自動生成されます。<br />自組織のドメイン等を生成されたno_proxyに更に追加することもできます|</p>
+
+<p>入力内容に応じ、以下の設定ファイルに書き込みが行われます</p>
+<ul>
+  <li>deepopsの設定ファイル(deepops/config/inventry)</li>
+  <li>kamonohashiの設定ファイル(kamonohashi/conf/settings.yml)</li>
+</ul>
+
+<p>設定内容をカスタマイズする場合は次を参照し、設定ファイルの編集を行ってください。
+<a href="/customize">カスタマイズ設定ガイド</a></p>
+
+<h2 id="デプロイの実行">デプロイの実行</h2>
+<p>以下のコマンドではデプロイ構成の設定で指定したユーザーでSSHが実行されます。
+指定したユーザーでのSSHにパスワードが必要な場合は<code class="highlighter-rouge">-k</code>、
+指定したユーザーでのsudoにパスワードが必要な場合は<code class="highlighter-rouge">-K</code>のオプションを指定します。
+例： <code class="highlighter-rouge">./deploy-kamonohashi.sh clean nvidia-repo -k -K</code></p>
+
+<p><code class="highlighter-rouge">./deploy-kamonohashi.sh clean nvidia-repo</code>を実行します
+<code class="highlighter-rouge">./deploy-kamonohashi.sh deploy nvidia-gpg-key</code>を実行します。
+<code class="highlighter-rouge">./deploy-kamonohashi.sh deploy all</code>を実行します。</p>
+
+<p>実行後、対話形式で聞かれる以下の内容を入力します
+|質問文|解説|
+|—|—|
+|Admin Passwordを入力:|KAMONOHASHIのadminアカウントで使用する8文字以上のパスワードです。数字のみのパスワードは使用不可となっているので注意してください。KAMONOHASHI Web UIログイン・DB接続、Object Storageへのログインに使用します。<br />一度構築に使用したパスワードはデプロイツールでは変更できません。パスワードを変える場合は、完全にデータを削除するか、パスワード変更手順を実施する必要があります。パスワード変更手順は[kamonohashi-support@jp.nssol.nipponsteel.com]にお問い合わせください|
+|SSH password: |構築時に使用する、sshユーザーのパスワードです。<code class="highlighter-rouge">-k</code>指定時のみ聞かれます|
+|SUDO password[defaults to SSH password]: |構築時に使用する、sshユーザーのsudoパスワードです。<code class="highlighter-rouge">-K</code>指定時のみ聞かれます。|</p>
+
+<p>入力後に構築が始まります。
+構築には20分程かかります。</p>
+
+<p>構築後にアクセス用のURLが表示されるので、それをブラウザで開きます</p>
 
         
       </section>

@@ -561,14 +561,13 @@
   <li>2.xの<a href="/docs/install-and-update/prerequisite">マシンの要件</a>を事前にご確認ください</li>
 </ul>
 
-<h2 id="移行手順">移行手順</h2>
-<h3 id="事前準備">事前準備</h3>
+<h2 id="事前準備">事前準備</h2>
 <ul>
   <li>KAMONOHASHIのバックアップが取れていることを確認します</li>
   <li>KAMONOHASHIのAdminアカウントでログインできることを確認します</li>
 </ul>
 
-<h3 id="kamonohashi-1xのアンインストール">KAMONOHASHI 1.xのアンインストール</h3>
+<h2 id="kamonohashi-1xのアンインストール">KAMONOHASHI 1.xのアンインストール</h2>
 <p>次のコマンドを実行します</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /var/lib/kamonohashi/deploy-tools/&lt;version&gt;/infra/
 ./deploy-kqi-infra.sh prepare
@@ -588,40 +587,34 @@
   <li><code class="highlighter-rouge">mkdir -p /var/lib/kamonohashi/ &amp;&amp; cd /var/lib/kamonohashi/ </code>を実行します</li>
   <li><code class="highlighter-rouge">git clone https://github.com/KAMONOHASHI/deploy-tools.git -b 2.0.0.6 --recursive</code>を実行してデプロイスクリプトを入手します</li>
   <li><code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/</code>に移動します</li>
-  <li>プロキシ環境下では次のファイルにプロキシ設定を記載してください
+  <li>プロキシ環境下では<code class="highlighter-rouge">./deepops/scripts/proxy.sh</code>ファイルにプロキシ設定を記載してください
     <ul>
-      <li><code class="highlighter-rouge">./deepops/scripts/proxy.sh</code></li>
       <li>no_proxyには<code class="highlighter-rouge">localhost,127.0.0.1,.cluster.local,使用するマシンのIPアドレス・ホスト名</code>の記載をしてください</li>
     </ul>
   </li>
-  <li><code class="highlighter-rouge">./deploy-kamonohashi.sh prepare</code>を実行して構築に必要なソフトウェアをインストールします
+  <li>
+    <p><code class="highlighter-rouge">./deploy-kamonohashi.sh prepare</code>を実行して構築に必要なソフトウェアをインストールします</p>
+  </li>
+  <li>ansibleでエラーが出る場合はansibleのアンインストールを実行してから<code class="highlighter-rouge">prepare</code>を実行してください
     <ul>
-      <li>ansibleでエラーが出る場合はansibleのアンインストールを実行してから<code class="highlighter-rouge">prepare</code>を実行してください
-        <ul>
-          <li>スクリプト実行中に適切なansibleがインストールされます</li>
-          <li>ubuntuアップグレードに際し、ansibleの実行ファイルのみ残存するケースがあります。ansibleのアンインストールと<code class="highlighter-rouge">prepare</code>実行時に次のようなエラーが発生します
-            <ul>
-              <li>
-                <p>その場合は、<code class="highlighter-rouge">mv /usr/local/bin/ansible /tmp/</code>のようなコマンドでansible実行ファイルを退避して<code class="highlighter-rouge">prepare</code>を実行してください</p>
-              </li>
-              <li>
-                <p>ansibleのアンインストールでのエラー</p>
+      <li>スクリプト実行中に適切なansibleがインストールされます</li>
+      <li>
+        <p>ubuntuアップグレードに際し、ansibleの実行ファイルのみ残存するケースがあります。ansibleのアンインストールと<code class="highlighter-rouge">prepare</code>実行時に次のようなエラーが発生します。その場合は、<code class="highlighter-rouge">mv /usr/local/bin/ansible /tmp/</code>のようなコマンドでansible実行ファイルを退避して<code class="highlighter-rouge">prepare</code>を実行してください</p>
+      </li>
+      <li>
+        <p>ansibleのアンインストールでのエラー</p>
 
-                <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Cannot uninstall requirement ansible, not installed
-</code></pre></div>                </div>
-              </li>
-              <li>
-                <p>prepare実行時のエラー</p>
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Cannot uninstall requirement ansible, not installed
+</code></pre></div>        </div>
+      </li>
+      <li>
+        <p>prepare実行時のエラー</p>
 
-                <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Traceback (most recent call last):
+        <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Traceback (most recent call last):
   File "/usr/local/bin/ansible", line 40, in &lt;module&gt;
     from ansible.errors import AnsibleError, AnsibleOptionsError, AnsibleParserError
 ModuleNotFoundError: No module named 'ansible'
-</code></pre></div>                </div>
-              </li>
-            </ul>
-          </li>
-        </ul>
+</code></pre></div>        </div>
       </li>
     </ul>
   </li>
@@ -629,14 +622,38 @@ ModuleNotFoundError: No module named 'ansible'
 
 <h2 id="デプロイ構成の設定">デプロイ構成の設定</h2>
 <p><code class="highlighter-rouge">./deploy-kamonohashi.sh configure cluster</code>を実行します。
-対話形式で聞かれる以下の内容を入力します
-|質問文|解説|
-|—|—|
-|Kubernetes masterを<br />デプロイするサーバ名||
-|KAMONOHASHIを<br />デプロイするサーバ名||
-|Storageをデプロイするサーバ名|HWベンダーのNFSを使用する場合は<a href="/docs/install-and-update/customize-2x">カスタマイズ設定ガイド</a>を参照してください|
-|計算ノード名|,区切りで複数指定できます。<br />例: gpu1,gpu2,gpu3 |
-|SSHで利用するユーザー名:|構築時に使用するSSHユーザーを指定します。構築ツールがSSH経由で構築を行う仕様のため、指定が必要になります|</p>
+対話形式で聞かれる以下の内容を入力します</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>質問文</th>
+      <th>解説</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Kubernetes masterを<br />デプロイするサーバ名</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>KAMONOHASHIを<br />デプロイするサーバ名</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Storageをデプロイするサーバ名</td>
+      <td>HWベンダーのNFSを使用する場合は<a href="/docs/install-and-update/customize-2x">カスタマイズ設定ガイド</a>を参照してください</td>
+    </tr>
+    <tr>
+      <td>計算ノード名</td>
+      <td>,区切りで複数指定できます。<br />例: gpu1,gpu2,gpu3</td>
+    </tr>
+    <tr>
+      <td>SSHで利用するユーザー名:</td>
+      <td>構築時に使用するSSHユーザーを指定します。構築ツールがSSH経由で構築を行う仕様のため、指定が必要になります</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>入力内容に応じ、以下の設定ファイルに書き込みが行われます</p>
 <ul>
@@ -645,7 +662,7 @@ ModuleNotFoundError: No module named 'ansible'
 </ul>
 
 <p>設定内容をカスタマイズする場合は次を参照し、設定ファイルの編集を行ってください。
-<a href="/customize">カスタマイズ設定ガイド</a></p>
+<a href="/docs/install-and-update/customize-2x">カスタマイズ設定ガイド</a></p>
 
 <h2 id="デプロイの実行">デプロイの実行</h2>
 <p>以下のコマンドではデプロイ構成の設定で指定したユーザーでSSHが実行されます。
@@ -671,12 +688,30 @@ ModuleNotFoundError: No module named 'ansible'
   <li><code class="highlighter-rouge">./deploy-kamonohashi.sh deploy all</code>を実行します。</li>
 </ol>
 
-<p>実行後、対話形式で聞かれる以下の内容を入力します
-|質問文|解説|
-|—|—|
-|Admin Passwordを入力:|KAMONOHASHIのadminアカウントで使用する8文字以上のパスワードです。数字のみのパスワードは使用不可となっているので注意してください。KAMONOHASHI Web UIログイン・DB接続、Object Storageへのログインに使用します。<br />一度構築に使用したパスワードはデプロイツールでは変更できません。パスワードを変える場合は、完全にデータを削除するか、パスワード変更手順を実施する必要があります。パスワード変更手順は[kamonohashi-support@jp.nssol.nipponsteel.com]にお問い合わせください|
-|SSH password: |構築時に使用する、sshユーザーのパスワードです。<code class="highlighter-rouge">-k</code>指定時のみ聞かれます|
-|SUDO password[defaults to SSH password]: |構築時に使用する、sshユーザーのsudoパスワードです。<code class="highlighter-rouge">-K</code>指定時のみ聞かれます。|</p>
+<p>実行後、対話形式で聞かれる以下の内容を入力します</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>質問文</th>
+      <th>解説</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Admin Passwordを入力:</td>
+      <td>KAMONOHASHIのadminアカウントで使用する8文字以上のパスワードです。数字のみのパスワードは使用不可となっているので注意してください。KAMONOHASHI Web UIログイン・DB接続、Object Storageへのログインに使用します。<br />一度構築に使用したパスワードはデプロイツールでは変更できません。パスワードを変える場合は、完全にデータを削除するか、パスワード変更手順を実施する必要があります。パスワード変更手順は[kamonohashi-support@jp.nssol.nipponsteel.com]にお問い合わせください</td>
+    </tr>
+    <tr>
+      <td>SSH password:</td>
+      <td>構築時に使用する、sshユーザーのパスワードです。<code class="highlighter-rouge">-k</code>指定時のみ聞かれます</td>
+    </tr>
+    <tr>
+      <td>SUDO password[defaults to SSH password]:</td>
+      <td>構築時に使用する、sshユーザーのsudoパスワードです。<code class="highlighter-rouge">-K</code>指定時のみ聞かれます。</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>入力後に構築が始まります。
 構築には20分程かかります。</p>

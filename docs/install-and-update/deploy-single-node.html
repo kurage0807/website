@@ -582,11 +582,26 @@
 <h2 id="デプロイ構成の設定">デプロイ構成の設定</h2>
 <p><code class="highlighter-rouge">./deploy-kamonohashi.sh configure single-node</code>を実行します。</p>
 
-<p>対話形式で聞かれる以下の内容を入力します
-|質問文|解説|
-|—|—|
-|SSHで利用するユーザー名:|構築時に使用するSSHユーザーを指定します。構築ツールがSSH経由で構築を行う仕様のため、指定が必要になります|
-|プロキシを設定しますか？ [y/N]:|プロキシ環境にデプロイする場合はyを入力して<br /> http_proxy, https_proxy, no_proxy<br />を設定します<br />no_proxyは必要なものが自動生成されますが、この項目に入力することで<br />自組織のドメイン等を生成されたno_proxyに更に追加することができます|</p>
+<p>対話形式で聞かれる以下の内容を入力します</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>質問文</th>
+      <th>解説</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>SSHで利用するユーザー名:</td>
+      <td>構築時に使用するSSHユーザーを指定します。構築ツールがSSH経由で構築を行う仕様のため、指定が必要になります</td>
+    </tr>
+    <tr>
+      <td>プロキシを設定しますか？ [y/N]:</td>
+      <td>プロキシ環境にデプロイする場合はyを入力して<br /> http_proxy, https_proxy, no_proxy<br />を設定します<br />no_proxyは必要なものが自動生成されますが、この項目に入力することで<br />自組織のドメイン等を生成されたno_proxyに更に追加することができます</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>入力内容に応じ、以下の設定ファイルに書き込みが行われます</p>
 <ul>
@@ -601,8 +616,9 @@
 <p><code class="highlighter-rouge">./deploy-kamonohashi.sh deploy all</code>を実行します。
 この際にデプロイ構成の設定で指定したユーザーでSSHが実行されます。
 指定したユーザーでのSSHにパスワードが必要な場合は<code class="highlighter-rouge">-k</code>、
-指定したユーザーでのsudoにパスワードが必要な場合は<code class="highlighter-rouge">-K</code>のオプションを指定します。
-例： <code class="highlighter-rouge">./deploy-kamonohashi.sh deploy all -k -K</code></p>
+指定したユーザーでのsudoにパスワードが必要な場合は<code class="highlighter-rouge">-K</code>のオプションを指定します。</p>
+
+<p>例： <code class="highlighter-rouge">./deploy-kamonohashi.sh deploy all -k -K</code></p>
 
 <ul>
   <li>sshキーを~/.ssh/id_rsaで配置している場合は、ペアのid_rsa.pubも~/.sshに配置してください</li>
@@ -643,13 +659,12 @@
 <p>構築には20分程かかります。</p>
 
 <ul>
-  <li>DGX利用時のみ、構築後に次の作業を行ってください
-    <ul>
-      <li><code class="highlighter-rouge">rm /etc/systemd/system/docker.service.d/docker-override.conf</code></li>
-      <li>これは構築に使用する NVIDIA deepopsのバグで、20.02.1の次のdeepopsのリリースがされれば<a href="https://github.com/NVIDIA/deepops/commit/980cfe42685e17f0d3688fe50b1939aeaa51f314#diff-25c48ad81ab2a8e8c03e25d8d023bc1c">対応される見込み</a>です。</li>
-    </ul>
-  </li>
+  <li>DGX利用時のみ、構築後に次の作業を行ってください</li>
 </ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> /etc/systemd/system/docker.service.d/docker-override.conf
+</code></pre></div></div>
+<p>これは構築に使用する NVIDIA deepopsのバグで、20.02.1の次のdeepopsのリリースがされれば<a href="https://github.com/NVIDIA/deepops/commit/980cfe42685e17f0d3688fe50b1939aeaa51f314#diff-25c48ad81ab2a8e8c03e25d8d023bc1c">対応される見込み</a>です。</p>
 
 <p>構築後にアクセス用のURLが表示されるので、それをブラウザで開きます</p>
 

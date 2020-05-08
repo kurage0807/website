@@ -312,7 +312,7 @@
             
             
 
-            <li><a href="/docs/faq/install" class="">・導入について</a></li>
+            <li><a href="/docs/faq-detail/install" class="">・導入について</a></li>
           
             
             
@@ -320,7 +320,7 @@
             
             
 
-            <li><a href="/docs/faq/operation" class="">・利用について</a></li>
+            <li><a href="/docs/faq-detail/operation" class="">・利用について</a></li>
           
             
             
@@ -328,7 +328,7 @@
             
             
 
-            <li><a href="/docs/faq/general" class="">・その他</a></li>
+            <li><a href="/docs/faq-detail/general" class="">・その他</a></li>
           
         </ul>
         
@@ -561,22 +561,20 @@
 <p>上記の構成では要件が足りず、カスタマイズしたい場合は<a href="mailto:kamonohashi-support@jp.nssol.nipponsteel.com">kamonohashi-support@jp.nssol.nipponsteel.com</a>にお問い合わせください</p>
 
 <h2 id="アンインストール方法">アンインストール方法</h2>
+
+<p>以下のコマンドを実行するとソフトウェアがアンインストールされます。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./deploy-kamonohashi.sh clean all
+</code></pre></div></div>
+
 <ul>
-  <li><code class="highlighter-rouge">./deploy-kamonohashi.sh clean all</code>を実行するとソフトウェアがアンインストールされます。
+  <li>このコマンドではKAMONOHASHIの内部データ(データベース, ストレージのデータ)は削除しません</li>
+  <li>adminパスワードも保存されたままです</li>
+  <li>再度デプロイすると過去のデータベース, ストレージの中身を引き続き使用します</li>
+  <li>完全にデータを削除する場合は構成に応じ次のディレクトリを削除してください
     <ul>
-      <li>このコマンドではKAMONOHASHIの内部データ(データベース, ストレージのデータ)は削除しません
-        <ul>
-          <li>adminパスワードも保存されたままです</li>
-        </ul>
-      </li>
-      <li>再度デプロイすると過去のデータベース, ストレージの中身を引き続き使用します</li>
-      <li>完全にデータを削除する場合は構成に応じ次のディレクトリを削除してください
-        <ul>
-          <li>シングルノード構成: マシン内の<code class="highlighter-rouge">/var/lib/kamonohashi</code></li>
-          <li>クラスタ構成: KAMONOHASHIノード, STORAGEノードの<code class="highlighter-rouge">/var/lib/kamonohashi</code></li>
-          <li>構築に失敗してやり直す際にパスワードも変更する場合はこのディレクトリを削除してください</li>
-        </ul>
-      </li>
+      <li>シングルノード構成: マシン内の<code class="highlighter-rouge">/var/lib/kamonohashi</code></li>
+      <li>クラスタ構成: KAMONOHASHIノード, STORAGEノードの<code class="highlighter-rouge">/var/lib/kamonohashi</code></li>
+      <li>構築に失敗してやり直す際にパスワードも変更する場合はこのディレクトリを削除してください</li>
     </ul>
   </li>
 </ul>

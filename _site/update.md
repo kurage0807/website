@@ -59,9 +59,10 @@ git checkout --recurse-submodules tags/<バージョン>
 
 動作を確認した環境は以下の通りです。
 
-|KAMONOHASHI|GitLab|MinIO| LDAP|Kubernetes |
-|---|---|---|---|---|
-|v1.0.1以降|11.8以降|RELEASE.2019-01-23T23-18-58Z|version 3| v1.12.7,v1.14.1|
-|v1.0.0|11.7以前|RELEASE.2019-01-23T23-18-58Z|version 3| v1.12.7|
+|KAMONOHASHI|GitLab|MinIO| LDAP|Kubernetes |Ubuntu |
+|---|---|---|---|---|---|
+|v2.0.0|11.8以降|RELEASE.2020-03-09T18-26-53Z|version 3| v1.15.3 |Ubuntu 18.04|
+|v1.0.1 ~ v1.1.7|11.8以降|RELEASE.2019-01-23T23-18-58Z|version 3| v1.12.7,v1.14.1|ubuntu 16.04|
+|v1.0.0|11.7以前|RELEASE.2019-01-23T23-18-58Z|version 3| v1.12.7|Ubuntu 16.04|
 
 v1.0.0では11.8以降のGitLabに対応していませんので注意してください。

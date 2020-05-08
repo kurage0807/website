@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Docs - KAMONOHASHI</title>
+<!-- begin _includes/seo.html --><title>KAMONOHASHI 1.xから2.xへの移行 - KAMONOHASHI</title>
 <meta name="description" content="KAMONOHASHI(カモノハシ)は、Deep Learningのモデル開発を効率的に行うためのAI開発プラットフォームです。 AI開発プロセスを最大限に効率化し、最高のモデル開発を体験してみませんか。">
 
 
@@ -17,8 +17,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KAMONOHASHI">
-<meta property="og:title" content="Docs">
-<meta property="og:url" content="http://localhost:4000/docs/">
+<meta property="og:title" content="KAMONOHASHI 1.xから2.xへの移行">
+<meta property="og:url" content="http://localhost:4000/docs/install-and-update/migrate1xto2x">
 
 
 
@@ -34,7 +34,7 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/docs/">
+<link rel="canonical" href="http://localhost:4000/docs/install-and-update/migrate1xto2x">
 
 
 
@@ -533,7 +533,7 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Docs">
+    <meta itemprop="headline" content="KAMONOHASHI 1.xから2.xへの移行">
     
     
     
@@ -541,7 +541,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Docs
+          <h1 id="page-title" class="page__title" itemprop="headline">KAMONOHASHI 1.xから2.xへの移行
 </h1>
           
         </header>
@@ -549,37 +549,139 @@
 
       <section class="page__content" itemprop="text">
         
-        <h2 id="kamonohashiをはじめる">KAMONOHASHIをはじめる</h2>
+        <h2 id="考慮事項">考慮事項</h2>
 <ul>
-  <li><a href="/docs/install-and-update">KAMONOHASHIをインストールする</a></li>
-  <li><a href="/docs/tutorial">チュートリアルを行う</a></li>
+  <li>KAMONOHASHI2.xではインフラ部分に<a href="https://github.com/NVIDIA/deepops">deepops</a>を採用する変更を行いました。
+    <ul>
+      <li>Ubuntu16.04はサポートされないため、18.04へのバージョンアップが必要になります</li>
+      <li>インフラ部分を含めたアンインストールとインストールが必要になります</li>
+    </ul>
+  </li>
+  <li>2.xへのバージョンアップ後は、1.xへのバージョンダウンはできません</li>
+  <li>2.xの<a href="/docs/install-and-update/prerequisite">マシンの要件</a>を事前にご確認ください</li>
 </ul>
 
-<h2 id="kamonohashiを使いこなす">KAMONOHASHIを使いこなす</h2>
+<h2 id="移行手順">移行手順</h2>
+<h3 id="事前準備">事前準備</h3>
 <ul>
-  <li><a href="/docs/how-to/user">User Guide</a></li>
-  <li><a href="/docs/how-to/admin">Admin Guide</a></li>
-  <li><a href="/docs/how-to/cli">CLI Guide</a></li>
-  <li><a href="/docs/how-to/infra">Infra Guide</a></li>
+  <li>KAMONOHASHIのバックアップが取れていることを確認します</li>
+  <li>KAMONOHASHIのAdminアカウントでログインできることを確認します</li>
 </ul>
 
-<h2 id="よくある質問">よくある質問</h2>
-<p>KAMONOHASHIインストールや各種設定など、困った時は以下をご覧ください</p>
+<h3 id="kamonohashi-1xのアンインストール">KAMONOHASHI 1.xのアンインストール</h3>
+<p>次のコマンドを実行します</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /var/lib/kamonohashi/deploy-tools/&lt;version&gt;/infra/
+./deploy-kqi-infra.sh prepare
+./deploy-kqi-infra.sh clean
+</code></pre></div></div>
 <ul>
-  <li><a href="/docs/faq">FAQ</a></li>
+  <li>deepopsがインストールするGPU driverとの競合を防ぐため、GPUドライバをアンインストールします</li>
+  <li>Ubuntu 16.04をUbuntu 18.04にバージョンアップしてください</li>
+  <li>Kubernetes Masterの<code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/</code>ディレクトリを別の場所に退避します</li>
+  <li>アンインストール完了後、<a href="/docs/install-and-update/prerequisite">マシンの要件</a>に合わせた設定をしてください</li>
 </ul>
 
-<h2 id="kamonohashi--youtube-channel">KAMONOHASHI  YOUTUBE CHANNEL</h2>
+<h2 id="2x構築ツールのセットアップ">2.x構築ツールのセットアップ</h2>
 <ul>
-  <li><a href="https://www.youtube.com/embed/tltp7jBkEuQ" target="_blank">インストール動画</a></li>
+  <li>Kubernetes masterをインストールするマシンにログインします。</li>
+  <li><code class="highlighter-rouge">sudo su -</code>を実行し、rootユーザーになります</li>
+  <li><code class="highlighter-rouge">mkdir -p /var/lib/kamonohashi/ &amp;&amp; cd /var/lib/kamonohashi/ </code>を実行します</li>
+  <li><code class="highlighter-rouge">git clone https://github.com/KAMONOHASHI/deploy-tools.git -b 2.0.0.6 --recursive</code>を実行してデプロイスクリプトを入手します</li>
+  <li><code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/</code>に移動します</li>
+  <li>プロキシ環境下では次のファイルにプロキシ設定を記載してください
+    <ul>
+      <li><code class="highlighter-rouge">./deepops/scripts/proxy.sh</code></li>
+      <li>no_proxyには<code class="highlighter-rouge">localhost,127.0.0.1,.cluster.local,使用するマシンのIPアドレス・ホスト名</code>の記載をしてください</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">./deploy-kamonohashi.sh prepare</code>を実行して構築に必要なソフトウェアをインストールします
+    <ul>
+      <li>ansibleでエラーが出る場合はansibleのアンインストールを実行してから<code class="highlighter-rouge">prepare</code>を実行してください
+        <ul>
+          <li>スクリプト実行中に適切なansibleがインストールされます</li>
+          <li>ubuntuアップグレードに際し、ansibleの実行ファイルのみ残存するケースがあります。ansibleのアンインストールと<code class="highlighter-rouge">prepare</code>実行時に次のようなエラーが発生します
+            <ul>
+              <li>
+                <p>その場合は、<code class="highlighter-rouge">mv /usr/local/bin/ansible /tmp/</code>のようなコマンドでansible実行ファイルを退避して<code class="highlighter-rouge">prepare</code>を実行してください</p>
+              </li>
+              <li>
+                <p>ansibleのアンインストールでのエラー</p>
+
+                <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Cannot uninstall requirement ansible, not installed
+</code></pre></div>                </div>
+              </li>
+              <li>
+                <p>prepare実行時のエラー</p>
+
+                <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Traceback (most recent call last):
+  File "/usr/local/bin/ansible", line 40, in &lt;module&gt;
+    from ansible.errors import AnsibleError, AnsibleOptionsError, AnsibleParserError
+ModuleNotFoundError: No module named 'ansible'
+</code></pre></div>                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ul>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/MKCWf_XLD-I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<h2 id="デプロイ構成の設定">デプロイ構成の設定</h2>
+<p><code class="highlighter-rouge">./deploy-kamonohashi.sh configure cluster</code>を実行します。
+対話形式で聞かれる以下の内容を入力します
+|質問文|解説|
+|—|—|
+|Kubernetes masterを<br />デプロイするサーバ名||
+|KAMONOHASHIを<br />デプロイするサーバ名||
+|Storageをデプロイするサーバ名|HWベンダーのNFSを使用する場合は<a href="/docs/install-and-update/customize-2x">カスタマイズ設定ガイド</a>を参照してください|
+|計算ノード名|,区切りで複数指定できます。<br />例: gpu1,gpu2,gpu3 |
+|SSHで利用するユーザー名:|構築時に使用するSSHユーザーを指定します。構築ツールがSSH経由で構築を行う仕様のため、指定が必要になります|</p>
+
+<p>入力内容に応じ、以下の設定ファイルに書き込みが行われます</p>
+<ul>
+  <li>deepopsの設定ファイル(deepops/config/inventry)</li>
+  <li>kamonohashiの設定ファイル(kamonohashi/conf/settings.yml)</li>
+</ul>
+
+<p>設定内容をカスタマイズする場合は次を参照し、設定ファイルの編集を行ってください。
+<a href="/customize">カスタマイズ設定ガイド</a></p>
+
+<h2 id="デプロイの実行">デプロイの実行</h2>
+<p>以下のコマンドではデプロイ構成の設定で指定したユーザーでSSHが実行されます。
+指定したユーザーでのSSHにパスワードが必要な場合は<code class="highlighter-rouge">-k</code>、
+指定したユーザーでのsudoにパスワードが必要な場合は<code class="highlighter-rouge">-K</code>のオプションを指定します。
+例： <code class="highlighter-rouge">./deploy-kamonohashi.sh clean nvidia-repo -k -K</code></p>
 
 <ul>
-  <li><a href="https://www.youtube.com/embed/tltp7jBkEuQ" target="_blank">チュートリアル動画</a></li>
+  <li>sshキーを~/.ssh/id_rsaで配置している場合は、ペアのid_rsa.pubも~/.sshに配置してください</li>
 </ul>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/tltp7jBkEuQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
+<ol>
+  <li><code class="highlighter-rouge">./deploy-kamonohashi.sh clean nvidia-repo</code>を実行します
+    <ul>
+      <li>ubuntu16用のnvidiaリポジトリ登録が残っているためです</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">./deploy-kamonohashi.sh deploy nvidia-gpg-key</code>を実行します。
+    <ul>
+      <li>nvidiaのGPGキーは期限が半年であり、期限が切れるとaptが失敗することの対応です</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">./deploy-kamonohashi.sh deploy all</code>を実行します。</li>
+</ol>
+
+<p>実行後、対話形式で聞かれる以下の内容を入力します
+|質問文|解説|
+|—|—|
+|Admin Passwordを入力:|KAMONOHASHIのadminアカウントで使用する8文字以上のパスワードです。数字のみのパスワードは使用不可となっているので注意してください。KAMONOHASHI Web UIログイン・DB接続、Object Storageへのログインに使用します。<br />一度構築に使用したパスワードはデプロイツールでは変更できません。パスワードを変える場合は、完全にデータを削除するか、パスワード変更手順を実施する必要があります。パスワード変更手順は[kamonohashi-support@jp.nssol.nipponsteel.com]にお問い合わせください|
+|SSH password: |構築時に使用する、sshユーザーのパスワードです。<code class="highlighter-rouge">-k</code>指定時のみ聞かれます|
+|SUDO password[defaults to SSH password]: |構築時に使用する、sshユーザーのsudoパスワードです。<code class="highlighter-rouge">-K</code>指定時のみ聞かれます。|</p>
+
+<p>入力後に構築が始まります。
+構築には20分程かかります。</p>
+
+<p>構築後にアクセス用のURLが表示されるので、それをブラウザで開きます</p>
 
         
       </section>

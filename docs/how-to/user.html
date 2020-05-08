@@ -137,7 +137,7 @@
               <a href="/docs/faq/" >FAQ</a>
             </li></ul>
         <button class="greedy-nav__dropdown"  type="button">
-            <span>1.1.7 <i class="material-icons">arrow_drop_down</i> </span>
+            <span>2.0.0 <i class="material-icons">arrow_drop_down</i> </span>
             <div class="dropdown-content">
                 <a href="/docs/supported-doc-versions" >other version</a>
             </div>         
@@ -271,14 +271,6 @@
             
 
             <li><a href="/docs/install-and-update#%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%A2%E3%83%83%E3%83%97" class="">・バージョンアップ</a></li>
-          
-            
-            
-
-            
-            
-
-            <li><a href="/docs/install-and-update#%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%80%E3%82%A6%E3%83%B3" class="">・バージョンダウン</a></li>
           
             
             
@@ -1079,6 +1071,11 @@ KAMONOHASHIではトレーサビリティを重視しているため、一度学
       <td>学習に渡す環境変数を指定する。環境変数はコンテナ内の環境変数へ追加設定される。</td>
     </tr>
     <tr>
+      <td>開放ポート番号(TCP)</td>
+      <td>任意</td>
+      <td>コンテナで開放するポート番号を指定する。ここで指定したポートが開放され、学習実行中ノードポート経由でアクセスできる</td>
+    </tr>
+    <tr>
       <td>結果zip圧縮</td>
       <td>必須</td>
       <td>学習終了後の結果ファイルをzip圧縮するかどうかを指定する。</td>
@@ -1113,9 +1110,13 @@ Tensorbardの項目からTensorboadが起動できます。
 <p>学習を停止したい場合、[学習管理]の画面で該当学習を選択します。操作の項目にある学習停止ボタンから学習を停止することができます。
 ※この操作は学習のステータスがRunning時のみ実行可能です。</p>
 
-<h4 id="学習コンテナへの接続">学習コンテナへの接続</h4>
+<h4 id="シェル起動">シェル起動</h4>
 <p>学習を実行しているコンテナに接続したい場合、[学習管理]の画面で該当学習を選択し、[Shell起動]ボタンを押下します。
 コンテナ内のrootユーザとしてシェルが立ち上がり、コンテナ内で任意のコマンドを実行できます。
+※この操作は学習のステータスがRunning時のみ実行可能です。</p>
+
+<h4 id="学習コンテナへのアクセス">学習コンテナへのアクセス</h4>
+<p>コンテナアクセス欄に表示されているNode Portを介して、学習実行時に指定したTarget Portへアクセスできます。
 ※この操作は学習のステータスがRunning時のみ実行可能です。</p>
 
 <h4 id="コピー実行">コピー実行</h4>

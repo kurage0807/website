@@ -137,7 +137,7 @@
               <a href="/docs/faq/" >FAQ</a>
             </li></ul>
         <button class="greedy-nav__dropdown"  type="button">
-            <span>1.1.7 <i class="material-icons">arrow_drop_down</i> </span>
+            <span>2.0.0 <i class="material-icons">arrow_drop_down</i> </span>
             <div class="dropdown-content">
                 <a href="/docs/supported-doc-versions" >other version</a>
             </div>         
@@ -271,14 +271,6 @@
             
 
             <li><a href="/docs/install-and-update#%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%A2%E3%83%83%E3%83%97" class="">・バージョンアップ</a></li>
-          
-            
-            
-
-            
-            
-
-            <li><a href="/docs/install-and-update#%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%80%E3%82%A6%E3%83%B3" class="">・バージョンダウン</a></li>
           
             
             
@@ -561,174 +553,16 @@
 
 <h2 id="インストール方法">インストール方法</h2>
 
-<h3 id="ベーシッククラスタの構築">ベーシッククラスタの構築</h3>
-
-<h4 id="構成について">構成について</h4>
-<p>KAMONOHASHIのクラスタは次の4種類のサーバーで構成されます</p>
-
-<p><img src="/assets/images/basic-cluster-machenes.png" alt="マシーン" /></p>
-
 <ul>
-  <li>Kubernetes master: ディープラーニングの実行スケジューリング等に使用します</li>
-  <li>KAMONOHASHI: KAMONOHASHIのWEBシステム(Web,DBコンテナ)で使用します</li>
-  <li>Storage: 学習用データと学習結果ファイルの保管に使用します</li>
-  <li>GPUサーバー: ディープラーニングの実行に使用します</li>
+  <li><a href="/docs/install-and-update/deploy-single-node">シングルノード構成でのインストール</a></li>
+  <li><a href="/docs/install-and-update/deploy-cluster">クラスタ構成でのインストール</a></li>
 </ul>
 
-<p>ベーシッククラスタ構成では、Kubernetes, KAMONOHASHI, Storage に1台ずつのマシンと、
-複数台のGPUサーバーを想定しています</p>
-
-<h4 id="構築の準備">構築の準備</h4>
-<ul>
-  <li>マシンを用意します
-    <ul>
-      <li>物理または仮想のマシンを3台（Kubernetes, KAMONOHASHI, Storage　に使用）</li>
-      <li>NVIDIA GPUを搭載したマシンを1台以上</li>
-    </ul>
-  </li>
-  <li>全てのマシンがAMD64(Intel 64bit CPU)である必要があります</li>
-  <li>各サーバーの最小リソース要件は下記になります。
-    <ul>
-      <li>データ・ユーザー数・実施するディープラーニングの内容に応じて下記よりも多く必要になる場合があります</li>
-    </ul>
-
-    <table>
-      <thead>
-        <tr>
-          <th style="text-align: left">マシン種別</th>
-          <th style="text-align: left">CPU</th>
-          <th style="text-align: left">メモリ</th>
-          <th style="text-align: left">備考</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="text-align: left">Kubernetes master</td>
-          <td style="text-align: left">2 コア</td>
-          <td style="text-align: left">2 GB</td>
-          <td style="text-align: left"> </td>
-        </tr>
-        <tr>
-          <td style="text-align: left">KAMONOHASHI</td>
-          <td style="text-align: left">4 コア</td>
-          <td style="text-align: left">8 GB</td>
-          <td style="text-align: left">/var/lib/に10GB以上の空き容量</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">Storage</td>
-          <td style="text-align: left">1 コア</td>
-          <td style="text-align: left">2 GB</td>
-          <td style="text-align: left">/var/lib/に学習データ・学習結果ファイル分の空き容量</td>
-        </tr>
-        <tr>
-          <td style="text-align: left">GPUサーバー</td>
-          <td style="text-align: left">2 コア</td>
-          <td style="text-align: left">2 GB</td>
-          <td style="text-align: left">Fermi (2.1)より後の世代のNVIDIA GPU, /var/libに1学習分のデータが入る空容量</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>全てのマシンに Ubuntu Server 16.04 をインストールします</li>
-  <li>全てのマシンに共通のアカウントでsshログインできるようにします
-    <ul>
-      <li>そのアカウントが全てのマシンでsudoできるようにします</li>
-      <li>sshキーを使用する場合は、id_rsaファイルをKubernetes masterマシンの/root/.ssh/に所有者root、パーミッション0600で配置します</li>
-    </ul>
-  </li>
-  <li>用意したマシンの名前解決が出来るようにします
-    <ul>
-      <li>KAMONOHASHIユーザーの端末、各マシン上で名前解決可能にします。DNS利用を強く推奨します。</li>
-    </ul>
-  </li>
-  <li>NTPを設定し、各マシンの時刻を揃えます</li>
-  <li>各マシンがインターネットアクセス出来るようにします</li>
-  <li>GPUサーバーにGPUドライバをインストールします。
-    <ul>
-      <li><a href="https://www.nvidia.co.jp/Download/index.aspx?lang=jp">NVIDIAドライバダウンロードサイト</a>からインストール用ファイルがダウンロード可能です</li>
-    </ul>
-  </li>
-</ul>
-
-<h4 id="構築方法">構築方法</h4>
-<ul>
-  <li>Kubernetes master用に用意したマシンにログインします</li>
-  <li>root userで次を実行します
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">KQI_VERSION</span><span class="o">=</span>1.1.7 
-wget <span class="nt">-O</span> /tmp/deploy-tools-<span class="nv">$KQI_VERSION</span>.tar.gz https://github.com/KAMONOHASHI/kamonohashi/releases/download/<span class="nv">$KQI_VERSION</span>/deploy-tools-<span class="nv">$KQI_VERSION</span>.tar.gz
-<span class="nb">mkdir</span> <span class="nt">-p</span> /var/lib/kamonohashi/deploy-tools/<span class="nv">$KQI_VERSION</span>/
-<span class="nb">cd</span> /var/lib/kamonohashi/deploy-tools/<span class="nv">$KQI_VERSION</span>/
-<span class="nb">tar</span> <span class="nt">--strip</span><span class="o">=</span>1 <span class="nt">-xf</span> /tmp/deploy-tools-<span class="nv">$KQI_VERSION</span>.tar.gz
-./deploy-basic-cluster.sh deploy
-</code></pre></div>    </div>
-    <p>対話形式で設定が聞かれるので、下記に従って設定を入力します</p>
-  </li>
-</ul>
-
-<div align="center">
-<img src="/assets/images/kqi-terminal.png" alt="ターミナル" />
-</div>
-
-<p>対話形式で以下の項目の質問に答えます。[y/n]形式での質問は大文字の方がデフォルトの値です。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>質問文</th>
-      <th>解説</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Kubernetes masterを<br />デプロイするサーバ名</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>KAMONOHASHIを<br />デプロイするサーバ名</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Storageをデプロイするサーバ名</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>GPU サーバ名</td>
-      <td>,区切りで複数指定できます。<br />例: gpu1,gpu2,gpu3</td>
-    </tr>
-    <tr>
-      <td>SSHユーザー名</td>
-      <td>構築の準備で用意したSSHユーザー名を指定します</td>
-    </tr>
-    <tr>
-      <td>SSHパスワード</td>
-      <td>SSHにパスワードを使用する場合は入力します。<br />SSH認証キー<code class="highlighter-rouge">~/.ssh/id_rsa</code>を使う場合は何も入力せずにEnterを押してこの項目はスキップします</td>
-    </tr>
-    <tr>
-      <td>SUDOパスワード</td>
-      <td>パスワードなしでsudoコマンド実行可能な場合は何も入力せずにEnterを押してこの項目をスキップします</td>
-    </tr>
-    <tr>
-      <td>プロキシを設定しますか？ [y/N]</td>
-      <td>プロキシ環境にデプロイする場合はyを入力して<br /> http_proxy, https_proxy, no_proxy<br />を設定します<br />no_proxyはこれまでの入力内容を元に必要なものが自動生成されます。<br />自組織のドメイン等を生成されたno_proxyに更に追加することもできます</td>
-    </tr>
-    <tr>
-      <td>KAMONOHASHIのadminパスワード</td>
-      <td>adminアカウントで使用する8文字以上のパスワードです。数字のみのパスワードは使用不可となっているので注意してください。KAMONOHASHI Web UIログイン・DB接続、Object Storageへのログインに使用します。<br />一度構築に使用したパスワードはデプロイツールでは変更できません。パスワードを変える場合は、完全にデータを削除するか、パスワード変更手順を実施する必要があります。パスワード変更手順は[kamonohashi-support@jp.nssol.nipponsteel.com]にお問い合わせください</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>これでKAMONOHASHIのインストールは完了です。
-<a href="/docs/tutorial">チュートリアル</a>に進みKAMONOHASHIを用いたAI開発を開始しましょう！</p>
-
-<h3 id="カスタマイズしたクラスタの構築">カスタマイズしたクラスタの構築</h3>
-<ul>
-  <li>ベーシッククラスタの構成では要件が足りず、カスタマイズしたい場合は[kamonohashi-support@jp.nssol.nipponsteel.com]にお問い合わせください</li>
-</ul>
+<p>上記の構成では要件が足りず、カスタマイズしたい場合は<a href="mailto:kamonohashi-support@jp.nssol.nipponsteel.com">kamonohashi-support@jp.nssol.nipponsteel.com</a>にお問い合わせください</p>
 
 <h2 id="アンインストール方法">アンインストール方法</h2>
 <ul>
-  <li><code class="highlighter-rouge">./deploy-basic-cluster.sh clean</code>を実行するとソフトウェアがアンインストールされます。
+  <li><code class="highlighter-rouge">./deploy-kamonohashi.sh clean all</code>を実行するとソフトウェアがアンインストールされます。
     <ul>
       <li>このコマンドではKAMONOHASHIの内部データ(データベース, ストレージのデータ)は削除しません
         <ul>
@@ -736,8 +570,10 @@ wget <span class="nt">-O</span> /tmp/deploy-tools-<span class="nv">$KQI_VERSION<
         </ul>
       </li>
       <li>再度デプロイすると過去のデータベース, ストレージの中身を引き続き使用します</li>
-      <li>完全にデータを削除する場合は KAMONOHASHIノード, STORAGEノードの 2台で<code class="highlighter-rouge">/var/lib/kamonohashi</code> を削除してください
+      <li>完全にデータを削除する場合は構成に応じ次のディレクトリを削除してください
         <ul>
+          <li>シングルノード構成: マシン内の<code class="highlighter-rouge">/var/lib/kamonohashi</code></li>
+          <li>クラスタ構成: KAMONOHASHIノード, STORAGEノードの<code class="highlighter-rouge">/var/lib/kamonohashi</code></li>
           <li>構築に失敗してやり直す際にパスワードも変更する場合はこのディレクトリを削除してください</li>
         </ul>
       </li>
@@ -745,157 +581,28 @@ wget <span class="nt">-O</span> /tmp/deploy-tools-<span class="nv">$KQI_VERSION<
   </li>
 </ul>
 
+<h3 id="アンインストールについての補足事項">アンインストールについての補足事項</h3>
+<ul>
+  <li>2.0.0のアンインストールでは、内部で利用するツールの<a href="https://github.com/kubernetes-sigs/kubespray/issues/5185">既知のバグ</a>により、次のようなエラーがメッセージに含まれます。
+これは無視して良いエラーです</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    The task includes an option with an undefined variable. The error was: 'dict object' has no attribute 'stdout'
+
+    The error appears to have been in '/kubespray/kubespray/roles/remove-node/post-remove/tasks/main.yml': line 14, column 3, but may
+    be elsewhere in the file depending on the exact syntax problem.
+
+    The offending line appears to be:
+
+
+    - name: Set node IP
+      ^ here
+</code></pre></div></div>
+
 <h2 id="バージョンアップ">バージョンアップ</h2>
-<p>バージョンアップには次の2種類のバージョンアップがあります</p>
 <ul>
-  <li>KAMONOHASHI Webアプリのみのバージョンアップ</li>
-  <li>k8sなども含めたインフラ全体のバージョンアップ</li>
+  <li><a href="/docs/install-and-update/migrate1xto2x">KAMONOHASHI 1.xから2.xへの移行</a></li>
 </ul>
-
-<p>どちらもバージョンアップするバージョンのデプロイツールを準備する必要があります</p>
-
-<h3 id="デプロイツールの準備">デプロイツールの準備</h3>
-<ol>
-  <li>現在のKAMONOHASHIのバージョンをシェル変数で指定します
-    <pre><code class="language-bash:現在1.0.0を使用している場合">OLD_KQI_VERSION=1.0.0
-</code></pre>
-  </li>
-  <li>次のコマンドを実施して新しいデプロイツール取得と設定ファイルのコピーを行います
-    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">KQI_VERSION</span><span class="o">=</span>1.1.7 
-wget <span class="nt">-O</span> /tmp/deploy-tools-<span class="nv">$KQI_VERSION</span>.tar.gz https://github.com/KAMONOHASHI/kamonohashi/releases/download/<span class="nv">$KQI_VERSION</span>/deploy-tools-<span class="nv">$KQI_VERSION</span>.tar.gz
-<span class="nb">mkdir</span> <span class="nt">-p</span> /var/lib/kamonohashi/deploy-tools/<span class="nv">$KQI_VERSION</span>/
-<span class="nb">cd</span> /var/lib/kamonohashi/deploy-tools/<span class="nv">$KQI_VERSION</span>/
-<span class="nb">tar</span> <span class="nt">--strip</span><span class="o">=</span>1 <span class="nt">-xf</span> /tmp/deploy-tools-<span class="nv">$KQI_VERSION</span>.tar.gz
-<span class="nb">cd</span> /var/lib/kamonohashi/deploy-tools/
-<span class="nb">cp</span> <span class="nt">-nr</span> <span class="nv">$OLD_KQI_VERSION</span>/infra/conf <span class="nv">$KQI_VERSION</span>/infra/
-<span class="nb">cp</span> <span class="nt">-nr</span> <span class="nv">$OLD_KQI_VERSION</span>/kamonohashi/conf <span class="nv">$KQI_VERSION</span>/kamonohashi/
-<span class="nb">mkdir</span> <span class="nt">-p</span> old
-<span class="nb">mv</span> <span class="nv">$OLD_KQI_VERSION</span> old/
-</code></pre></div>    </div>
-  </li>
-</ol>
-
-<h3 id="kamonohashi-webアプリのみのバージョンアップ">KAMONOHASHI Webアプリのみのバージョンアップ</h3>
-<p>デプロイツールの準備を実施後に次を実施してください</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /var/lib/kamonohashi/deploy-tools/<span class="nv">$KQI_VERSION</span>/kamonohashi/
-./deploy-kqi.sh update
-</code></pre></div></div>
-
-<p>1.1.0以前のバージョンから1.1.0以降へのアップデートを行った場合、既存のノードにはNotebook実行可否オプションが”実行しない”に設定されます。
-既存のノードでノートブック機能を利用可能とするには、システム設定のノード管理より、Notebookの実行可否オプションを”実行する”に変更してください。</p>
-
-<h3 id="k8sなども含めたインフラ全体のバージョンアップ">k8sなども含めたインフラ全体のバージョンアップ</h3>
-<p>現在デプロイツールでは古いバージョンのアンインストールと新しいバージョンのインストールによるアップグレードのみ可能です。
-それは次を考慮しているためです。</p>
-<ul>
-  <li>k8sを2マイナーバージョン以上アップデートできる</li>
-  <li>マシンの移行も同じ方法でサポートできる</li>
-  <li>cordonとuncordonによる無停止アップグレードは、ディープラーニングの動いているシステムでは難しい
-    <ul>
-      <li>ディープラーニングジョブがノードからはけるのに数日かかることからクラスタ全体のアップグレードでは数週間が必要になるためです</li>
-    </ul>
-  </li>
-</ul>
-
-<p>インフラ全体のバージョンアップ手順は次になります</p>
-<ul>
-  <li>古いバージョンのデプロイツールでアンインストールを実行
-    <ul>
-      <li>詳細はアンインストールの項目を参照</li>
-    </ul>
-  </li>
-</ul>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /var/lib/kamonohashi/deploy-tools/$OLD_KQI_VERSION/
-./deploy-basic-cluster.sh clean
-</code></pre></div></div>
-
-<p>*　新しいバージョンのデプロイツールでインストールを実行</p>
-<ul>
-  <li>詳細はインストールの項目を参照</li>
-  <li>パスワードは初期構築時と同じものを指定してください</li>
-</ul>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /var/lib/kamonohashi/deploy-tools/$KQI_VERSION/
-./deploy-basic-cluster.sh deploy
-</code></pre></div></div>
-
-<ul>
-  <li>注意事項
-    <ul>
-      <li>デプロイツールやKAMONOHASHI WEBアプリ外で手で入れた設定は元に戻ります</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="バージョンダウン">バージョンダウン</h2>
-
-<h3 id="kamonohashi-webアプリのバージョンダウン">KAMONOHASHI Webアプリのバージョンダウン</h3>
-
-<p>バージョンダウンは、バージョンアップ以前のデプロイツールを用いることで行います。以前に利用したデプロイツールは、k8sノードで以下のコマンドを実行することで確認できます。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span> /var/lib/kamonohashi/deploy-tools/old
-</code></pre></div></div>
-
-<p>確認した中で、バージョンダウンする番号をメモし、以下のコマンドを実行します。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> /var/lib/kamonohashi/deploy-tools/old/<span class="o">{</span>バージョン番号<span class="o">}</span>/kamonohashi/
-./deploy-kqi.sh update
-</code></pre></div></div>
-
-<h3 id="dbの切り戻しを含むバージョンダウン">DBの切り戻しを含むバージョンダウン</h3>
-
-<p>KAMONOHASHIのアップデートを行う際に、下記のバージョンではDBに対するマイグレーション適用が実施され、テーブル変更が行われています。そのためマイグレーション適用後のバージョンから、それ以前のバージョンに戻す際には、切り戻し用スクリプトを実行してDBの切り戻し作業を実施する必要があります(作業中はKAMONOHASHIのサービスが停止します)。
-この作業を行った場合、マイグレーション適用後にのみ存在しているテーブルおよびカラムに格納されていたデータは削除されるため注意してください。例えばv1.1.0からv1.0.3にバージョンダウンする場合は、ノートブック機能で管理していた情報は削除されます。</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>version</th>
-      <th>Migration</th>
-      <th>主な変更</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>v1.0.0</td>
-      <td>20190515093033_v1.0.0</td>
-      <td>初期構築時</td>
-    </tr>
-    <tr>
-      <td>v1.1.0</td>
-      <td>20190821040509_v1.1.0</td>
-      <td>ノートブック機能用テーブル追加</td>
-    </tr>
-    <tr>
-      <td>v1.1.3</td>
-      <td>20190911075454_v1.1.3</td>
-      <td>zip機能利用履歴保持用カラム追加</td>
-    </tr>
-    <tr>
-      <td>v1.1.5</td>
-      <td>20191113041648_v1.1.5</td>
-      <td>ノートブックへのマウント学習ジョブを管理するための追加</td>
-    </tr>
-    <tr>
-      <td>v1.1.6</td>
-      <td>20200114063435_v1.1.6</td>
-      <td>ノートブックの無期限利用フラグ用カラム追加</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>1.1.6からバージョンダウンする場合の、DB切り戻しスクリプトの実行例</p>
-<ol>
-  <li><code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/1.1.6/rollback/rollback.sh</code>を実行します。</li>
-  <li>デプロイされているKAMONOHASHIのバージョンに<code class="highlighter-rouge">1.1.6</code>、戻したい時点のMigrationファイルに<code class="highlighter-rouge">20191113041648_v1.1.5</code>を入力します。</li>
-  <li>DBの切り戻し処理が終了するまで数分間待機します。</li>
-  <li>切り戻し処理終了後、再デプロイ可能なバージョンの一覧が表示されるため、戻したいバージョンを指定します。</li>
-  <li>KAMONOHASHIのWEB画面にアクセスし、バージョン情報より、バージョンが戻っていることを確認します。</li>
-</ol>
-
-<p><img src="/assets/images/kqi-rollback.png" alt="DB切り戻し操作の様子" /></p>
 
 <h2 id="外部サービスとの互換性">外部サービスとの互換性</h2>
 
@@ -909,15 +616,25 @@ wget <span class="nt">-O</span> /tmp/deploy-tools-<span class="nv">$KQI_VERSION<
       <th>MinIO</th>
       <th>LDAP</th>
       <th>Kubernetes</th>
+      <th>Ubuntu</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>v1.0.1以降</td>
+      <td>v2.0.0</td>
+      <td>11.8以降</td>
+      <td>RELEASE.2020-03-09T18-26-53Z</td>
+      <td>version 3</td>
+      <td>v1.15.3</td>
+      <td>Ubuntu 18.04</td>
+    </tr>
+    <tr>
+      <td>v1.0.1 ~ v1.1.7</td>
       <td>11.8以降</td>
       <td>RELEASE.2019-01-23T23-18-58Z</td>
       <td>version 3</td>
       <td>v1.12.7,v1.14.1</td>
+      <td>ubuntu 16.04</td>
     </tr>
     <tr>
       <td>v1.0.0</td>
@@ -925,6 +642,7 @@ wget <span class="nt">-O</span> /tmp/deploy-tools-<span class="nv">$KQI_VERSION<
       <td>RELEASE.2019-01-23T23-18-58Z</td>
       <td>version 3</td>
       <td>v1.12.7</td>
+      <td>Ubuntu 16.04</td>
     </tr>
   </tbody>
 </table>

@@ -137,7 +137,7 @@
               <a href="/docs/faq/" >FAQ</a>
             </li></ul>
         <button class="greedy-nav__dropdown"  type="button">
-            <span>1.1.7 <i class="material-icons">arrow_drop_down</i> </span>
+            <span>2.0.0 <i class="material-icons">arrow_drop_down</i> </span>
             <div class="dropdown-content">
                 <a href="/docs/supported-doc-versions" >other version</a>
             </div>         
@@ -271,14 +271,6 @@
             
 
             <li><a href="/docs/install-and-update#%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%A2%E3%83%83%E3%83%97" class="">・バージョンアップ</a></li>
-          
-            
-            
-
-            
-            
-
-            <li><a href="/docs/install-and-update#%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%80%E3%82%A6%E3%83%B3" class="">・バージョンダウン</a></li>
           
             
             
@@ -658,12 +650,12 @@ Gitリポジトリ、Docker Registryは1テナントに複数登録すること�
   </thead>
   <tbody>
     <tr>
-      <td>名前</td>
+      <td>ストレージ名</td>
       <td>必須</td>
       <td>KAMONOHASHIに登録する名前。管理者が各登録情報を識別しやすいような、任意の名前を入力する。</td>
     </tr>
     <tr>
-      <td>サーバ名URL</td>
+      <td>ホスト名:ポート</td>
       <td>必須</td>
       <td>minioのURL<br />（例）kamonohashi.ai:9000</td>
     </tr>
@@ -683,9 +675,9 @@ Gitリポジトリ、Docker Registryは1テナントに複数登録すること�
       <td>NFSサーバのホスト名またはIPアドレス</td>
     </tr>
     <tr>
-      <td>NFS共有ルートディレクトリ</td>
+      <td>NFSエクスポートポイント</td>
       <td>必須</td>
-      <td>マウントする際の共有ルートディレクトリポイント</td>
+      <td>NFSのエクスポートポイント</td>
     </tr>
   </tbody>
 </table>
@@ -738,7 +730,7 @@ Gitリポジトリ、Docker Registryは1テナントに複数登録すること�
 
 <p>なお<a href="https://github.com/">GitHub</a>については、初期構築時に編集不可として自動登録されます。</p>
 
-<h4 id="registry情報の新規作成">Registry情報の新規作成</h4>
+<h4 id="registry情報の新規登録">Registry情報の新規登録</h4>
 
 <p>テナントが利用するDocker Registryの情報を登録します。</p>
 
@@ -795,17 +787,12 @@ Gitリポジトリ、Docker Registryは1テナントに複数登録すること�
     <tr>
       <td>ポート番号</td>
       <td>必須</td>
-      <td>イメージ名に使用されるレジストリのポート番号を入力する。<br />（例）5555</td>
+      <td>イメージ名に使用されるレジストリのポート番号を入力する。<br />（例）5000</td>
     </tr>
     <tr>
       <td>API URL</td>
       <td>必須</td>
-      <td>レジストリにREST APIでアクセスする際の基底URLを入力する。<br />https://ホスト名:ポート番号のように自動入力されるため、変更の必要がある場合はトグルボタンを選択し、編集する。</td>
-    </tr>
-    <tr>
-      <td>URL</td>
-      <td>必須</td>
-      <td>レジストリにdockerコマンドでアクセスする際の基底URLを入力する。<br />https://ホスト名:ポート番号のように自動入力されるため、変更の必要がある場合はトグルボタンを選択し、編集する。</td>
+      <td>レジストリにREST APIでアクセスする際の基底URLを入力する。<br />https://ホスト名のように自動入力されるため、変更の必要がある場合は編集する。</td>
     </tr>
   </tbody>
 </table>
@@ -839,17 +826,12 @@ Gitリポジトリ、Docker Registryは1テナントに複数登録すること�
     <tr>
       <td>ポート番号</td>
       <td>必須</td>
-      <td>イメージ名に使用されるレジストリのポート番号を入力する。<br />（例）5555</td>
+      <td>イメージ名に使用されるレジストリのポート番号を入力する。<br />（例）5000</td>
     </tr>
     <tr>
       <td>API URL</td>
       <td>必須</td>
-      <td>レジストリにREST APIでアクセスする際の基底URLを入力する。基本的にはGitLabのWeb URLと等しい。<br />https://ホスト名:ポート番号のように自動入力されるため、変更の必要がある場合はトグルボタンを選択し、編集する。</td>
-    </tr>
-    <tr>
-      <td>URL</td>
-      <td>必須</td>
-      <td>レジストリにdockerコマンドでアクセスする際の基底URLを入力する。<br /> 基本的にポート番号はWeb URLではなくレジストリのポート番号となる。<br />https://ホスト名:ポート番号のように自動入力されるため、変更の必要がある場合はトグルボタンを選択し、編集する。</td>
+      <td>レジストリにREST APIでアクセスする際の基底URLを入力する。基本的にはGitLabのWeb URLと等しい。<br />https://ホスト名のように自動入力されるため、変更の必要がある場合は編集する。</td>
     </tr>
     <tr>
       <td>プロジェクト名</td>
@@ -900,17 +882,17 @@ Gitリポジトリ、Docker Registryは1テナントに複数登録すること�
     <tr>
       <td>ストレージ情報</td>
       <td>必須</td>
-      <td>データファイルを格納するストレージを選択する。 <br />選択肢は事前に<a href="#new_storage">ストレージ情報の新規作成</a>で設定が必要。</td>
+      <td>データファイルを格納するストレージを選択する。 <br />選択肢は事前に<strong>ストレージ情報の新規登録</strong>で設定が必要。</td>
     </tr>
     <tr>
       <td>Git情報</td>
       <td>必須</td>
-      <td>学習実行時のユーザスクリプトを格納するGitを一つ以上選択する。また、その中で既定で選択されるGitを一つ選択する。<br />選択肢は事前に<a href="#new_git">Git情報の新規作成</a>で設定が必要。</td>
+      <td>学習実行時のユーザスクリプトを格納するGitを一つ以上選択する。また、その中で既定で選択されるGitを一つ選択する。<br />選択肢は事前に<strong>Git情報の新規登録</strong>で設定が必要。</td>
     </tr>
     <tr>
       <td>Docker Registry情報</td>
       <td>必須</td>
-      <td>学習実行時のDockerイメージを格納するレジストリを一つ以上選択する。また、その中で既定で選択されるレジストリを一つ選択する。<br />選択肢は事前に<a href="#new_registry">Registry情報の新規作成</a>で設定が必要。</td>
+      <td>学習実行時のDockerイメージを格納するレジストリを一つ以上選択する。また、その中で既定で選択されるレジストリを一つ選択する。<br />選択肢は事前に<strong>Registry情報の新規登録</strong>で設定が必要。</td>
     </tr>
   </tbody>
 </table>
@@ -1111,7 +1093,7 @@ Gitリポジトリ、Docker Registryは1テナントに複数登録すること�
   </tbody>
 </table>
 
-<p>追加したカスタムロールの権限設定は、<a href="#menu-access">メニューアクセス管理</a>で行います。</p>
+<p>追加したカスタムロールの権限設定は、メニューアクセス管理で行います。</p>
 
 <h2 id="ノード">ノード</h2>
 
@@ -1119,24 +1101,30 @@ Gitリポジトリ、Docker Registryは1テナントに複数登録すること�
 KAMONOHASHI自体を構成する管理サーバ群は含みません。</p>
 
 <h3 id="ノードの追加">ノードの追加</h3>
-<p>KAMONOHASHIの管理下に新しくノードを追加します。
-Kubernetes masterノード上での作業および、KAMONOHASHIのWeb画面上での作業が必要となります。</p>
+<p>KAMONOHASHIの管理下に新しくノードを追加します。 Kubernetes masterノード上での作業および、KAMONOHASHIのWeb画面上での作業が必要となります。</p>
+
 <h4 id="kubernetes-masterノード上での作業">Kubernetes masterノード上での作業</h4>
 <ol>
-  <li>GPUサーバの準備(Ubuntu Server 16.04およびGPUドライバのインストール)とKAMONOHASHIと同一ネットワークへの接続</li>
+  <li>GPUサーバの準備とKAMONOHASHIと同一ネットワークへの接続</li>
   <li>Kubernetes masterノードにssh</li>
-  <li><code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/{バージョン番号}/infra/conf/inventory</code> を編集し、gpu-nodeを追記(下記例を参照)</li>
-  <li><code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/{バージョン番号}/infra/deploy-kqi-infra.sh prepare</code> を実行</li>
-  <li><code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/{バージョン番号}/infra/deploy-kqi-infra.sh scale</code> を実行</li>
-  <li>SSHパスワード、SUDOパスワードを入力し、処理が完了するまで待機</li>
+  <li><code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/deepops/config/inventory</code> を編集し、マシンを追記(下記例を参照)</li>
+  <li><code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/deploy-kamonohashi.sh update node-conf</code> を実行</li>
+  <li>処理が完了するまで待機</li>
+  <li>完了後にGPUサーバーを再起動</li>
 </ol>
 
-<h5 id="inventoryファイルへのgpu-node追記例">inventoryファイルへのgpu-node追記例</h5>
-<p>既に利用しているGPUのホスト名がgpu1、追加するGPUのホスト名がgpu2の場合、以下のようにgpu2を追記します。</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[gpu-node]
+<h4 id="inventoryファイルへのノード追記例">inventoryファイルへのノード追記例</h4>
+<p>既に利用しているGPUのホスト名がgpu1(10.0.0.1)、追加するGPUのホスト名がgpu2(10.0.0.2)の場合、以下のように[all]と[kube-node]にgpu2を追記します。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[all]
+gpu1 ansible_host=10.0.0.1
+gpu2 ansible_host=10.0.0.2
+...
+[kube-node]
 gpu1
 gpu2
 </code></pre></div></div>
+
+<p>再構築またはCPUノード追加後にKAMONOHASHIのWeb画面で次を実行します</p>
 
 <h4 id="kamonohashiのweb画面上での作業">KAMONOHASHIのWeb画面上での作業</h4>
 <ol>

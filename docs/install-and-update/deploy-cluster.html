@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Docs - KAMONOHASHI</title>
+<!-- begin _includes/seo.html --><title>クラスタ構成でのインストール - KAMONOHASHI</title>
 <meta name="description" content="KAMONOHASHI(カモノハシ)は、Deep Learningのモデル開発を効率的に行うためのAI開発プラットフォームです。 AI開発プロセスを最大限に効率化し、最高のモデル開発を体験してみませんか。">
 
 
@@ -17,8 +17,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KAMONOHASHI">
-<meta property="og:title" content="Docs">
-<meta property="og:url" content="http://localhost:4000/docs/">
+<meta property="og:title" content="クラスタ構成でのインストール">
+<meta property="og:url" content="http://localhost:4000/docs/install-and-update/deploy-cluster">
 
 
 
@@ -34,7 +34,7 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/docs/">
+<link rel="canonical" href="http://localhost:4000/docs/install-and-update/deploy-cluster">
 
 
 
@@ -533,7 +533,7 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Docs">
+    <meta itemprop="headline" content="クラスタ構成でのインストール">
     
     
     
@@ -541,7 +541,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Docs
+          <h1 id="page-title" class="page__title" itemprop="headline">クラスタ構成でのインストール
 </h1>
           
         </header>
@@ -549,37 +549,184 @@
 
       <section class="page__content" itemprop="text">
         
-        <h2 id="kamonohashiをはじめる">KAMONOHASHIをはじめる</h2>
-<ul>
-  <li><a href="/docs/install-and-update">KAMONOHASHIをインストールする</a></li>
-  <li><a href="/docs/tutorial">チュートリアルを行う</a></li>
-</ul>
+        <h2 id="構成について">構成について</h2>
+<p>KAMONOHASHIのクラスタは次の4種類のサーバーで構成されます</p>
 
-<h2 id="kamonohashiを使いこなす">KAMONOHASHIを使いこなす</h2>
-<ul>
-  <li><a href="/docs/how-to/user">User Guide</a></li>
-  <li><a href="/docs/how-to/admin">Admin Guide</a></li>
-  <li><a href="/docs/how-to/cli">CLI Guide</a></li>
-  <li><a href="/docs/how-to/infra">Infra Guide</a></li>
-</ul>
-
-<h2 id="よくある質問">よくある質問</h2>
-<p>KAMONOHASHIインストールや各種設定など、困った時は以下をご覧ください</p>
-<ul>
-  <li><a href="/docs/faq">FAQ</a></li>
-</ul>
-
-<h2 id="kamonohashi--youtube-channel">KAMONOHASHI  YOUTUBE CHANNEL</h2>
-<ul>
-  <li><a href="https://www.youtube.com/embed/tltp7jBkEuQ" target="_blank">インストール動画</a></li>
-</ul>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/MKCWf_XLD-I" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+<p><img src="/assets/images/basic-cluster-machenes.png" alt="マシーン" /></p>
 
 <ul>
-  <li><a href="https://www.youtube.com/embed/tltp7jBkEuQ" target="_blank">チュートリアル動画</a></li>
+  <li>Kubernetes master: ディープラーニングの実行スケジューリング等に使用します</li>
+  <li>KAMONOHASHI: KAMONOHASHIのWEBシステム(Web,DBコンテナ)で使用します</li>
+  <li>Storage: 学習用データと学習結果ファイルの保管に使用します</li>
+  <li>計算ノード: ディープラーニングの実行に使用します。GPUサーバー・CPUサーバーを指定可能です</li>
 </ul>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/tltp7jBkEuQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
 
+<h4 id="構築の準備">構築の準備</h4>
+<ul>
+  <li>マシンを用意します
+    <ul>
+      <li>クラスタ構成では4種類のサーバーを別々のマシンにインストールする前提です</li>
+      <li>同一マシンにインストールすることも可能ですが、テストしていません</li>
+    </ul>
+  </li>
+  <li><a href="/docs/install-and-update/prerequisite">マシンの要件</a>に合わせた設定をしてください</li>
+  <li>各サーバーの最小リソース要件は下記になります。
+    <ul>
+      <li>データ・ユーザー数・実施するディープラーニングの内容に応じて下記よりも多く必要になる場合があります</li>
+    </ul>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: left">マシン種別</th>
+          <th style="text-align: left">CPU</th>
+          <th style="text-align: left">メモリ</th>
+          <th style="text-align: left">備考</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: left">Kubernetes master</td>
+          <td style="text-align: left">2 コア</td>
+          <td style="text-align: left">2 GB</td>
+          <td style="text-align: left"> </td>
+        </tr>
+        <tr>
+          <td style="text-align: left">KAMONOHASHI</td>
+          <td style="text-align: left">4 コア</td>
+          <td style="text-align: left">8 GB</td>
+          <td style="text-align: left">/var/lib/に10GB以上の空き容量</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">Storage</td>
+          <td style="text-align: left">1 コア</td>
+          <td style="text-align: left">2 GB</td>
+          <td style="text-align: left">/var/lib/に学習データ・学習結果ファイル分の空き容量</td>
+        </tr>
+        <tr>
+          <td style="text-align: left">GPUサーバー</td>
+          <td style="text-align: left">2 コア</td>
+          <td style="text-align: left">2 GB</td>
+          <td style="text-align: left">Fermi (2.1)より後の世代のNVIDIA GPU, /var/libに1学習分のデータが入る空容量</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<h2 id="構築ツールのセットアップ">構築ツールのセットアップ</h2>
+<ul>
+  <li>Kubernetes masterをインストールするマシンにログインします。</li>
+  <li><code class="highlighter-rouge">sudo su -</code>を実行し、rootユーザーになります</li>
+  <li><code class="highlighter-rouge">mkdir -p /var/lib/kamonohashi/ &amp;&amp; cd /var/lib/kamonohashi/ </code>を実行します</li>
+  <li><code class="highlighter-rouge">git clone https://github.com/KAMONOHASHI/deploy-tools.git -b 2.0.0.6 --recursive</code>を実行してデプロイスクリプトを入手します</li>
+  <li><code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/</code>に移動します</li>
+  <li>プロキシ環境下では次のファイルにプロキシ設定を記載してください
+    <ul>
+      <li><code class="highlighter-rouge">./deepops/scripts/proxy.sh</code></li>
+      <li>no_proxyには<code class="highlighter-rouge">localhost,127.0.0.1,.cluster.local,使用する各マシンのIPアドレス・ホスト名</code>の記載を含めてください</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">./deploy-kamonohashi.sh prepare</code>を実行して構築に必要なソフトウェアをインストールします
+    <ul>
+      <li>ansibleでエラーが出る場合はansibleのアンインストールを実行してから<code class="highlighter-rouge">prepare</code>を実行してください
+        <ul>
+          <li>スクリプト実行中に適切なansibleがインストールされます</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="デプロイ構成の設定">デプロイ構成の設定</h2>
+<p><code class="highlighter-rouge">./deploy-kamonohashi.sh configure cluster</code>を実行します。
+対話形式で聞かれる以下の内容を入力します</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>質問文</th>
+      <th>解説</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Kubernetes masterを<br />デプロイするサーバ名</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>KAMONOHASHIを<br />デプロイするサーバ名</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Storageをデプロイするサーバ名</td>
+      <td>HWベンダーのNFSを使用する場合は<a href="/docs/install-and-update/customize-2x">カスタマイズ設定ガイド</a>を参照してください</td>
+    </tr>
+    <tr>
+      <td>計算ノード名</td>
+      <td>,区切りで複数指定できます。<br />例: gpu1,gpu2,gpu3</td>
+    </tr>
+    <tr>
+      <td>SSHで利用するユーザー名:</td>
+      <td>構築時に使用するSSHユーザーを指定します。構築ツールがSSH経由で構築を行う仕様のため、指定が必要になります</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>入力内容に応じ、以下の設定ファイルに書き込みが行われます</p>
+<ul>
+  <li>deepopsの設定ファイル(deepops/config/inventry)</li>
+  <li>kamonohashiの設定ファイル(kamonohashi/conf/settings.yml)</li>
+</ul>
+
+<p>設定内容をカスタマイズする場合は次を参照し、設定ファイルの編集を行ってください。
+<a href="/docs/install-and-update/customize-2x">カスタマイズ設定ガイド</a></p>
+
+<h2 id="デプロイの実行">デプロイの実行</h2>
+<p><code class="highlighter-rouge">./deploy-kamonohashi.sh deploy all</code>を実行します。
+この際にデプロイ構成の設定で指定したユーザーでSSHが実行されます。
+指定したユーザーでのSSHにパスワードが必要な場合は<code class="highlighter-rouge">-k</code>、
+指定したユーザーでのsudoにパスワードが必要な場合は<code class="highlighter-rouge">-K</code>のオプションを指定します。
+例： <code class="highlighter-rouge">./deploy-kamonohashi.sh deploy all -k -K</code></p>
+
+<p>実行後、対話形式で聞かれる以下の内容を入力します</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>質問文</th>
+      <th>解説</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Admin Passwordを入力:</td>
+      <td>KAMONOHASHIのadminアカウントで使用する8文字以上のパスワードです。数字のみのパスワードは使用不可となっているので注意してください。KAMONOHASHI Web UIログイン・DB接続、Object Storageへのログインに使用します。<br />一度構築に使用したパスワードはデプロイツールでは変更できません。パスワードを変える場合は、完全にデータを削除するか、パスワード変更手順を実施する必要があります。パスワード変更手順は<a href="mailto:kamonohashi-support@jp.nssol.nipponsteel.com">kamonohashi-support@jp.nssol.nipponsteel.com</a>にお問い合わせください</td>
+    </tr>
+    <tr>
+      <td>SSH password:</td>
+      <td>構築時に使用する、sshユーザーのパスワードです。<code class="highlighter-rouge">-k</code>指定時のみ聞かれます</td>
+    </tr>
+    <tr>
+      <td>SUDO password[defaults to SSH password]:</td>
+      <td>構築時に使用する、sshユーザーのsudoパスワードです。<code class="highlighter-rouge">-K</code>指定時のみ聞かれます。</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>入力後に構築が始まります。
+構築には20分程かかります。</p>
+
+<ul>
+  <li>DGX利用時のみ、構築後に次の作業を行ってください
+    <ul>
+      <li><code class="highlighter-rouge">rm /etc/systemd/system/docker.service.d/docker-override.conf</code></li>
+      <li>これは構築に使用する NVIDIA deepopsのバグで、20.02.1の次のdeepopsのリリースがされれば<a href="https://github.com/NVIDIA/deepops/commit/980cfe42685e17f0d3688fe50b1939aeaa51f314#diff-25c48ad81ab2a8e8c03e25d8d023bc1c">対応される見込み</a>です。</li>
+    </ul>
+  </li>
+</ul>
+
+<p>構築後にアクセス用のURLが表示されるので、それをブラウザで開きます</p>
 
         
       </section>

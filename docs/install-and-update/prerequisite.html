@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>カスタマイズ設定ガイド - KAMONOHASHI</title>
+<!-- begin _includes/seo.html --><title>インストールする際の前提条件 - KAMONOHASHI</title>
 <meta name="description" content="KAMONOHASHI(カモノハシ)は、Deep Learningのモデル開発を効率的に行うためのAI開発プラットフォームです。 AI開発プロセスを最大限に効率化し、最高のモデル開発を体験してみませんか。">
 
 
@@ -17,8 +17,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="KAMONOHASHI">
-<meta property="og:title" content="カスタマイズ設定ガイド">
-<meta property="og:url" content="http://localhost:4000/docs/install-and-update/customize-2x">
+<meta property="og:title" content="インストールする際の前提条件">
+<meta property="og:url" content="http://localhost:4000/docs/install-and-update/prerequisite">
 
 
 
@@ -34,7 +34,7 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/docs/install-and-update/customize-2x">
+<link rel="canonical" href="http://localhost:4000/docs/install-and-update/prerequisite">
 
 
 
@@ -533,7 +533,7 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="カスタマイズ設定ガイド">
+    <meta itemprop="headline" content="インストールする際の前提条件">
     
     
     
@@ -541,7 +541,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">カスタマイズ設定ガイド
+          <h1 id="page-title" class="page__title" itemprop="headline">インストールする際の前提条件
 </h1>
           
         </header>
@@ -549,47 +549,32 @@
 
       <section class="page__content" itemprop="text">
         
-        <h2 id="自動構築のnfsサーバーでなく既存のnfsサーバーを使用する">自動構築のNFSサーバーでなく既存のNFSサーバーを使用する</h2>
-<p>例えばHWベンダーのNFSサーバーを使用する場合にこのカスタマイズを行います。
-NFSサーバーはrootユーザーでの読み書きが可能であることが要件です</p>
-
-<h4 id="1-次のdeepopsconfiginventryの記述を削除します">1. 次の<code class="highlighter-rouge">deepops/config/inventry</code>の記述を削除します</h4>
-
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[nfs-server]
-${NFS}
-</code></pre></div></div>
-
-<h4 id="2-kamonohashiconfsettingsymlの次の箇所を編集します">2. <code class="highlighter-rouge">kamonohashi/conf/settings.yml</code>の次の箇所を編集します</h4>
-
-<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">appsettings</span><span class="pi">:</span>
-<span class="nn">...</span>
-  <span class="na">DeployOptions__NfsStorage</span><span class="pi">:</span> <span class="s2">"</span><span class="s">storage"</span>
-  <span class="na">DeployOptions__NfsPath</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/var/lib/kamonohashi/nfs"</span>
-</code></pre></div></div>
-
-<table>
-  <thead>
-    <tr>
-      <th>yamlの項目</th>
-      <th>内容</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>appsettings.DeployOptions__NfsStorage</td>
-      <td>NFSサーバーのホスト名</td>
-    </tr>
-    <tr>
-      <td>appsettings.DeployOptions__NfsPath</td>
-      <td>NFSサーバーのエクスポートパス</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="insecure-registryを設定する">insecure-registryを設定する</h2>
-<p><code class="highlighter-rouge">deepops/config/group_vars/k8s-cluster.yml</code>に次の記述を追記します</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker_insecure_registries: ["&lt;host名:ポート&gt;"]
-</code></pre></div></div>
+        <ul>
+  <li>全てのマシンがAMD64(Intel 64bit CPU)である必要があります</li>
+  <li>OSは Ubuntu Server 18.04 または NVIDIA DGX OS 4 になります</li>
+  <li>全てのマシンに共通のアカウントでsshログインできるようにします
+    <ul>
+      <li>そのアカウントが全てのマシンでsudoできるようにします</li>
+      <li>sshキーを使用する場合は、id_rsaファイルを構築ツールを実行するマシンの/root/.ssh/に所有者root、パーミッション0600で配置します。ペアのid_rsa.pubも同様に配置します
+        <ul>
+          <li>構築に利用するツールdeepopsがid_rsa.pubの配布を行います。既にsshキーを配布済みでもこのプロセスが起きるため、id_rsa.pubが存在しないとエラーになります</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>用意したマシンの名前解決と時刻同期を出来るようにします。
+    <ul>
+      <li>DNSとNTPを使うことが推奨です</li>
+    </ul>
+  </li>
+  <li>各マシンがインターネットアクセス出来るようにします。</li>
+  <li>nvidia-docker・GPUドライバ・dockerがインストール済みの環境では競合が起きる可能性があるため、アンインストールを推奨します
+    <ul>
+      <li>特に、<code class="highlighter-rouge">/etc/apt/sources.list.d/</code>配下にnvidia-dockerやGPUドライバ、dockerのリポジトリ登録を独自に用意している場合、そのソフトウェアをアンインストール後に<code class="highlighter-rouge">/etc/apt/sources.list.d/</code>の対応するファイルを削除することを推奨します</li>
+    </ul>
+  </li>
+  <li>swapはオフにします</li>
+</ul>
 
         
       </section>

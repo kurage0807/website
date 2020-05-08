@@ -278,14 +278,6 @@
             
             
 
-            <li><a href="/docs/install-and-update#%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%80%E3%82%A6%E3%83%B3" class="">・バージョンダウン</a></li>
-          
-            
-            
-
-            
-            
-
             <li><a href="/docs/install-and-update#%E5%A4%96%E9%83%A8%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%A8%E3%81%AE%E4%BA%92%E6%8F%9B%E6%80%A7" class="">・外部サービスとの互換性</a></li>
           
         </ul>
@@ -565,6 +557,8 @@
       <li>インフラ部分を含めたアンインストールとインストールが必要になります</li>
     </ul>
   </li>
+  <li>2.xへのバージョンアップ後は、1.xへのバージョンダウンはできません</li>
+  <li>2.xの<a href="/docs/install-and-update/prerequisite">マシンの要件</a>を事前にご確認ください</li>
 </ul>
 
 <h2 id="移行手順">移行手順</h2>
@@ -575,16 +569,16 @@
 </ul>
 
 <h3 id="kamonohashi-1xのアンインストール">KAMONOHASHI 1.xのアンインストール</h3>
+<p>次のコマンドを実行します</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /var/lib/kamonohashi/deploy-tools/&lt;version&gt;/infra/
+./deploy-kqi-infra.sh prepare
+./deploy-kqi-infra.sh clean
+</code></pre></div></div>
 <ul>
-  <li>利用バージョンのアンインストールを実施してください
-    <ul>
-      <li>KAMONOHASHIノードの<code class="highlighter-rouge">/var/lib/kamonohashi/postgres</code>,Storageノードの<code class="highlighter-rouge">/var/lib/kamonohashi/nfs</code>は消さずに残してください</li>
-    </ul>
-  </li>
-  <li>
-    <p>Ubuntu 16.04をUbuntu 18.04にバージョンアップしてください</p>
-  </li>
+  <li>deepopsがインストールするGPU driverとの競合を防ぐため、GPUドライバをアンインストールします</li>
+  <li>Ubuntu 16.04をUbuntu 18.04にバージョンアップしてください</li>
   <li>Kubernetes Masterの<code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/</code>ディレクトリを別の場所に退避します</li>
+  <li>アンインストール完了後、<a href="/docs/install-and-update/prerequisite">マシンの要件</a>に合わせた設定をしてください</li>
 </ul>
 
 <h2 id="2x構築ツールのセットアップ">2.x構築ツールのセットアップ</h2>
@@ -592,8 +586,45 @@
   <li>Kubernetes masterをインストールするマシンにログインします。</li>
   <li><code class="highlighter-rouge">sudo su -</code>を実行し、rootユーザーになります</li>
   <li><code class="highlighter-rouge">mkdir -p /var/lib/kamonohashi/ &amp;&amp; cd /var/lib/kamonohashi/ </code>を実行します</li>
-  <li><code class="highlighter-rouge">git clone https://github.com/KAMONOHASHI/deploy-tools.git -b 2.0.0 --recursive</code>を実行してデプロイスクリプトを入手します</li>
-  <li><code class="highlighter-rouge">./deploy-kamonohashi.sh prepare</code>を実行して構築に必要なソフトウェアをインストールします</li>
+  <li><code class="highlighter-rouge">git clone https://github.com/KAMONOHASHI/deploy-tools.git -b 2.0.0.6 --recursive</code>を実行してデプロイスクリプトを入手します</li>
+  <li><code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/</code>に移動します</li>
+  <li>プロキシ環境下では次のファイルにプロキシ設定を記載してください
+    <ul>
+      <li><code class="highlighter-rouge">./deepops/scripts/proxy.sh</code></li>
+      <li>no_proxyには<code class="highlighter-rouge">localhost,127.0.0.1,.cluster.local,使用するマシンのIPアドレス・ホスト名</code>の記載をしてください</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">./deploy-kamonohashi.sh prepare</code>を実行して構築に必要なソフトウェアをインストールします
+    <ul>
+      <li>ansibleでエラーが出る場合はansibleのアンインストールを実行してから<code class="highlighter-rouge">prepare</code>を実行してください
+        <ul>
+          <li>スクリプト実行中に適切なansibleがインストールされます</li>
+          <li>ubuntuアップグレードに際し、ansibleの実行ファイルのみ残存するケースがあります。ansibleのアンインストールと<code class="highlighter-rouge">prepare</code>実行時に次のようなエラーが発生します
+            <ul>
+              <li>
+                <p>その場合は、<code class="highlighter-rouge">mv /usr/local/bin/ansible /tmp/</code>のようなコマンドでansible実行ファイルを退避して<code class="highlighter-rouge">prepare</code>を実行してください</p>
+              </li>
+              <li>
+                <p>ansibleのアンインストールでのエラー</p>
+
+                <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Cannot uninstall requirement ansible, not installed
+</code></pre></div>                </div>
+              </li>
+              <li>
+                <p>prepare実行時のエラー</p>
+
+                <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Traceback (most recent call last):
+  File "/usr/local/bin/ansible", line 40, in &lt;module&gt;
+    from ansible.errors import AnsibleError, AnsibleOptionsError, AnsibleParserError
+ModuleNotFoundError: No module named 'ansible'
+</code></pre></div>                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="デプロイ構成の設定">デプロイ構成の設定</h2>
@@ -603,10 +634,9 @@
 |—|—|
 |Kubernetes masterを<br />デプロイするサーバ名||
 |KAMONOHASHIを<br />デプロイするサーバ名||
-|Storageをデプロイするサーバ名|HWベンダーのNFSを使用する場合は|
+|Storageをデプロイするサーバ名|HWベンダーのNFSを使用する場合は<a href="/docs/install-and-update/customize-2x">カスタマイズ設定ガイド</a>を参照してください|
 |計算ノード名|,区切りで複数指定できます。<br />例: gpu1,gpu2,gpu3 |
-|SSHで利用するユーザー名:|構築時に使用するSSHユーザーを指定します。構築ツールがSSH経由で構築を行う仕様のため、指定が必要になります|
-|プロキシを設定しますか？ [y/N]|プロキシ環境にデプロイする場合はyを入力して<br /> http_proxy, https_proxy, no_proxy<br />を設定します<br />no_proxyはこれまでの入力内容を元に必要なものが自動生成されます。<br />自組織のドメイン等を生成されたno_proxyに更に追加することもできます|</p>
+|SSHで利用するユーザー名:|構築時に使用するSSHユーザーを指定します。構築ツールがSSH経由で構築を行う仕様のため、指定が必要になります|</p>
 
 <p>入力内容に応じ、以下の設定ファイルに書き込みが行われます</p>
 <ul>
@@ -623,9 +653,23 @@
 指定したユーザーでのsudoにパスワードが必要な場合は<code class="highlighter-rouge">-K</code>のオプションを指定します。
 例： <code class="highlighter-rouge">./deploy-kamonohashi.sh clean nvidia-repo -k -K</code></p>
 
-<p><code class="highlighter-rouge">./deploy-kamonohashi.sh clean nvidia-repo</code>を実行します
-<code class="highlighter-rouge">./deploy-kamonohashi.sh deploy nvidia-gpg-key</code>を実行します。
-<code class="highlighter-rouge">./deploy-kamonohashi.sh deploy all</code>を実行します。</p>
+<ul>
+  <li>sshキーを~/.ssh/id_rsaで配置している場合は、ペアのid_rsa.pubも~/.sshに配置してください</li>
+</ul>
+
+<ol>
+  <li><code class="highlighter-rouge">./deploy-kamonohashi.sh clean nvidia-repo</code>を実行します
+    <ul>
+      <li>ubuntu16用のnvidiaリポジトリ登録が残っているためです</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">./deploy-kamonohashi.sh deploy nvidia-gpg-key</code>を実行します。
+    <ul>
+      <li>nvidiaのGPGキーは期限が半年であり、期限が切れるとaptが失敗することの対応です</li>
+    </ul>
+  </li>
+  <li><code class="highlighter-rouge">./deploy-kamonohashi.sh deploy all</code>を実行します。</li>
+</ol>
 
 <p>実行後、対話形式で聞かれる以下の内容を入力します
 |質問文|解説|

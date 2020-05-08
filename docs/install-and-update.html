@@ -278,14 +278,6 @@
             
             
 
-            <li><a href="/docs/install-and-update#%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%80%E3%82%A6%E3%83%B3" class="">・バージョンダウン</a></li>
-          
-            
-            
-
-            
-            
-
             <li><a href="/docs/install-and-update#%E5%A4%96%E9%83%A8%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%A8%E3%81%AE%E4%BA%92%E6%8F%9B%E6%80%A7" class="">・外部サービスとの互換性</a></li>
           
         </ul>
@@ -562,13 +554,11 @@
 <h2 id="インストール方法">インストール方法</h2>
 
 <ul>
-  <li><a href="/docs/install-and-update/deploy-single-node">ノード構成でのインストール</a></li>
+  <li><a href="/docs/install-and-update/deploy-single-node">シングルノード構成でのインストール</a></li>
   <li><a href="/docs/install-and-update/deploy-cluster">クラスタ構成でのインストール</a></li>
-  <li>
-    <p><a href="/docs/install-and-update/customize-2x">カスタマイズしたクラスタ構成でのインストール</a></p>
-  </li>
-  <li>ベーシッククラスタの構成では要件が足りず、カスタマイズしたい場合は[kamonohashi-support@jp.nssol.nipponsteel.com]にお問い合わせください</li>
 </ul>
+
+<p>上記の構成では要件が足りず、カスタマイズしたい場合は<a href="mailto:kamonohashi-support@jp.nssol.nipponsteel.com">kamonohashi-support@jp.nssol.nipponsteel.com</a>にお問い合わせください</p>
 
 <h2 id="アンインストール方法">アンインストール方法</h2>
 <ul>
@@ -580,14 +570,34 @@
         </ul>
       </li>
       <li>再度デプロイすると過去のデータベース, ストレージの中身を引き続き使用します</li>
-      <li>完全にデータを削除する場合は KAMONOHASHIノード, STORAGEノードで<code class="highlighter-rouge">/var/lib/kamonohashi</code> を削除してください
+      <li>完全にデータを削除する場合は構成に応じ次のディレクトリを削除してください
         <ul>
+          <li>シングルノード構成: マシン内の<code class="highlighter-rouge">/var/lib/kamonohashi</code></li>
+          <li>クラスタ構成: KAMONOHASHIノード, STORAGEノードの<code class="highlighter-rouge">/var/lib/kamonohashi</code></li>
           <li>構築に失敗してやり直す際にパスワードも変更する場合はこのディレクトリを削除してください</li>
         </ul>
       </li>
     </ul>
   </li>
 </ul>
+
+<h3 id="アンインストールについての補足事項">アンインストールについての補足事項</h3>
+<ul>
+  <li>2.0.0のアンインストールでは、内部で利用するツールの<a href="https://github.com/kubernetes-sigs/kubespray/issues/5185">既知のバグ</a>により、次のようなエラーがメッセージに含まれます。
+これは無視して良いエラーです</li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    The task includes an option with an undefined variable. The error was: 'dict object' has no attribute 'stdout'
+
+    The error appears to have been in '/kubespray/kubespray/roles/remove-node/post-remove/tasks/main.yml': line 14, column 3, but may
+    be elsewhere in the file depending on the exact syntax problem.
+
+    The offending line appears to be:
+
+
+    - name: Set node IP
+      ^ here
+</code></pre></div></div>
 
 <h2 id="バージョンアップ">バージョンアップ</h2>
 <ul>
@@ -613,13 +623,13 @@
     <tr>
       <td>v2.0.0</td>
       <td>11.8以降</td>
-      <td>RELEASE.2019-01-23T23-18-58Z</td>
+      <td>RELEASE.2020-03-09T18-26-53Z</td>
       <td>version 3</td>
-      <td>v1.12.7,v1.14.1</td>
+      <td>v1.15.3</td>
       <td>Ubuntu 18.04</td>
     </tr>
     <tr>
-      <td>v1.0.1, v1.1.7</td>
+      <td>v1.0.1 ~ v1.1.7</td>
       <td>11.8以降</td>
       <td>RELEASE.2019-01-23T23-18-58Z</td>
       <td>version 3</td>

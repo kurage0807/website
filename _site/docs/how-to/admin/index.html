@@ -1110,11 +1110,16 @@ KAMONOHASHI自体を構成する管理サーバ群は含みません。</p>
   <li><code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/deepops/config/inventory</code> を編集し、マシンを追記(下記例を参照)</li>
   <li><code class="highlighter-rouge">/var/lib/kamonohashi/deploy-tools/deploy-kamonohashi.sh update node-conf</code> を実行</li>
   <li>処理が完了するまで待機</li>
+  <li>完了後にGPUサーバーを再起動</li>
 </ol>
 
 <h4 id="inventoryファイルへのノード追記例">inventoryファイルへのノード追記例</h4>
-<p>既に利用しているGPUのホスト名がgpu1、追加するGPUのホスト名がgpu2の場合、以下のようにgpu2を追記します。</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[kube-node]
+<p>既に利用しているGPUのホスト名がgpu1(10.0.0.1)、追加するGPUのホスト名がgpu2(10.0.0.2)の場合、以下のように[all]と[kube-node]にgpu2を追記します。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[all]
+gpu1 ansible_host=10.0.0.1
+gpu2 ansible_host=10.0.0.2
+...
+[kube-node]
 gpu1
 gpu2
 </code></pre></div></div>

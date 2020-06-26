@@ -183,4 +183,8 @@
 <loc>http://localhost:4000/assets/kamonohashi_flyer3.pdf</loc>
 <lastmod>2020-06-26T12:50:29+09:00</lastmod>
 </url>
+<url>
+<loc>http://localhost:4000/docs/supported-doc-versions/version-1-0-x.html</loc>
+<lastmod>2020-06-26T12:56:48+09:00</lastmod>
+</url>
 </urlset>

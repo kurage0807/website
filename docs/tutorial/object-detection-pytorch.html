@@ -1,0 +1,1181 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.14.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Object Detection Tutorial on notebook (pytorch) - KAMONOHASHI</title>
+<meta name="description" content="KAMONOHASHI(カモノハシ)は、Deep Learningのモデル開発を効率的に行うためのAI開発プラットフォームです。 AI開発プロセスを最大限に効率化し、最高のモデル開発を体験してみませんか。">
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="KAMONOHASHI">
+<meta property="og:title" content="Object Detection Tutorial on notebook (pytorch)">
+<meta property="og:url" content="http://localhost:4000/docs/tutorial/object-detection-pytorch">
+
+
+
+
+  <meta property="og:image" content="http://localhost:4000/assets/images/logo_002.png">
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/docs/tutorial/object-detection-pytorch">
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "url": "http://localhost:4000",
+      "logo": "http://localhost:4000/assets/images/logo_002.png"
+    }
+  </script>
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="KAMONOHASHI Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--[if IE ]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-121400633-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <!-- <a class="site-logo" href="https://kamonohashi.ai/"><img src="/assets/images/logo_003.png" alt=""></a> -->
+        
+        <a class="site-title" href="https://kamonohashi.ai/">KAMONOHASHI</a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://github.com/KAMONOHASHI/kamonohashi" >GitHub</a>
+            </li><li class="masthead__menu-item">
+              <a href="/docs/" >Docs</a>
+            </li><li class="masthead__menu-item">
+              <a href="/support/" >Support</a>
+            </li><li class="masthead__menu-item">
+              <a href="/resource/" >Resource</a>
+            </li><li class="masthead__menu-item">
+              <a href="/docs/faq/" >FAQ</a>
+            </li></ul>
+        <button class="greedy-nav__dropdown"  type="button">
+            <span>2.1.0 <i class="material-icons">arrow_drop_down</i> </span>
+            <div class="dropdown-content">
+                <a href="/docs/supported-doc-versions" >other version</a>
+            </div>         
+        </button>
+
+        
+
+       
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+    
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          
+          
+
+          <a href="/docs/concepts"><span class="nav__sub-title">Concepts</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/concepts#%E7%92%B0%E5%A2%83%E6%A7%8B%E6%88%90" class="">・環境構成</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/concepts#%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88%E3%81%A8%E3%81%AF" class="">・テナントとは</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/concepts#%E3%83%8E%E3%83%BC%E3%83%89%E3%81%A8%E3%81%AF" class="">・ノードとは</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/concepts#%E3%83%AD%E3%83%BC%E3%83%AB%E3%81%A8%E3%81%AF" class="">・ロールとは</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/docs/install-and-update"><span class="nav__sub-title">Installation</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/install-and-update#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%96%B9%E6%B3%95" class="">・インストール方法</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/install-and-update#%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%A2%E3%83%83%E3%83%97" class="">・バージョンアップ</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/install-and-update#%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%83%80%E3%82%A6%E3%83%B3" class="">・バージョンダウン</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/install-and-update#%E3%82%A2%E3%83%B3%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E6%96%B9%E6%B3%95" class="">・アンインストール方法</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/install-and-update#%E5%A4%96%E9%83%A8%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%A8%E3%81%AE%E4%BA%92%E6%8F%9B%E6%80%A7" class="">・外部サービスとの互換性</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/docs/tutorial"><span class="nav__sub-title">Tutorial</span></a>
+        
+
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/docs/faq"><span class="nav__sub-title">FAQ</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/faq-detail/install" class="">・導入について</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/faq-detail/operation" class="">・利用について</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/faq-detail/general" class="">・その他</a></li>
+          
+        </ul>
+        
+      </li>
+    
+      <li>
+        
+          
+          
+
+          <a href="/docs/how-to"><span class="nav__sub-title">How-to Guide</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/user" class="">User Guide</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/user#%E6%A6%82%E8%A6%81" class="">・概要</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/user#%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3" class="">・ログイン</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/user#%E3%83%A6%E3%83%BC%E3%82%B6%E6%83%85%E5%A0%B1%E8%A8%AD%E5%AE%9A" class="">・ユーザ情報設定</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/user#%E3%83%87%E3%83%BC%E3%82%BF%E7%AE%A1%E7%90%86" class="">・データ管理</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/user#%E5%89%8D%E5%87%A6%E7%90%86%E7%AE%A1%E7%90%86" class="">・前処理について</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/user#%E3%83%87%E3%83%BC%E3%82%BF%E3%82%BB%E3%83%83%E3%83%88%E7%AE%A1%E7%90%86" class="">・データセット管理</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/user#%E5%AD%A6%E7%BF%92%E7%AE%A1%E7%90%86" class="">・学習管理</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/user#%E6%8E%A8%E8%AB%96%E7%AE%A1%E7%90%86" class="">・推論管理</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/user#%E3%83%8E%E3%83%BC%E3%83%88%E3%83%96%E3%83%83%E3%82%AF%E7%AE%A1%E7%90%86" class="">・ノートブック管理</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/admin/" class="">Admin Guide</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/admin/#%E4%BA%8B%E5%89%8D%E6%BA%96%E5%82%99" class="">・事前準備</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/admin/#%E3%83%86%E3%83%8A%E3%83%B3%E3%83%88" class="">・テナントについて</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/admin/#%E3%83%A6%E3%83%BC%E3%82%B6" class="">・ユーザ</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/admin/#%E3%83%8E%E3%83%BC%E3%83%89" class="">・ノード</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/admin/#%E3%82%AF%E3%82%A9%E3%83%BC%E3%82%BF" class="">・クォータ</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/admin/#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9" class="">・リソース</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/admin/#%E3%83%A1%E3%83%8B%E3%83%A5%E3%83%BC" class="">・メニュー</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/admin/#%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B8" class="">・ストレージ</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/cli" class="">CLI Guide</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/infra" class="">Infra Guide</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/docs/how-to/infra/#%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%81%A8%E3%83%AA%E3%82%B9%E3%83%88%E3%82%A2" class="">・バックアップとリストア</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+    
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Object Detection Tutorial on notebook (pytorch)">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Object Detection Tutorial on notebook (pytorch)
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h2 id="はじめる前に">はじめる前に</h2>
+
+<p>このチュートリアルを始める前に、以下のKAMONOHASHIのインストールが終わり、KAMONOHASHIにログインできることを確認してください。</p>
+
+<p>(参考) <a href="/docs/install-and-update#インストール方法">KAMONOHASHIをインストールする</a></p>
+
+<h2 id="はじめに">はじめに</h2>
+<p>本チュートリアルでは、Penn- Fudan Databaseの歩行者の検出を行います。
+具体的にはKAMONOHASHI上のJupyterLabを使用して、Deep Learningでの物体検知をPenn-Fudan データセットで行う方法を以下の手順に沿って説明します。</p>
+<ol>
+  <li>データをアップロードする</li>
+  <li>データセットを作成する</li>
+  <li>学習を実行する</li>
+  <li>TensorBoardで学習の状況を表示する</li>
+  <li>学習のログを確認する</li>
+</ol>
+
+<h2 id="データをアップロードする">データをアップロードする</h2>
+<p>KAMONOHASHIにデータをアップロードする流れを説明します。</p>
+
+<h3 id="データセットをダウンロードする">データセットをダウンロードする</h3>
+<p>このチュートリアルでは、<a href="https://www.cis.upenn.edu/~jshi/ped_html/">Penn-Fudanデータセット</a><i class="material-icons blue">launch</i>を使用します。
+Penn-Fudanは、歩行者の検出に使用される画像データベースです。
+170枚の画像に345のラベルが付けられた歩行者が含まれており、そのうち96枚の画像はペンシルベニア大学周辺、他の74枚は復旦大学周辺で撮影されています。</p>
+
+<p>KAMONOHASHIにアクセスできる端末に Penn-Fudanデータセット をダウンロードしてください。 
+<a href="https://www.cis.upenn.edu/~jshi/ped_html/PennFudanPed.zip">Penn-Fudanのデータをダウンロードする</a><i class="material-icons blue">save_alt</i></p>
+
+<h3 id="データを解凍する">データを解凍する</h3>
+<p>このデータセットは解凍すると、</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>PennFudanPed/
+  PedMasks/
+    FudanPed00001_mask.png
+    FudanPed00002_mask.png
+    FudanPed00003_mask.png
+    FudanPed00004_mask.png
+    ...
+  PNGImages/
+    FudanPed00001.png
+    FudanPed00002.png
+    FudanPed00003.png
+    FudanPed00004.png
+</code></pre></div></div>
+
+<p>というフォルダ・ファイルに分割されます。</p>
+
+<h3 id="データをkamonohashiにアップロードする">データをKAMONOHASHIにアップロードする</h3>
+<p>データが用意できたらKAMONOHASHIにアップロードしましょう。
+[データ管理]を選択し、右上の新規登録ボタンから行います。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>種類　</th>
+      <th>説明　</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>データ名</td>
+      <td>(例)PNGImages</td>
+    </tr>
+    <tr>
+      <td>メモ</td>
+      <td>画像の説明など補足情報。</td>
+    </tr>
+    <tr>
+      <td>タグ</td>
+      <td>データの種類や受領日などグルーピングしたい単位に付与し、検索等で利用する。</td>
+    </tr>
+    <tr>
+      <td>ファイル</td>
+      <td>複数のデータを登録できる。jpg/png/csv/zipなど、ファイルのデータ形式は任意。</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>上記の情報を入力し、右下の登録ボタンを押すとデータをアップロードすることができます。
+コマンドラインインターフェイス（<a href="/docs/how-to/cli/">CLI</a>）を使用してデータをアップロードすることも可能です。</p>
+
+<p>KAMONOHASHIでは、複数のファイルを一つのデータとして管理可能です。</p>
+
+<p>登録したデータは、データの一覧画面で確認できます。</p>
+
+<p><img src="/assets/images/coco-data.png" alt="データ一覧" /></p>
+
+<h2 id="データセットを作成する">データセットを作成する</h2>
+<p>[データセット管理]を選択し、右上の新規登録ボタンから行います。
+アップロードしたデータをtraining用にまとめます。</p>
+
+<p><img src="/assets/images/coco-dataset.PNG" alt="データセットアップロード" /></p>
+
+<h2 id="ノートブックを作成しjupyterlabを起動する">ノートブックを作成し、JupyterLabを起動する</h2>
+<p>KAMONOHASHIでノートブックを作成し、JupyterLabを起動します。</p>
+
+<p>ノートブックを開始すると KAMONOHASHI はクラスタから指定されたCPU、メモリ、GPUリソースを確保し、JupyterLabを起動し計算環境を用意します。ユーザはこの環境を利用し、ノートブック形式で任意の計算を行うことができます。</p>
+
+<p>GUIでノートブックを開始するには[ノートブック管理]を選択し、ノートブック作成ボタンから行います。
+詳細は<a href="/docs/how-to/user#ノートブック管理">User Guide</a>を参照してください。</p>
+
+<h3 id="step1">step1</h3>
+<p>ノートブック名を記入します。
+半角英数小文字、または記号(“-”（ハイフン）) 30 文字以下で指定可能です。</p>
+
+<h3 id="step2">step2</h3>
+<p>必要なリソース・起動時間を指定します。
+以下は例です。</p>
+
+<p>例</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>リソース　</th>
+      <th>使用量　</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>CPU</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>Memory</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>GPU</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>起動時間設定</td>
+      <td>ON</td>
+    </tr>
+    <tr>
+      <td>起動時間</td>
+      <td>8h</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="step3">step3</h3>
+<p>フレームワークとモデルをテキストエリアに記述し、実行コマンドを記述します。
+本チュートリアルではフレームワークは<a href="https://hub.docker.com/">Docker Hub</a>の公式イメージ(pytorch/pytorch)を使用しています。</p>
+
+<ul>
+  <li>コンテナイメージ</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>コンテナイメージ　</th>
+      <th>記述例　</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>レジストリ</td>
+      <td>officail-docker-hub(選択)</td>
+    </tr>
+    <tr>
+      <td>イメージ</td>
+      <td>pytorch/pytorch</td>
+    </tr>
+    <tr>
+      <td>タグ</td>
+      <td>1.3-cuda10.1-cudnn7-runtime</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>※Docker Hubを指定した後イメージ、タグをテキストエリアに入力してください。</p>
+
+<ul>
+  <li>データセット
+KAMONOHASHI上で登録したデータセットを選択できます。</li>
+</ul>
+
+<h3 id="step4">step4</h3>
+<p>オプションとして追記したい項目があれば追記し実行ボタンを押します。</p>
+
+<p>ステータスがRunningになったらJupyterLabを起動できます。</p>
+
+<h2 id="人物検出のモデル学習推論を行う">人物検出のモデル学習・推論を行う</h2>
+<p>notebook見本は<a href="https://github.com/KAMONOHASHI/tutorial/blob/master/pytorch/pedestrian-detection.ipynb">GitHub</a>から確認できます。</p>
+
+<h3 id="前準備">前準備</h3>
+<p>shellにてをPythonAPIをインストールします。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Install pycocotools
+git clone https://github.com/cocodataset/cocoapi.git
+cd cocoapi/PythonAPI
+python setup.py build_ext install
+</code></pre></div></div>
+<p><img src="/assets/images/coco-shell.PNG" alt="coco-shell" />
+エラーが出た場合は各種エラー文に従ってCythonなど不足しているツールをインストールします。
+<a href="https://github.com/cocodataset/cocoapi/issues/141#issuecomment-386606299">参考</a></p>
+
+<h3 id="データの確認を行う">データの確認を行う</h3>
+<p>KAMONOHASHIにアップロードしたデータの確認を行います。
+データは/kqi/input配下にあります。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from PIL import Image
+Image.open('../input/training/PNGImagesを入れたデータセット番号/FudanPed00001.png')
+</code></pre></div></div>
+<h3 id="データセットの定義をする">データセットの定義をする</h3>
+
+<p>データセットの定義をします。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import os
+import numpy as np
+import torch
+import torch.utils.data
+from PIL import Image
+
+class PennFudanDataset(torch.utils.data.Dataset):
+    def __init__(self, root, transforms=None):
+        self.root = root
+        self.transforms = transforms
+        # load all image files, sorting them to
+        # ensure that they are aligned
+        self.imgs = list(sorted(os.listdir(os.path.join(root, "PNGImagesを入れたデータセット番号"))))
+        self.masks = list(sorted(os.listdir(os.path.join(root, "PedMasksを入れたデータセット番号"))))
+
+    def __getitem__(self, idx):
+        # load images ad masks
+        img_path = os.path.join(self.root, "PNGImagesを入れたデータセット番号", self.imgs[idx])
+        mask_path = os.path.join(self.root, "PedMasksを入れたデータセット番号", self.masks[idx])
+        img = Image.open(img_path).convert("RGB")
+        # note that we haven't converted the mask to RGB,
+        # because each color corresponds to a different instance
+        # with 0 being background
+        mask = Image.open(mask_path)
+
+        mask = np.array(mask)
+        # instances are encoded as different colors
+        obj_ids = np.unique(mask)
+        # first id is the background, so remove it
+        obj_ids = obj_ids[1:]
+
+        # split the color-encoded mask into a set
+        # of binary masks
+        masks = mask == obj_ids[:, None, None]
+
+        # get bounding box coordinates for each mask
+        num_objs = len(obj_ids)
+        boxes = []
+        for i in range(num_objs):
+            pos = np.where(masks[i])
+            xmin = np.min(pos[1])
+            xmax = np.max(pos[1])
+            ymin = np.min(pos[0])
+            ymax = np.max(pos[0])
+            boxes.append([xmin, ymin, xmax, ymax])
+
+        boxes = torch.as_tensor(boxes, dtype=torch.float32)
+        # there is only one class
+        labels = torch.ones((num_objs,), dtype=torch.int64)
+
+        image_id = torch.tensor([idx])
+        area = (boxes[:, 3] - boxes[:, 1]) * (boxes[:, 2] - boxes[:, 0])
+        # suppose all instances are not crowd
+        iscrowd = torch.zeros((num_objs,), dtype=torch.int64)
+
+        target = {}
+        target["boxes"] = boxes
+        target["labels"] = labels
+        target["image_id"] = image_id
+        target["area"] = area
+        target["iscrowd"] = iscrowd
+
+        if self.transforms is not None:
+            img, target = self.transforms(img, target)
+
+        return img, target
+
+    def __len__(self):
+        return len(self.imgs)
+</code></pre></div></div>
+
+<p>データセットの確認を行います。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dataset = PennFudanDataset('/kqi/input/training/')
+dataset[0]
+</code></pre></div></div>
+<p>結果</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(&lt;PIL.Image.Image image mode=RGB size=559x536 at 0x7F59B993C6A0&gt;,
+ {'area': tensor([35358., 36225.]), 'boxes': tensor([[159., 181., 301., 430.],
+          [419., 170., 534., 485.]]), 'image_id': tensor([0]), 'iscrowd': tensor([0, 0]), 'labels': tensor([1, 1])})
+</code></pre></div></div>
+<h3 id="モデルの定義を行う">モデルの定義を行う</h3>
+
+<p>物体検出のためモデルはFaster R-CNNを使用しています。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">import</span> <span class="n">torchvision</span>
+<span class="k">from</span> <span class="n">torchvision</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">detection</span><span class="p">.</span><span class="n">faster_rcnn</span> <span class="n">import</span> <span class="n">FastRCNNPredictor</span>
+<span class="p">#</span> <span class="k">from</span> <span class="n">torchvision</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">detection</span><span class="p">.</span><span class="n">mask_rcnn</span> <span class="n">import</span> <span class="n">MaskRCNNPredictor</span>
+ 
+<span class="n">def</span> <span class="n">get_instance_segmentation_model</span><span class="p">(</span><span class="n">num_classes</span><span class="p">):</span>
+    <span class="p">#</span> <span class="nf">load</span> <span class="n">a</span> <span class="k">model</span> <span class="n">pre</span><span class="p">-</span><span class="n">trained</span> <span class="n">pre</span><span class="p">-</span><span class="n">trained</span> <span class="n">on</span> <span class="n">COCO</span>
+    <span class="k">model</span> <span class="p">=</span> <span class="n">torchvision</span><span class="p">.</span><span class="n">models</span><span class="p">.</span><span class="n">detection</span><span class="p">.</span><span class="n">fasterrcnn_resnet50_fpn</span><span class="p">(</span><span class="n">pretrained</span><span class="p">=</span><span class="nb">True</span><span class="p">)</span>
+
+    <span class="p">#</span> <span class="n">get</span> <span class="n">the</span> <span class="n">number</span> <span class="k">of</span> <span class="n">input</span> <span class="n">features</span> <span class="n">for</span> <span class="n">the</span> <span class="n">classifier</span>
+    <span class="n">in_features</span> <span class="p">=</span> <span class="k">model</span><span class="p">.</span><span class="n">roi_heads</span><span class="p">.</span><span class="n">box_predictor</span><span class="p">.</span><span class="n">cls_score</span><span class="p">.</span><span class="n">in_features</span>
+    <span class="p">#</span> <span class="n">replace</span> <span class="n">the</span> <span class="n">pre</span><span class="p">-</span><span class="n">trained</span> <span class="n">head</span> <span class="k">with</span> <span class="n">a</span> <span class="n">new</span> <span class="n">one</span>
+    <span class="k">model</span><span class="p">.</span><span class="n">roi_heads</span><span class="p">.</span><span class="n">box_predictor</span> <span class="p">=</span> <span class="n">FastRCNNPredictor</span><span class="p">(</span><span class="n">in_features</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+
+    <span class="n">return</span> <span class="k">model</span>
+</code></pre></div></div>
+
+<h3 id="学習を行う">学習を行う</h3>
+
+<h4 id="shellでの操作">shellでの操作</h4>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Download TorchVision repo to use some files from
+# references/detection
+git clone https://github.com/pytorch/vision.git
+cd vision
+git checkout v0.3.0
+
+cp references/detection/utils.py ../
+cp references/detection/transforms.py ../
+cp references/detection/coco_eval.py ../
+cp references/detection/engine.py ../
+cp references/detection/coco_utils.py ../
+</code></pre></div></div>
+<p>コピーしたファイルが<code class="highlighter-rouge">/kqi/output/cocoapi/PythonAPI</code>にあることを確認します。</p>
+
+<h4 id="notebookでの操作">notebookでの操作</h4>
+
+<p>data augmentationや変換するための補助関数を定義します。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cd /kqi/output/cocoapi/PythonAPI
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from engine import train_one_epoch, evaluate
+import utils
+import transforms as T
+import matplotlib
+
+def get_transform(train):
+    transforms = []
+    # converts the image, a PIL image, into a PyTorch Tensor
+    transforms.append(T.ToTensor())
+    if train:
+        # during training, randomly flip the training images
+        # and ground-truth for data augmentation
+        transforms.append(T.RandomHorizontalFlip(0.5))
+    return T.Compose(transforms)
+</code></pre></div></div>
+<p>エラーが出る場合はエラー文に沿って必要なツールをインストールしたりコマンドをたたきます。</p>
+
+<p>trainやevaluateに渡す DataLoaderを作成します。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># use our dataset and defined transformations
+dataset = PennFudanDataset('/kqi/input/training', get_transform(train=True))
+dataset_test = PennFudanDataset('/kqi/input/training', get_transform(train=False))
+
+# split the dataset in train and test set
+torch.manual_seed(1)
+indices = torch.randperm(len(dataset)).tolist()
+dataset = torch.utils.data.Subset(dataset, indices[:-50])
+dataset_test = torch.utils.data.Subset(dataset_test, indices[-50:])
+
+# define training and validation data loaders
+data_loader = torch.utils.data.DataLoader(
+    dataset, batch_size=2, shuffle=True, num_workers=4,
+    collate_fn=utils.collate_fn)
+
+data_loader_test = torch.utils.data.DataLoader(
+    dataset_test, batch_size=1, shuffle=False, num_workers=4,
+    collate_fn=utils.collate_fn)
+</code></pre></div></div>
+<p>モデルインスタンスの設定、optimizerの設定をします。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">device</span> <span class="p">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cuda'</span><span class="p">)</span> <span class="k">if</span> <span class="n">torch</span><span class="p">.</span><span class="n">cuda</span><span class="p">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="n">torch</span><span class="p">.</span><span class="n">device</span><span class="p">(</span><span class="s1">'cpu'</span><span class="p">)</span>
+
+<span class="p">#</span> <span class="n">our</span> <span class="n">dataset</span> <span class="n">has</span> <span class="n">two</span> <span class="n">classes</span> <span class="n">only</span> <span class="p">-</span> <span class="n">background</span> <span class="k">and</span> <span class="n">person</span>
+<span class="n">num_classes</span> <span class="p">=</span> <span class="m">2</span>
+
+<span class="p">#</span> <span class="n">get</span> <span class="n">the</span> <span class="k">model</span> <span class="n">using</span> <span class="n">our</span> <span class="n">helper</span> <span class="k">function</span>
+<span class="k">model</span> <span class="p">=</span> <span class="n">get_instance_segmentation_model</span><span class="p">(</span><span class="n">num_classes</span><span class="p">)</span>
+<span class="p">#</span> <span class="n">move</span> <span class="k">model</span> <span class="k">to</span> <span class="n">the</span> <span class="n">right</span> <span class="n">device</span>
+<span class="k">model</span><span class="p">.</span><span class="k">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+
+<span class="p">#</span> <span class="n">construct</span> <span class="n">an</span> <span class="n">optimizer</span>
+<span class="n">params</span> <span class="p">=</span> <span class="p">[</span><span class="n">p</span> <span class="n">for</span> <span class="n">p</span> <span class="k">in</span> <span class="k">model</span><span class="p">.</span><span class="k">parameters</span><span class="p">()</span> <span class="k">if</span> <span class="n">p</span><span class="p">.</span><span class="n">requires_grad</span><span class="p">]</span>
+<span class="n">optimizer</span> <span class="p">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">optim</span><span class="p">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">lr</span><span class="p">=</span><span class="m">0.005</span><span class="p">,</span>
+                            <span class="n">momentum</span><span class="p">=</span><span class="m">0.9</span><span class="p">,</span> <span class="n">weight_decay</span><span class="p">=</span><span class="m">0.0005</span><span class="p">)</span>
+
+<span class="p">#</span> <span class="k">and</span> <span class="n">a</span> <span class="n">learning</span> <span class="n">rate</span> <span class="n">scheduler</span> <span class="n">which</span> <span class="n">decreases</span> <span class="n">the</span> <span class="n">learning</span> <span class="n">rate</span> <span class="n">by</span>
+<span class="p">#</span> <span class="m">10</span><span class="n">x</span> <span class="n">every</span> <span class="m">3</span> <span class="n">epochs</span>
+<span class="n">lr_scheduler</span> <span class="p">=</span> <span class="n">torch</span><span class="p">.</span><span class="n">optim</span><span class="p">.</span><span class="n">lr_scheduler</span><span class="p">.</span><span class="n">StepLR</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span>
+                                               <span class="n">step_size</span><span class="p">=</span><span class="m">3</span><span class="p">,</span>
+                                               <span class="n">gamma</span><span class="p">=</span><span class="m">0.1</span><span class="p">)</span>
+</code></pre></div></div>
+<p>いよいよ学習です。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># let's train it for 10 epochs
+num_epochs = 10
+
+for epoch in range(num_epochs):
+    # train for one epoch, printing every 10 iterations
+    train_one_epoch(model, optimizer, data_loader, device, epoch, print_freq=10)
+    # update the learning rate
+    lr_scheduler.step()
+    # evaluate on the test dataset
+    evaluate(model, data_loader_test, device=device)
+</code></pre></div></div>
+<p>学習実行が最後まで進んだことが確認できます。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Epoch: [9] Total time: 0:00:14 (0.2377 s / it)
+creating index...
+index created!
+Test:  [ 0/50]  eta: 0:00:11  model_time: 0.0747 (0.0747)  evaluator_time: 0.0015 (0.0015)  time: 0.2264  data: 0.1488  max mem: 3573
+Test:  [49/50]  eta: 0:00:00  model_time: 0.0447 (0.0448)  evaluator_time: 0.0011 (0.0013)  time: 0.0492  data: 0.0029  max mem: 3573
+Test: Total time: 0:00:02 (0.0541 s / it)
+Averaged stats: model_time: 0.0447 (0.0448)  evaluator_time: 0.0011 (0.0013)
+Accumulating evaluation results...
+DONE (t=0.01s).
+IoU metric: bbox
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.821
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=100 ] = 0.992
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=100 ] = 0.951
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = -1.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.592
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.831
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=  1 ] = 0.378
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 10 ] = 0.859
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.859
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=100 ] = -1.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=100 ] = 0.775
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=100 ] = 0.865
+# pick one image from the test set
+</code></pre></div></div>
+
+<h3 id="推論を行う">推論を行う</h3>
+<p>テストデータの一つで実施します。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># pick one image from the test set
+img, _ = dataset_test[0]
+# put the model in evaluation mode
+model.eval()
+with torch.no_grad():
+    prediction = model([img.to(device)])
+</code></pre></div></div>
+
+<p>画像で見る場合は以下で確認できます。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from PIL import ImageDraw
+
+im = Image.fromarray(img.mul(255).permute(1, 2, 0).byte().numpy())
+
+draw = ImageDraw.Draw(im)
+draw.rectangle(prediction[0]['boxes'][0].cpu().numpy())
+
+im
+</code></pre></div></div>
+<h2 id="おわりに">おわりに</h2>
+<p>このように、KAMONOHASHIでは、簡単にGPUが利用可能なJupyter環境を起動し解析を開始できます。</p>
+
+<p>このチュートリアルでは、KAMONOHASHIを用いて、JupyterLab環境でGPUを使用しPenn-Fudanデータセットの人物検出モデルを学習させました。
+より詳しくKAMONOHASHIの使い方を知りたい場合は<a href="/docs/how-to/">How-to Guide</a>を参照してください。</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+
+      
+
+      
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><div class="search-searchbar"></div>
+    <div class="search-hits"></div></div>
+
+      </div>
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+    <ul class="social-icons">
+      
+  
+      
+        
+          
+            <li><a href="https://twitter.com/Kamonohashi_kqi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+          
+        
+          
+            <li><a href="https://github.com/KAMONOHASHI/kamonohashi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+      
+  
+      <li><a href="/feed.xml"></a></li>
+    </ul>
+  </div>
+  
+  <div class="page__footer-copyright">KAMONOHASHIは日鉄ソリューションズ株式会社の登録商標です。 
+    KAMONOHASHI (ロゴ) は日鉄ソリューションズ株式会社の登録商標です。 
+    <br>その他、本文記載の会社名および製品名は、それぞれ各社の商標または登録商標です。 
+     </div>
+  <div class="page__footer-copyright">&copy; 2020 NS Solutions Corporation. </div>
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+  <script>
+  window.addEventListener("load", function(){
+  window.cookieconsent.initialise({
+    "palette": {
+      "popup": {
+        "background": "#eaf7f7",
+        "text": "#5c7291"
+      },
+      "button": {
+        "background": "#56cbdb",
+        "text": "#ffffff"
+      }
+    },
+    "theme": "classic",
+    "content": {
+      "href": "/privacy-policy/"
+    }
+  })});
+  </script>  
+  
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.6.0/js/all.js" integrity="sha384-z9ZOvGHHo21RqN5De4rfJMoAxYpaVoiYhuJXPyVmSs8yn20IE3PmBM534CffwSJI" crossorigin="anonymous"></script>
+
+
+<!-- Including InstantSearch.js library and styling -->
+<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3.3/dist/instantsearch.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3.3/dist/instantsearch.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.3.3/dist/instantsearch-theme-algolia.min.css">
+
+<script>
+// Instanciating InstantSearch.js with Algolia credentials
+const search = instantsearch({
+  appId: 'FHOXZY3123',
+  apiKey: 'ec39e3bdd7c77c432404bd00ba60be40',
+  indexName: 'test_KAMONOHASHI',
+  searchParameters: {
+    restrictSearchableAttributes: [
+      'title',
+      'content'
+    ]
+  }
+});
+
+const hitTemplate = function(hit) {
+  const url = hit.url;
+  const title = hit._highlightResult.title.value;
+  const content = hit._highlightResult.html.value;
+
+  return `
+    <div class="list__item">
+      <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+        <h2 class="archive__item-title" itemprop="headline"><a href="${url}">${title}</a></h2>
+        <div class="archive__item-excerpt" itemprop="description">${content}</div>
+      </article>
+    </div>
+  `;
+}
+
+// Adding searchbar and results widgets
+search.addWidget(
+  instantsearch.widgets.searchBox({
+    container: '.search-searchbar',
+    poweredBy: true,
+    placeholder: 'Enter your search term...'
+  })
+);
+search.addWidget(
+  instantsearch.widgets.hits({
+    container: '.search-hits',
+    templates: {
+      item: hitTemplate
+    }
+  })
+);
+
+// Starting the search
+search.start();
+</script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-121400633-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+  </body>
+</html>
